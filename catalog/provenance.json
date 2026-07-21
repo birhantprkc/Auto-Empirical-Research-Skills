@@ -1031,7 +1031,7 @@
       "security_review": "SECURITY-SCAN-REPORT.md",
       "skill_count": 1,
       "source_confidence": "medium",
-      "source_url": "https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills",
+      "source_url": "https://github.com/brycewang-stanford/Paper-WorkFlow",
       "sync": "manual vendor snapshot",
       "vendored_commit": null
     },
