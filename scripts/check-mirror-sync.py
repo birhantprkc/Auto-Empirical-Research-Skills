@@ -7,7 +7,9 @@ but they ship through two extra channels that are committed to this repo:
 1. ``plugins/empirical-analysis-{python,stata,r}/skills/pipeline/`` —
    projected by ``plugins/build_plugins.py`` (SKILL.md + references/).
 2. ``stata-skills/00.2-Full-empirical-analysis-skill_Stata/`` — a
-   hand-maintained copy inside the Stata-focused view.
+   hand-maintained copy inside the Stata-focused view. NOTE: ``stata-skills/``
+   is **gitignored** (a maintainer-local view), so this pair is checked only
+   when the directory exists — locally it gates drift; on CI it is skipped.
 
 Historically these mirrors silently drifted (e.g. the 2026-06-22 SkillOpt
 execution-gate section reached ``skills/00.x`` but none of the mirrors until
@@ -29,6 +31,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 # (source dir, mirror dir) pairs; every SKILL.md and references/* file in the
 # source must be byte-identical in the mirror.
+# Pairs whose mirror dir may legitimately be absent (gitignored local views).
+OPTIONAL_MIRROR_DIRS = {"stata-skills/00.2-Full-empirical-analysis-skill_Stata"}
+
 MIRROR_PAIRS: list[tuple[str, str]] = [
     (
         "skills/00.1-Full-empirical-analysis-skill_Python",
@@ -59,6 +64,7 @@ def content_files(source: Path) -> list[Path]:
 
 def main() -> int:
     failures: list[str] = []
+    skipped: list[str] = []
     for source_rel, mirror_rel in MIRROR_PAIRS:
         source = ROOT / source_rel
         mirror = ROOT / mirror_rel
@@ -66,6 +72,9 @@ def main() -> int:
             failures.append(f"missing source dir: {source_rel}")
             continue
         if not mirror.is_dir():
+            if mirror_rel in OPTIONAL_MIRROR_DIRS:
+                skipped.append(mirror_rel)
+                continue
             failures.append(f"missing mirror dir: {mirror_rel}")
             continue
         for path in content_files(source):
@@ -89,8 +98,10 @@ def main() -> int:
         )
         return 1
 
-    checked = sum(len(content_files(ROOT / src)) for src, _ in MIRROR_PAIRS)
-    print(f"mirror sync OK: {len(MIRROR_PAIRS)} mirror(s), {checked} file comparison(s).")
+    active = [(src, dst) for src, dst in MIRROR_PAIRS if dst not in skipped]
+    checked = sum(len(content_files(ROOT / src)) for src, _ in active)
+    note = f" ({len(skipped)} local-only mirror(s) absent, skipped)" if skipped else ""
+    print(f"mirror sync OK: {len(active)} mirror(s), {checked} file comparison(s){note}.")
     return 0
 
 
