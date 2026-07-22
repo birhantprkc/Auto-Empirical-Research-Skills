@@ -6,7 +6,7 @@ the existing 54-collection set. Every addition is a curated upstream snapshot wi
 `SKILL.md` frontmatter, an attributed `README-original.md`, and an upstream `LICENSE`
 (or an explicit provenance note where upstream ships none).
 
-Selection bar (per [`SKILL_SUBMISSION_GUIDE.md`](SKILL_SUBMISSION_GUIDE.md)): open
+Selection bar (per [`SKILL_SUBMISSION_GUIDE.md`](../SKILL_SUBMISSION_GUIDE.md)): open
 source with a clear license; runnable/inspectable **without** a paid or proprietary
 core; safe for an agent to read (no credential exfiltration, reverse shells, hidden
 download-and-run, or prompt injection); relevant to empirical research; and not a
@@ -16,23 +16,23 @@ duplicate of an already-vendored owner/repo.
 
 | # | Collection | License | Skills | Gap it fills |
 |---|---|---|---|---|
-| 51 | [pymc-labs/CausalPy](../skills/51-pymc-labs-CausalPy/) | Apache-2.0 | 3 | Quasi-experiment **estimation**: DiD, staggered/synthetic DiD, RDD & regression kink, interrupted time series, synthetic control, IV/IPW, panel — with method-choice and placebo skills |
-| 52 | [keemanxp/slr-prisma](../skills/52-keemanxp-slr-prisma/) | MIT | 1 | **PRISMA 2020** systematic literature review (all 27 items + flow diagram) |
-| 53 | [keemanxp/thematic-analysis-skill](../skills/53-keemanxp-thematic-analysis-skill/) | MIT | 1 | **Qualitative** analysis: Braun & Clarke six-phase thematic analysis |
-| 54 | [scdenney/open-science-skills](../skills/54-scdenney-open-science-skills/) | CC-BY-NC-4.0 | 24 | **Experimental & survey social science**: conjoint design/cleaning/diagnostics, cross-national design, list experiments, pre-registration, topic modeling, text classification |
-| 55 | [ab604/claude-code-r-skills](../skills/55-ab604-claude-code-r-skills/) | MIT | 8 | **R statistical computing**: `r-bayes` (brms/cmdstanr multilevel + DAG validation + marginal effects), idiomatic tidyverse/perf/TDD |
-| 56 | [hanlulong/econ-writing-skill](../skills/56-hanlulong-econ-writing-skill/) | MIT | 1 | **Economics writing** with 13 identification strategies + AEA replication-package standards |
-| 57 | [dgunning/edgartools](../skills/57-dgunning-edgartools/) | MIT | 1 | **Corporate-disclosure data**: SEC EDGAR filings / XBRL / 13F / Forms 3-4-5 (free API, no key) |
-| 58 | [charlescoverdale/econstack](../skills/58-charlescoverdale-econstack/) | MIT¹ | 7 | **Official-statistics** macro/fiscal briefings & cost-benefit (Green Book), multi-source public data |
-| 59 | [shiquda/openalex-skill](../skills/59-shiquda-openalex-skill/) | MIT | 1 | **Bibliometric data**: OpenAlex works/authors/citations retrieval |
-| 60 | [regisely/superpapers](../skills/60-regisely-superpapers/) | MIT | 16 | **Reproducible empirical paper pipeline** (replication-driven: every number regenerable from raw data with a fixed seed) |
-| 61 | [phdemotions/research-methods](../skills/61-phdemotions-research-methods/) | MIT | 9 | **Data management**: clean / validate / profile / EDA, raw-data immutability, CONSORT exclusion flows, method templates |
-| 62 | [PHY041/claude-skill-citation-checker](../skills/62-PHY041-claude-skill-citation-checker/) | MIT¹ | 1 | **Citation hygiene**: verify `.bib` against CrossRef / Semantic Scholar / OpenAlex; catch hallucinated/chimeric refs |
-| 63 | [tondevrel/scientific-agent-skills](../skills/63-tondevrel-scientific-agent-skills/) | MIT | 2 | **Graphical causal inference + survival analysis**: `dowhy` (identify-estimate-refute, backdoor/frontdoor/IV, refutation tests) and `lifelines` (Kaplan-Meier, Cox, right-censoring) — empirically-relevant subset only |
+| 51 | [pymc-labs/CausalPy](../../skills/51-pymc-labs-CausalPy/) | Apache-2.0 | 3 | Quasi-experiment **estimation**: DiD, staggered/synthetic DiD, RDD & regression kink, interrupted time series, synthetic control, IV/IPW, panel — with method-choice and placebo skills |
+| 52 | [keemanxp/slr-prisma](../../skills/52-keemanxp-slr-prisma/) | MIT | 1 | **PRISMA 2020** systematic literature review (all 27 items + flow diagram) |
+| 53 | [keemanxp/thematic-analysis-skill](../../skills/53-keemanxp-thematic-analysis-skill/) | MIT | 1 | **Qualitative** analysis: Braun & Clarke six-phase thematic analysis |
+| 54 | [scdenney/open-science-skills](../../skills/54-scdenney-open-science-skills/) | CC-BY-NC-4.0 | 24 | **Experimental & survey social science**: conjoint design/cleaning/diagnostics, cross-national design, list experiments, pre-registration, topic modeling, text classification |
+| 55 | [ab604/claude-code-r-skills](../../skills/55-ab604-claude-code-r-skills/) | MIT | 8 | **R statistical computing**: `r-bayes` (brms/cmdstanr multilevel + DAG validation + marginal effects), idiomatic tidyverse/perf/TDD |
+| 56 | [hanlulong/econ-writing-skill](../../skills/56-hanlulong-econ-writing-skill/) | MIT | 1 | **Economics writing** with 13 identification strategies + AEA replication-package standards |
+| 57 | [dgunning/edgartools](../../skills/57-dgunning-edgartools/) | MIT | 1 | **Corporate-disclosure data**: SEC EDGAR filings / XBRL / 13F / Forms 3-4-5 (free API, no key) |
+| 58 | [charlescoverdale/econstack](../../skills/58-charlescoverdale-econstack/) | MIT¹ | 7 | **Official-statistics** macro/fiscal briefings & cost-benefit (Green Book), multi-source public data |
+| 59 | [shiquda/openalex-skill](../../skills/59-shiquda-openalex-skill/) | MIT | 1 | **Bibliometric data**: OpenAlex works/authors/citations retrieval |
+| 60 | [regisely/superpapers](../../skills/60-regisely-superpapers/) | MIT | 16 | **Reproducible empirical paper pipeline** (replication-driven: every number regenerable from raw data with a fixed seed) |
+| 61 | [phdemotions/research-methods](../../skills/61-phdemotions-research-methods/) | MIT | 9 | **Data management**: clean / validate / profile / EDA, raw-data immutability, CONSORT exclusion flows, method templates |
+| 62 | [PHY041/claude-skill-citation-checker](../../skills/62-PHY041-claude-skill-citation-checker/) | MIT¹ | 1 | **Citation hygiene**: verify `.bib` against CrossRef / Semantic Scholar / OpenAlex; catch hallucinated/chimeric refs |
+| 63 | [tondevrel/scientific-agent-skills](../../skills/63-tondevrel-scientific-agent-skills/) | MIT | 2 | **Graphical causal inference + survival analysis**: `dowhy` (identify-estimate-refute, backdoor/frontdoor/IV, refutation tests) and `lifelines` (Kaplan-Meier, Cox, right-censoring) — empirically-relevant subset only |
 
 ¹ `econstack` and `citation-checker` declare MIT in their README (badge / `## License`
 section) but ship no separate `LICENSE` file upstream; recorded with
-`source_confidence: medium` in [`provenance.json`](../catalog/provenance.json).
+`source_confidence: medium` in [`provenance.json`](../../catalog/provenance.json).
 
 ### Curation notes
 

@@ -1,8 +1,8 @@
 # Empirical-Tools Catalog — 2026-06
 
-This pass added a new first-party module, [`tools/`](../tools/), cataloging **335
+This pass added a new first-party module, [`tools/`](../../tools/), cataloging **335
 software tools** for automated empirical research and causal inference — a layer
-distinct from the agent **skills** under [`skills/`](../skills/). A *skill* is an
+distinct from the agent **skills** under [`skills/`](../../skills/). A *skill* is an
 instruction pack an agent reads; a *tool* is the external software or service an
 agent (or researcher) actually invokes. The two were deliberately separated so the
 new index does not dilute the semantics of the skills catalog.
@@ -14,9 +14,9 @@ new index does not dilute the semantics of the skills catalog.
 > (S)VAR, survey weighting/MRP/raking, meta-analysis) growing `econometrics-library`
 > from 86 to 170. The "deferred" notes that originally appeared below are superseded.
 
-Source of truth: [`tools/tools.json`](../tools/tools.json). Browsable view:
-[`tools/CATALOG.md`](../tools/CATALOG.md) (generated). Both are validated and kept
-fresh by [`scripts/build-tools-catalog.py`](../scripts/build-tools-catalog.py),
+Source of truth: [`tools/tools.json`](../../tools/tools.json). Browsable view:
+[`tools/CATALOG.md`](../../tools/CATALOG.md) (generated). Both are validated and kept
+fresh by [`scripts/build-tools-catalog.py`](../../scripts/build-tools-catalog.py),
 wired into `make catalog` (build) and `make validate` (`--check`).
 
 ## Scope (this pass)
@@ -71,7 +71,7 @@ econometrics/quasi-experimental packages; data & stats-execution MCP servers; ca
 discovery + benchmarks). Each agent was required to **fetch the upstream repo / CRAN /
 SSC page** to confirm license, approximate stars, and last-activity month before
 recording an entry — not to rely on memory. Results were merged, normalized, and
-de-duplicated by [an assembly step](../scripts/build-tools-catalog.py) into the sorted
+de-duplicated by [an assembly step](../../scripts/build-tools-catalog.py) into the sorted
 `tools.json`.
 
 ## Curation decisions
@@ -100,11 +100,11 @@ de-duplicated by [an assembly step](../scripts/build-tools-catalog.py) into the 
 
 This pass adds **no executable third-party code** to the repository — `tools/` is a
 metadata index (JSON + generated Markdown), not vendored source. The only new code is
-first-party: [`scripts/build-tools-catalog.py`](../scripts/build-tools-catalog.py) (stdlib
-only, no network) and [`tests/test_tools_catalog.py`](../tests/test_tools_catalog.py).
+first-party: [`scripts/build-tools-catalog.py`](../../scripts/build-tools-catalog.py) (stdlib
+only, no network) and [`tests/test_tools_catalog.py`](../../tests/test_tools_catalog.py).
 The listed tools themselves are external dependencies the user chooses to install;
 inclusion is not an endorsement of their security. The existing
-[`SECURITY-SCAN-REPORT.md`](../SECURITY-SCAN-REPORT.md) baseline (skills) is unaffected.
+[`SECURITY-SCAN-REPORT.md`](../../SECURITY-SCAN-REPORT.md) baseline (skills) is unaffected.
 
 ## Maintenance
 
@@ -121,8 +121,8 @@ inclusion is not an endorsement of their security. The existing
 - ~~Spatial econometrics, local projections / impulse responses, MRP / survey weighting,
   meta-analysis tooling~~ — **done 2026-06-04** (84 entries; see "Third wave" above).
 - ~~Periodic link/license re-check workflow for the catalog~~ — **done 2026-06-04**
-  ([`scripts/check-tools-links.py`](../scripts/check-tools-links.py) +
-  [`.github/workflows/check-tools-links.yml`](../.github/workflows/check-tools-links.yml),
+  ([`scripts/check-tools-links.py`](../../scripts/check-tools-links.py) +
+  [`.github/workflows/check-tools-links.yml`](../../.github/workflows/check-tools-links.yml),
   scheduled monthly). Re-verifying `stars_approx` / `last_activity` still needs a manual
   GitHub-API pass.
 - **Remaining:** ARDL depth (`dLagM`, `ardl.nardl`), a dedicated Julia spatial-regression
