@@ -39,6 +39,7 @@ validate:
 	python3 scripts/check-readme-stats.py
 	python3 scripts/check-catalog-coverage.py
 	python3 scripts/check-plugin-source-location.py
+	python3 scripts/check-mirror-sync.py
 	$(MAKE) paper-workflow-check
 	python3 scripts/build-provenance.py --check
 	python3 scripts/build-skill-audit.py --check

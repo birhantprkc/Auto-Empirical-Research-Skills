@@ -22555,8 +22555,8 @@
       "name": "paper-workflow",
       "path": "skills/69-Paper-WorkFlow/SKILL.md",
       "collection": "69-Paper-WorkFlow",
-      "line_count": 271,
-      "description_effective": "经管 / 社科实证论文全流程 meta-orchestrator：把选题、设计、数据、估计、方法闸门、 表图、写作、去 AI 味、质量门、修订、投稿与复盘编排成 Stage 0–9 可断点续跑流水线。 本 skill 不重复实现子能力，而是按阶段调用既有 skill 或并行 subagent，并在 Stage 3–4 路由 Python/StatsPAI、Stata、R 三种分析后端。触发：/paper-workflow、帮我写一篇实证论文、 从选题到投稿、端到端 empirical paper、已有 proposal/数据/初稿要推进到投稿，或明确要求 用 Stata / R/fixest / Python-StatsPAI 完整复现。 When invoked by parent (e.g. root `SKILL.md` routing logic): if the parent's invocation contains any trigger phrase above, jump directly to Stage 0 Setup without re-asking for the trigger -- the parent has already classified this as a full-pipeline task.",
+      "line_count": 269,
+      "description_effective": "经管 / 社科实证论文全流程 meta-orchestrator：把选题、设计、数据、估计、方法闸门、 表图、写作、去 AI 味、质量门、修订、投稿与复盘编排成 Stage 0–9 可断点续跑流水线。 本 skill 不重复实现子能力，而是按阶段调用既有 skill 或并行 subagent，并在 Stage 3–4 路由 Python/StatsPAI、Stata、R 三种分析后端。触发：/paper-workflow、帮我写一篇实证论文、 从选题到投稿、端到端 empirical paper、已有 proposal/数据/初稿要推进到投稿，或明确要求 用 Stata / R/fixest / Python-StatsPAI 完整复现。 Parent-invoked with any trigger above: jump straight to Stage 0 Setup without re-asking.",
       "description_source": "frontmatter",
       "has_references": true,
       "tags": {
