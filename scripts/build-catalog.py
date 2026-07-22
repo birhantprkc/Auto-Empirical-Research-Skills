@@ -10,6 +10,8 @@ import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+
+import skill_discovery
 from typing import Iterable
 
 
@@ -155,7 +157,7 @@ def iter_skill_files() -> list[Path]:
 
     paths: list[Path] = []
     for dirpath, dirnames, filenames in os.walk(SKILLS_DIR):
-        dirnames[:] = [name for name in dirnames if name not in {".git", "__pycache__"}]
+        dirnames[:] = skill_discovery.prune(dirnames)
         for filename in filenames:
             if filename == "SKILL.md":
                 paths.append(Path(dirpath) / filename)

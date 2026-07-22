@@ -11,6 +11,8 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+import skill_discovery
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR = ROOT / "skills"
@@ -29,7 +31,7 @@ def rel(path: Path) -> str:
 def iter_skill_like_files() -> list[Path]:
     paths: list[Path] = []
     for dirpath, dirnames, filenames in os.walk(SKILLS_DIR):
-        dirnames[:] = [name for name in dirnames if name not in {".git", "__pycache__"}]
+        dirnames[:] = skill_discovery.prune(dirnames)
         for filename in filenames:
             if filename.lower() == "skill.md":
                 paths.append(Path(dirpath) / filename)

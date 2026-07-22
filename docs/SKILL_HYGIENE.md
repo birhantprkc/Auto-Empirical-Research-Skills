@@ -13,12 +13,12 @@ A skill can be **well-formed** (high hygiene) yet **untested for the traps an ap
 
 ## Summary
 
-- Skills scored: **1168**
+- Skills scored: **1093**
 - Mean hygiene score: **99.4/100**
-- Skills with at least one eval scenario: **18** (1.5% of catalog)
+- Skills with at least one eval scenario: **18** (1.6% of catalog)
 - Total eval-harness scenarios that target a specific skill: **19**
-- Descriptions: 1168 from frontmatter, 0 body-derived, 0 none
-- Tagged with at least one taxonomy facet: 580
+- Descriptions: 1093 from frontmatter, 0 body-derived, 0 none
+- Tagged with at least one taxonomy facet: 557
 
 ## Per-collection: hygiene × eval coverage
 
@@ -69,7 +69,7 @@ A skill can be **well-formed** (high hygiene) yet **untested for the traps an ap
 | `39-vincentarelbundock-marginaleffects` | 1 | 100.0 | 100 | 1 | 1 |
 | `40-py-econometrics-pyfixest` | 1 | 100.0 | 100 | 1 | 1 |
 | `41-sticerd-eee-sewage-econometrics-check` | 22 | 100.0 | 100 | 1 | 1 |
-| `42-wanshuiyin-ARIS` | 104 | 98.6 | 85 | 0 | 0 |
+| `42-wanshuiyin-ARIS` | 42 | 98.9 | 85 | 0 | 0 |
 | `43-wentorai-research-plugins` | 478 | 100.0 | 95 | 0 | 0 |
 | `44-matsuikentaro1-humanizer_academic` | 1 | 92.0 | 92 | 0 | 0 |
 | `45-stephenturner-skill-deslop` | 1 | 100.0 | 100 | 0 | 0 |
@@ -95,7 +95,7 @@ A skill can be **well-formed** (high hygiene) yet **untested for the traps an ap
 | `65-game-theory-paper-writer` | 1 | 100.0 | 100 | 0 | 0 |
 | `66-zheng-siyao-empirical-research-skills` | 7 | 100.0 | 100 | 0 | 0 |
 | `67-econfin-workflow-toolkit` | 46 | 98.5 | 85 | 0 | 0 |
-| `68-research-productivity-skills` | 18 | 100.0 | 100 | 0 | 0 |
+| `68-research-productivity-skills` | 5 | 100.0 | 100 | 0 | 0 |
 | `69-Paper-WorkFlow` | 1 | 100.0 | 100 | 0 | 0 |
 | `70-ssci-polish` | 1 | 100.0 | 100 | 0 | 0 |
 
@@ -120,14 +120,14 @@ A skill can be **well-formed** (high hygiene) yet **untested for the traps an ap
 | 85 | [`skills/30-zirui-song-claude-skills/coding-guidelines/SKILL.md`](../skills/30-zirui-song-claude-skills/coding-guidelines/SKILL.md) | very-long-no-references | — |
 | 85 | [`skills/33-Galaxy-Dawn-claude-scholar/skills/uv-package-manager/SKILL.md`](../skills/33-Galaxy-Dawn-claude-scholar/skills/uv-package-manager/SKILL.md) | very-long-no-references | — |
 | 85 | [`skills/42-wanshuiyin-ARIS/skills/paper-poster/SKILL.md`](../skills/42-wanshuiyin-ARIS/skills/paper-poster/SKILL.md) | very-long-no-references | — |
-| 85 | [`skills/42-wanshuiyin-ARIS/skills/skills-codex-gemini-review/paper-poster/SKILL.md`](../skills/42-wanshuiyin-ARIS/skills/skills-codex-gemini-review/paper-poster/SKILL.md) | very-long-no-references | — |
-| 85 | [`skills/42-wanshuiyin-ARIS/skills/skills-codex/paper-poster/SKILL.md`](../skills/42-wanshuiyin-ARIS/skills/skills-codex/paper-poster/SKILL.md) | very-long-no-references | — |
 | 85 | [`skills/55-ab604-claude-code-r-skills/skills/tdd-workflow/SKILL.md`](../skills/55-ab604-claude-code-r-skills/skills/tdd-workflow/SKILL.md) | very-long-no-references | — |
 | 85 | [`skills/63-tondevrel-scientific-agent-skills/dowhy/SKILL.md`](../skills/63-tondevrel-scientific-agent-skills/dowhy/SKILL.md) | very-long-no-references | — |
 | 85 | [`skills/67-econfin-workflow-toolkit/China-CF-study/SKILL.md`](../skills/67-econfin-workflow-toolkit/China-CF-study/SKILL.md) | very-long-no-references | — |
 | 85 | [`skills/67-econfin-workflow-toolkit/Foreign-CF-study/SKILL.md`](../skills/67-econfin-workflow-toolkit/Foreign-CF-study/SKILL.md) | very-long-no-references | — |
 | 85 | [`skills/67-econfin-workflow-toolkit/chinese-ppt/SKILL.md`](../skills/67-econfin-workflow-toolkit/chinese-ppt/SKILL.md) | very-long-no-references | — |
 | 92 | [`skills/04-K-Dense-AI-claude-scientific-writer/literature-review/SKILL.md`](../skills/04-K-Dense-AI-claude-scientific-writer/literature-review/SKILL.md) | long-no-references | — |
+| 92 | [`skills/04-K-Dense-AI-claude-scientific-writer/peer-review/SKILL.md`](../skills/04-K-Dense-AI-claude-scientific-writer/peer-review/SKILL.md) | long-no-references | — |
+| 92 | [`skills/04-K-Dense-AI-claude-scientific-writer/scientific-critical-thinking/SKILL.md`](../skills/04-K-Dense-AI-claude-scientific-writer/scientific-critical-thinking/SKILL.md) | long-no-references | — |
 
 ## Top 15 skills by eval coverage (the "tested and tidy" leaders)
 

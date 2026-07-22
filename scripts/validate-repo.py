@@ -11,6 +11,8 @@ import sys
 import unicodedata
 from collections import Counter
 from pathlib import Path
+
+import skill_discovery
 from urllib.parse import unquote
 
 
@@ -102,7 +104,7 @@ def iter_skill_files() -> list[Path]:
 
     paths: list[Path] = []
     for dirpath, dirnames, filenames in os.walk(SKILLS_DIR):
-        dirnames[:] = [name for name in dirnames if name not in {".git", "__pycache__"}]
+        dirnames[:] = skill_discovery.prune(dirnames)
         for filename in filenames:
             if filename == "SKILL.md":
                 paths.append(Path(dirpath) / filename)
@@ -112,7 +114,7 @@ def iter_skill_files() -> list[Path]:
 def iter_nonstandard_skill_files() -> list[Path]:
     paths: list[Path] = []
     for dirpath, dirnames, filenames in os.walk(SKILLS_DIR):
-        dirnames[:] = [name for name in dirnames if name not in {".git", "__pycache__"}]
+        dirnames[:] = skill_discovery.prune(dirnames)
         for filename in filenames:
             if filename.lower() == "skill.md" and filename != "SKILL.md":
                 paths.append(Path(dirpath) / filename)

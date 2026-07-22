@@ -10,6 +10,8 @@ import re
 import sys
 from collections import Counter
 from pathlib import Path
+
+import skill_discovery
 from urllib.parse import urlparse
 
 
@@ -311,9 +313,12 @@ OVERRIDES: dict[str, dict[str, object]] = {
     "68-research-productivity-skills": {
         "source_url": "https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills/pull/21",
         "license": "Mixed (per-skill; see folder)",
-        "origin": "community contribution via PR #21 (research productivity skills). Proprietary Anthropic office skills (docx/pdf/pptx/xlsx) and general-purpose UI skills (frontend-design, ui-ux-pro-max) removed before vendoring 2026-06-18.",
+        "origin": "community contribution via PR #21 (research productivity skills). Proprietary Anthropic office skills (docx/pdf/pptx/xlsx) and general-purpose UI skills (frontend-design, ui-ux-pro-max) removed before vendoring 2026-06-18. 13 skills byte-identical to copies in 67-econfin-workflow-toolkit removed 2026-07-22 (67 is canonical; see collection README).",
         "sync": "manual vendor snapshot",
         "source_confidence": "medium",
+    },
+    "42-wanshuiyin-ARIS": {
+        "origin": "vendored upstream snapshot. The upstream skills-codex / skills-codex-*-review runtime ports (OpenAI Codex CLI variants of the same skills) remain on disk but are excluded from skill discovery since 2026-07-22 (see scripts/skill_discovery.py).",
     },
 }
 
@@ -329,7 +334,7 @@ def rel(path: Path) -> str:
 def iter_skill_files(collection_path: Path) -> list[Path]:
     paths: list[Path] = []
     for dirpath, dirnames, filenames in os.walk(collection_path):
-        dirnames[:] = [name for name in dirnames if name not in {".git", "__pycache__"}]
+        dirnames[:] = skill_discovery.prune(dirnames)
         for filename in filenames:
             if filename == "SKILL.md":
                 paths.append(Path(dirpath) / filename)
