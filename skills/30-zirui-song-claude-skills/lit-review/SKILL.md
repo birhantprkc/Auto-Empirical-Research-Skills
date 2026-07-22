@@ -1,4 +1,5 @@
 ---
+name: lit-review
 description: Summarize academic papers, extract key findings, and identify research gaps
 ---
 

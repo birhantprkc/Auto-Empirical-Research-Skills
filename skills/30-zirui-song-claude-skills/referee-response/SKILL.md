@@ -1,4 +1,5 @@
 ---
+name: referee-response
 description: Structure responses to referee reports for R&R submissions
 ---
 

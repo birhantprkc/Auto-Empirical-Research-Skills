@@ -1,4 +1,5 @@
 ---
+name: robustness
 description: Checklist of empirical robustness tests for finance/economics papers
 ---
 

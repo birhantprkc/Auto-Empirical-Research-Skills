@@ -109,6 +109,10 @@
       "skills/67-econfin-workflow-toolkit/do-agent/SKILL.md",
       "skills/68-research-productivity-skills/do-agent/SKILL.md"
     ],
+    "doc-coauthoring": [
+      "skills/19-CuellarC05-vera-economic-intelligence/research/doc-coauthoring/SKILL.md",
+      "skills/33-Galaxy-Dawn-claude-scholar/skills/doc-coauthoring/SKILL.md"
+    ],
     "dse-loop": [
       "skills/42-wanshuiyin-ARIS/skills/dse-loop/SKILL.md",
       "skills/42-wanshuiyin-ARIS/skills/skills-codex/dse-loop/SKILL.md"
@@ -184,6 +188,7 @@
       "skills/14-luischanci-claude-code-research-starter/dot-claude/skills/lit-review/SKILL.md",
       "skills/15-Felpix-Studios-social-science-research/skills/lit-review/SKILL.md",
       "skills/28-maxwell2732-paper-replicate-agent-demo/dot-claude/skills/lit-review/SKILL.md",
+      "skills/30-zirui-song-claude-skills/lit-review/SKILL.md",
       "skills/41-sticerd-eee-sewage-econometrics-check/skills/lit-review/SKILL.md"
     ],
     "lit-review-assistant": [
@@ -310,6 +315,10 @@
       "skills/42-wanshuiyin-ARIS/skills/rebuttal/SKILL.md",
       "skills/42-wanshuiyin-ARIS/skills/skills-codex/rebuttal/SKILL.md"
     ],
+    "referee-response": [
+      "skills/29-quarcs-lab-project20XXy/dot-claude/skills/referee-response/SKILL.md",
+      "skills/30-zirui-song-claude-skills/referee-response/SKILL.md"
+    ],
     "research-grants": [
       "skills/03-K-Dense-AI-claude-scientific-skills/research-grants/SKILL.md",
       "skills/04-K-Dense-AI-claude-scientific-writer/research-grants/SKILL.md"
@@ -355,6 +364,7 @@
       "skills/12-pedrohcgs-claude-code-my-workflow/dot-claude/skills/review-paper/SKILL.md",
       "skills/14-luischanci-claude-code-research-starter/dot-claude/skills/review-paper/SKILL.md",
       "skills/15-Felpix-Studios-social-science-research/skills/review-paper/SKILL.md",
+      "skills/21-claesbackman-AI-research-feedback/Skills/review-paper/SKILL.md",
       "skills/28-maxwell2732-paper-replicate-agent-demo/dot-claude/skills/review-paper/SKILL.md",
       "skills/41-sticerd-eee-sewage-econometrics-check/skills/review-paper/SKILL.md"
     ],
@@ -2185,6 +2195,56 @@
       "path": "skills/18-jusi-aalto-stata-accounting-research/SKILL.md"
     },
     {
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 35,
+      "name": "ai-augmented-economist",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/ai-augmented-economist/SKILL.md"
+    },
+    {
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 35,
+      "name": "doc-coauthoring",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/doc-coauthoring/SKILL.md"
+    },
+    {
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 35,
+      "name": "policy-brief-writing",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/policy-brief-writing/SKILL.md"
+    },
+    {
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 42,
+      "name": "research-director",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/research-director/SKILL.md"
+    },
+    {
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 35,
+      "name": "research-paper-writing",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/research-paper-writing/SKILL.md"
+    },
+    {
       "collection": "20-wenddymacro-python-econ-skill",
       "exact_case": true,
       "has_description": true,
@@ -2193,6 +2253,56 @@
       "line_count": 981,
       "name": "python-econ-computing",
       "path": "skills/20-wenddymacro-python-econ-skill/SKILL.md"
+    },
+    {
+      "collection": "21-claesbackman-AI-research-feedback",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 460,
+      "name": "review-grant",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-grant/SKILL.md"
+    },
+    {
+      "collection": "21-claesbackman-AI-research-feedback",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 504,
+      "name": "review-pap",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-pap/SKILL.md"
+    },
+    {
+      "collection": "21-claesbackman-AI-research-feedback",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 544,
+      "name": "review-paper",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-paper/SKILL.md"
+    },
+    {
+      "collection": "21-claesbackman-AI-research-feedback",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 352,
+      "name": "review-paper-code",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-paper-code/SKILL.md"
+    },
+    {
+      "collection": "21-claesbackman-AI-research-feedback",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 180,
+      "name": "review-paper-light",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-paper-light/SKILL.md"
     },
     {
       "collection": "22-christopherkenny-skills",
@@ -3285,6 +3395,66 @@
       "path": "skills/29-quarcs-lab-project20XXy/dot-claude/skills/sync-tex/SKILL.md"
     },
     {
+      "collection": "30-zirui-song-claude-skills",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 809,
+      "name": "coding-guidelines",
+      "path": "skills/30-zirui-song-claude-skills/coding-guidelines/SKILL.md"
+    },
+    {
+      "collection": "30-zirui-song-claude-skills",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 129,
+      "name": "data-doc",
+      "path": "skills/30-zirui-song-claude-skills/data-doc/SKILL.md"
+    },
+    {
+      "collection": "30-zirui-song-claude-skills",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 118,
+      "name": "lit-review",
+      "path": "skills/30-zirui-song-claude-skills/lit-review/SKILL.md"
+    },
+    {
+      "collection": "30-zirui-song-claude-skills",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 325,
+      "name": "project-structure",
+      "path": "skills/30-zirui-song-claude-skills/project-structure/SKILL.md"
+    },
+    {
+      "collection": "30-zirui-song-claude-skills",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 210,
+      "name": "referee-response",
+      "path": "skills/30-zirui-song-claude-skills/referee-response/SKILL.md"
+    },
+    {
+      "collection": "30-zirui-song-claude-skills",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 146,
+      "name": "robustness",
+      "path": "skills/30-zirui-song-claude-skills/robustness/SKILL.md"
+    },
+    {
       "collection": "31-thalysandratos-claude-code-skills",
       "exact_case": true,
       "has_description": true,
@@ -3983,6 +4153,16 @@
       "line_count": 374,
       "name": "literature-review",
       "path": "skills/36-taoyunudt-literature-review-skill/SKILL.md"
+    },
+    {
+      "collection": "37-IlanStrauss-ai-skills",
+      "exact_case": true,
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 598,
+      "name": "economist-data-skill",
+      "path": "skills/37-IlanStrauss-ai-skills/Skills/economist-data-skill/SKILL.md"
     },
     {
       "collection": "38-peternka-academic-proofreader",
@@ -11947,12 +12127,12 @@
   ],
   "schema_version": "1.0",
   "summary": {
-    "duplicate_skill_names": 92,
-    "exact_case_skill_files": 1151,
+    "duplicate_skill_names": 94,
+    "exact_case_skill_files": 1168,
     "missing_description": 0,
     "missing_frontmatter": 0,
     "non_exact_case_skill_files": 0,
-    "over_500_lines": 91,
-    "skill_like_files": 1151
+    "over_500_lines": 95,
+    "skill_like_files": 1168
   }
 }

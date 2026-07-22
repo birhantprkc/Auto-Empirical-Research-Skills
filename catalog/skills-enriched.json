@@ -2,21 +2,21 @@
   "generated_by": "scripts/build-catalog-enrich.py",
   "schema_version": 1,
   "summary": {
-    "skills": 1151,
+    "skills": 1168,
     "mean_quality_score": 99.4,
-    "with_frontmatter_description": 1151,
+    "with_frontmatter_description": 1168,
     "body_derived_description": 0,
     "no_description": 0,
-    "tagged": 567,
+    "tagged": 580,
     "with_eval_coverage": 18,
-    "with_eval_coverage_pct": 1.6,
+    "with_eval_coverage_pct": 1.5,
     "total_eval_scenarios": 19
   },
   "taxonomy": {
     "language": {
-      "latex": 95,
-      "stata": 48,
-      "python": 47,
+      "latex": 96,
+      "stata": 50,
+      "python": 49,
       "r": 22
     },
     "method": {
@@ -37,24 +37,24 @@
       "shift-share": 1
     },
     "stage": {
-      "analysis": 140,
-      "writing": 88,
-      "submission": 80,
-      "literature": 63,
-      "reproduction": 58,
+      "analysis": 141,
+      "writing": 89,
+      "submission": 86,
+      "literature": 64,
+      "reproduction": 62,
       "citation": 48,
       "presentation": 42,
       "tables-figures": 42,
       "ideation": 34,
-      "peer-review": 26,
-      "robustness": 26,
+      "peer-review": 27,
+      "robustness": 27,
       "de-aigc": 18,
       "data": 12
     },
     "topic": {
       "econometrics": 79,
-      "scientific-writing": 72,
-      "reproducibility": 58,
+      "scientific-writing": 73,
+      "reproducibility": 62,
       "proofreading": 36,
       "causal-inference": 30
     }
@@ -4066,6 +4066,111 @@
       "eval_coverage": []
     },
     {
+      "name": "ai-augmented-economist",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/ai-augmented-economist/SKILL.md",
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "line_count": 35,
+      "description_effective": "Integrate AI tools into economic research, teaching, and policy analysis with attention to privacy and reproducibility.",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "reproduction"
+        ],
+        "topic": [
+          "reproducibility"
+        ]
+      },
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/CuellarC05/vera-economic-intelligence",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "doc-coauthoring",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/doc-coauthoring/SKILL.md",
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "line_count": 35,
+      "description_effective": "Coordinate writing, revision, and submission workflows for collaborative academic and policy documents.",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "submission"
+        ]
+      },
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/CuellarC05/vera-economic-intelligence",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "policy-brief-writing",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/policy-brief-writing/SKILL.md",
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "line_count": 35,
+      "description_effective": "Create concise policy briefs that translate research into actionable recommendations for policymakers and stakeholders.",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {},
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/CuellarC05/vera-economic-intelligence",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "research-director",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/research-director/SKILL.md",
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "line_count": 42,
+      "description_effective": "Strategic research leadership for designing high-impact research agendas, coordinating teams, and translating research into policy and institutional influence.",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {},
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/CuellarC05/vera-economic-intelligence",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "research-paper-writing",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/research-paper-writing/SKILL.md",
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "line_count": 35,
+      "description_effective": "Plan, draft and refine research papers with reproducible analysis and publication-ready manuscripts.",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "reproduction",
+          "writing"
+        ],
+        "topic": [
+          "reproducibility",
+          "scientific-writing"
+        ]
+      },
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/CuellarC05/vera-economic-intelligence",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
       "name": "python-econ-computing",
       "path": "skills/20-wenddymacro-python-econ-skill/SKILL.md",
       "collection": "20-wenddymacro-python-econ-skill",
@@ -4091,6 +4196,124 @@
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
       "source_url": "https://github.com/wenddymacro/python-econ-skill",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "review-grant",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-grant/SKILL.md",
+      "collection": "21-claesbackman-AI-research-feedback",
+      "line_count": 460,
+      "description_effective": "Run a 6-agent pre-submission panel review for a grant proposal targeting a specified funder or program",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "submission"
+        ]
+      },
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/claesbackman/AI-research-feedback",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "review-pap",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-pap/SKILL.md",
+      "collection": "21-claesbackman-AI-research-feedback",
+      "line_count": 504,
+      "description_effective": "Run a 6-agent pre-submission review of a pre-analysis plan (PAP) for a specified registration target or journal",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "submission"
+        ]
+      },
+      "quality_score": 92,
+      "quality_flags": [
+        "long-no-references"
+      ],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/claesbackman/AI-research-feedback",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "review-paper-code",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-paper-code/SKILL.md",
+      "collection": "21-claesbackman-AI-research-feedback",
+      "line_count": 352,
+      "description_effective": "Review research code for reproducibility and quality, extract the paper's main empirical claims, compare paper to code, and write a constructive markdown report. Designed for social science / economics projects with LaTeX papers and Stata, R, or Python code.",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "language": [
+          "latex",
+          "python",
+          "stata"
+        ],
+        "stage": [
+          "reproduction"
+        ],
+        "topic": [
+          "reproducibility"
+        ]
+      },
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/claesbackman/AI-research-feedback",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "review-paper-light",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-paper-light/SKILL.md",
+      "collection": "21-claesbackman-AI-research-feedback",
+      "line_count": 180,
+      "description_effective": "Run a fast 2-agent pre-submission check for an economics paper — focuses on contribution, identification, and causal overclaiming. Completes in ~1 minute.",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "analysis",
+          "submission"
+        ]
+      },
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/claesbackman/AI-research-feedback",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "review-paper",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-paper/SKILL.md",
+      "collection": "21-claesbackman-AI-research-feedback",
+      "line_count": 544,
+      "description_effective": "Run a 6-agent pre-submission referee report for an academic paper targeting a specified journal",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "submission"
+        ]
+      },
+      "quality_score": 92,
+      "quality_flags": [
+        "long-no-references"
+      ],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/claesbackman/AI-research-feedback",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6476,6 +6699,135 @@
       "eval_coverage": []
     },
     {
+      "name": "coding-guidelines",
+      "path": "skills/30-zirui-song-claude-skills/coding-guidelines/SKILL.md",
+      "collection": "30-zirui-song-claude-skills",
+      "line_count": 809,
+      "description_effective": "Standardized Python & Stata coding practices for empirical research projects",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "language": [
+          "python",
+          "stata"
+        ]
+      },
+      "quality_score": 85,
+      "quality_flags": [
+        "very-long-no-references"
+      ],
+      "license": "MIT",
+      "commercial_use": "allowed",
+      "source_url": "https://github.com/zirui-song/claude-skills",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "data-doc",
+      "path": "skills/30-zirui-song-claude-skills/data-doc/SKILL.md",
+      "collection": "30-zirui-song-claude-skills",
+      "line_count": 129,
+      "description_effective": "Document datasets, variables, sources, and merge keys for replication",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "reproduction"
+        ],
+        "topic": [
+          "reproducibility"
+        ]
+      },
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "MIT",
+      "commercial_use": "allowed",
+      "source_url": "https://github.com/zirui-song/claude-skills",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "lit-review",
+      "path": "skills/30-zirui-song-claude-skills/lit-review/SKILL.md",
+      "collection": "30-zirui-song-claude-skills",
+      "line_count": 118,
+      "description_effective": "Summarize academic papers, extract key findings, and identify research gaps",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "literature"
+        ]
+      },
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "MIT",
+      "commercial_use": "allowed",
+      "source_url": "https://github.com/zirui-song/claude-skills",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "project-structure",
+      "path": "skills/30-zirui-song-claude-skills/project-structure/SKILL.md",
+      "collection": "30-zirui-song-claude-skills",
+      "line_count": 325,
+      "description_effective": "Project directory organization and script naming conventions for research",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {},
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "MIT",
+      "commercial_use": "allowed",
+      "source_url": "https://github.com/zirui-song/claude-skills",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "referee-response",
+      "path": "skills/30-zirui-song-claude-skills/referee-response/SKILL.md",
+      "collection": "30-zirui-song-claude-skills",
+      "line_count": 210,
+      "description_effective": "Structure responses to referee reports for R&R submissions",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "peer-review",
+          "submission"
+        ]
+      },
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "MIT",
+      "commercial_use": "allowed",
+      "source_url": "https://github.com/zirui-song/claude-skills",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "robustness",
+      "path": "skills/30-zirui-song-claude-skills/robustness/SKILL.md",
+      "collection": "30-zirui-song-claude-skills",
+      "line_count": 146,
+      "description_effective": "Checklist of empirical robustness tests for finance/economics papers",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {
+        "stage": [
+          "robustness"
+        ]
+      },
+      "quality_score": 100,
+      "quality_flags": [],
+      "license": "MIT",
+      "commercial_use": "allowed",
+      "source_url": "https://github.com/zirui-song/claude-skills",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
       "name": "python-panel-data",
       "path": "skills/31-thalysandratos-claude-code-skills/_skills/analysis/python-panel-data/SKILL.md",
       "collection": "31-thalysandratos-claude-code-skills",
@@ -7878,6 +8230,25 @@
       "license": "MIT",
       "commercial_use": "allowed",
       "source_url": "https://github.com/taoyunudt/literature-review-skill",
+      "sync": "manual vendor snapshot",
+      "eval_coverage": []
+    },
+    {
+      "name": "economist-data-skill",
+      "path": "skills/37-IlanStrauss-ai-skills/Skills/economist-data-skill/SKILL.md",
+      "collection": "37-IlanStrauss-ai-skills",
+      "line_count": 598,
+      "description_effective": "Guide economists to authoritative data sources with explicit, confirmed data specifications before retrieval; interfaces with Playwright MCP to navigate portals and extract real data, not articles about data.",
+      "description_source": "frontmatter",
+      "has_references": false,
+      "tags": {},
+      "quality_score": 92,
+      "quality_flags": [
+        "long-no-references"
+      ],
+      "license": "UNKNOWN - check upstream",
+      "commercial_use": "unknown",
+      "source_url": "https://github.com/IlanStrauss/ai-skills",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },

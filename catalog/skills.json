@@ -378,6 +378,23 @@
       "commercial_use": "unknown",
       "has_license": false,
       "has_readme": true,
+      "id": "19-CuellarC05-vera-economic-intelligence",
+      "license": "UNKNOWN - check upstream",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence",
+      "primary_skill": {
+        "description": "Integrate AI tools into economic research, teaching, and policy analysis with attention to privacy and reproducibility.",
+        "name": "ai-augmented-economist",
+        "path": "skills/19-CuellarC05-vera-economic-intelligence/ai-augmented-economist/SKILL.md"
+      },
+      "skill_count": 5,
+      "source_confidence": "low",
+      "source_url": "https://github.com/CuellarC05/vera-economic-intelligence",
+      "sync": "manual vendor snapshot"
+    },
+    {
+      "commercial_use": "unknown",
+      "has_license": false,
+      "has_readme": true,
       "id": "20-wenddymacro-python-econ-skill",
       "license": "UNKNOWN - check upstream",
       "path": "skills/20-wenddymacro-python-econ-skill",
@@ -389,6 +406,23 @@
       "skill_count": 1,
       "source_confidence": "low",
       "source_url": "https://github.com/wenddymacro/python-econ-skill",
+      "sync": "manual vendor snapshot"
+    },
+    {
+      "commercial_use": "unknown",
+      "has_license": false,
+      "has_readme": true,
+      "id": "21-claesbackman-AI-research-feedback",
+      "license": "UNKNOWN - check upstream",
+      "path": "skills/21-claesbackman-AI-research-feedback",
+      "primary_skill": {
+        "description": "Run a 6-agent pre-submission panel review for a grant proposal targeting a specified funder or program",
+        "name": "review-grant",
+        "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-grant/SKILL.md"
+      },
+      "skill_count": 5,
+      "source_confidence": "low",
+      "source_url": "https://github.com/claesbackman/AI-research-feedback",
       "sync": "manual vendor snapshot"
     },
     {
@@ -528,6 +562,23 @@
       "sync": "manual vendor snapshot"
     },
     {
+      "commercial_use": "allowed",
+      "has_license": false,
+      "has_readme": true,
+      "id": "30-zirui-song-claude-skills",
+      "license": "MIT",
+      "path": "skills/30-zirui-song-claude-skills",
+      "primary_skill": {
+        "description": "Standardized Python & Stata coding practices for empirical research projects",
+        "name": "coding-guidelines",
+        "path": "skills/30-zirui-song-claude-skills/coding-guidelines/SKILL.md"
+      },
+      "skill_count": 6,
+      "source_confidence": "low",
+      "source_url": "https://github.com/zirui-song/claude-skills",
+      "sync": "manual vendor snapshot"
+    },
+    {
       "commercial_use": "unknown",
       "has_license": false,
       "has_readme": true,
@@ -627,6 +678,23 @@
       "skill_count": 1,
       "source_confidence": "low",
       "source_url": "https://github.com/taoyunudt/literature-review-skill",
+      "sync": "manual vendor snapshot"
+    },
+    {
+      "commercial_use": "unknown",
+      "has_license": false,
+      "has_readme": true,
+      "id": "37-IlanStrauss-ai-skills",
+      "license": "UNKNOWN - check upstream",
+      "path": "skills/37-IlanStrauss-ai-skills",
+      "primary_skill": {
+        "description": "Guide economists to authoritative data sources with explicit, confirmed data specifications before retrieval; interfaces with Playwright MCP to navigate portals and extract real data, not articles about data.",
+        "name": "economist-data-skill",
+        "path": "skills/37-IlanStrauss-ai-skills/Skills/economist-data-skill/SKILL.md"
+      },
+      "skill_count": 1,
+      "source_confidence": "low",
+      "source_url": "https://github.com/IlanStrauss/ai-skills",
       "sync": "manual vendor snapshot"
     },
     {
@@ -4180,6 +4248,116 @@
       "qualified_name": "18-jusi-aalto-stata-accounting-research::stata-accounting-research"
     },
     {
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "description": "Integrate AI tools into economic research, teaching, and policy analysis with attention to privacy and reproducibility.",
+      "frontmatter_fields": [
+        "description",
+        "examples",
+        "guardrails",
+        "inputs",
+        "name",
+        "outputs",
+        "owner",
+        "tags",
+        "triggers"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 35,
+      "name": "ai-augmented-economist",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/ai-augmented-economist/SKILL.md",
+      "qualified_name": "19-CuellarC05-vera-economic-intelligence::ai-augmented-economist"
+    },
+    {
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "description": "Coordinate writing, revision, and submission workflows for collaborative academic and policy documents.",
+      "frontmatter_fields": [
+        "description",
+        "examples",
+        "guardrails",
+        "inputs",
+        "name",
+        "outputs",
+        "owner",
+        "tags",
+        "triggers"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 35,
+      "name": "doc-coauthoring",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/doc-coauthoring/SKILL.md",
+      "qualified_name": "19-CuellarC05-vera-economic-intelligence::doc-coauthoring"
+    },
+    {
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "description": "Create concise policy briefs that translate research into actionable recommendations for policymakers and stakeholders.",
+      "frontmatter_fields": [
+        "description",
+        "examples",
+        "guardrails",
+        "inputs",
+        "name",
+        "outputs",
+        "owner",
+        "tags",
+        "triggers"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 35,
+      "name": "policy-brief-writing",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/policy-brief-writing/SKILL.md",
+      "qualified_name": "19-CuellarC05-vera-economic-intelligence::policy-brief-writing"
+    },
+    {
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "description": "Strategic research leadership for designing high-impact research agendas, coordinating teams, and translating research into policy and institutional influence.",
+      "frontmatter_fields": [
+        "description",
+        "examples",
+        "guardrails",
+        "inputs",
+        "name",
+        "outputs",
+        "owner",
+        "tags",
+        "triggers"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 42,
+      "name": "research-director",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/research-director/SKILL.md",
+      "qualified_name": "19-CuellarC05-vera-economic-intelligence::research-director"
+    },
+    {
+      "collection": "19-CuellarC05-vera-economic-intelligence",
+      "description": "Plan, draft and refine research papers with reproducible analysis and publication-ready manuscripts.",
+      "frontmatter_fields": [
+        "description",
+        "examples",
+        "guardrails",
+        "inputs",
+        "name",
+        "outputs",
+        "owner",
+        "tags",
+        "triggers"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 35,
+      "name": "research-paper-writing",
+      "path": "skills/19-CuellarC05-vera-economic-intelligence/research/research-paper-writing/SKILL.md",
+      "qualified_name": "19-CuellarC05-vera-economic-intelligence::research-paper-writing"
+    },
+    {
       "collection": "20-wenddymacro-python-econ-skill",
       "description": "Use when writing Python code for DSGE models, HANK models, numerical economic computation, causal inference, or quantitative economic data analysis",
       "frontmatter_fields": [
@@ -4193,6 +4371,84 @@
       "name": "python-econ-computing",
       "path": "skills/20-wenddymacro-python-econ-skill/SKILL.md",
       "qualified_name": "20-wenddymacro-python-econ-skill::python-econ-computing"
+    },
+    {
+      "collection": "21-claesbackman-AI-research-feedback",
+      "description": "Run a 6-agent pre-submission panel review for a grant proposal targeting a specified funder or program",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 460,
+      "name": "review-grant",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-grant/SKILL.md",
+      "qualified_name": "21-claesbackman-AI-research-feedback::review-grant"
+    },
+    {
+      "collection": "21-claesbackman-AI-research-feedback",
+      "description": "Run a 6-agent pre-submission review of a pre-analysis plan (PAP) for a specified registration target or journal",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 504,
+      "name": "review-pap",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-pap/SKILL.md",
+      "qualified_name": "21-claesbackman-AI-research-feedback::review-pap"
+    },
+    {
+      "collection": "21-claesbackman-AI-research-feedback",
+      "description": "Run a 6-agent pre-submission referee report for an academic paper targeting a specified journal",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 544,
+      "name": "review-paper",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-paper/SKILL.md",
+      "qualified_name": "21-claesbackman-AI-research-feedback::review-paper"
+    },
+    {
+      "collection": "21-claesbackman-AI-research-feedback",
+      "description": "Review research code for reproducibility and quality, extract the paper's main empirical claims, compare paper to code, and write a constructive markdown report. Designed for social science / economics projects with LaTeX papers and Stata, R, or Python code.",
+      "frontmatter_fields": [
+        "allowed-tools",
+        "argument-hint",
+        "description",
+        "name",
+        "user-invocable"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 352,
+      "name": "review-paper-code",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-paper-code/SKILL.md",
+      "qualified_name": "21-claesbackman-AI-research-feedback::review-paper-code"
+    },
+    {
+      "collection": "21-claesbackman-AI-research-feedback",
+      "description": "Run a fast 2-agent pre-submission check for an economics paper — focuses on contribution, identification, and causal overclaiming. Completes in ~1 minute.",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 180,
+      "name": "review-paper-light",
+      "path": "skills/21-claesbackman-AI-research-feedback/Skills/review-paper-light/SKILL.md",
+      "qualified_name": "21-claesbackman-AI-research-feedback::review-paper-light"
     },
     {
       "collection": "22-christopherkenny-skills",
@@ -5951,6 +6207,96 @@
       "qualified_name": "29-quarcs-lab-project20XXy::sync-tex"
     },
     {
+      "collection": "30-zirui-song-claude-skills",
+      "description": "Standardized Python & Stata coding practices for empirical research projects",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 809,
+      "name": "coding-guidelines",
+      "path": "skills/30-zirui-song-claude-skills/coding-guidelines/SKILL.md",
+      "qualified_name": "30-zirui-song-claude-skills::coding-guidelines"
+    },
+    {
+      "collection": "30-zirui-song-claude-skills",
+      "description": "Document datasets, variables, sources, and merge keys for replication",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 129,
+      "name": "data-doc",
+      "path": "skills/30-zirui-song-claude-skills/data-doc/SKILL.md",
+      "qualified_name": "30-zirui-song-claude-skills::data-doc"
+    },
+    {
+      "collection": "30-zirui-song-claude-skills",
+      "description": "Summarize academic papers, extract key findings, and identify research gaps",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 118,
+      "name": "lit-review",
+      "path": "skills/30-zirui-song-claude-skills/lit-review/SKILL.md",
+      "qualified_name": "30-zirui-song-claude-skills::lit-review"
+    },
+    {
+      "collection": "30-zirui-song-claude-skills",
+      "description": "Project directory organization and script naming conventions for research",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 325,
+      "name": "project-structure",
+      "path": "skills/30-zirui-song-claude-skills/project-structure/SKILL.md",
+      "qualified_name": "30-zirui-song-claude-skills::project-structure"
+    },
+    {
+      "collection": "30-zirui-song-claude-skills",
+      "description": "Structure responses to referee reports for R&R submissions",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 210,
+      "name": "referee-response",
+      "path": "skills/30-zirui-song-claude-skills/referee-response/SKILL.md",
+      "qualified_name": "30-zirui-song-claude-skills::referee-response"
+    },
+    {
+      "collection": "30-zirui-song-claude-skills",
+      "description": "Checklist of empirical robustness tests for finance/economics papers",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 146,
+      "name": "robustness",
+      "path": "skills/30-zirui-song-claude-skills/robustness/SKILL.md",
+      "qualified_name": "30-zirui-song-claude-skills::robustness"
+    },
+    {
       "collection": "31-thalysandratos-claude-code-skills",
       "description": "Panel data analysis with Python using linearmodels and pandas.",
       "frontmatter_fields": [
@@ -7130,6 +7476,21 @@
       "name": "literature-review",
       "path": "skills/36-taoyunudt-literature-review-skill/SKILL.md",
       "qualified_name": "36-taoyunudt-literature-review-skill::literature-review"
+    },
+    {
+      "collection": "37-IlanStrauss-ai-skills",
+      "description": "Guide economists to authoritative data sources with explicit, confirmed data specifications before retrieval; interfaces with Playwright MCP to navigate portals and extract real data, not articles about data.",
+      "frontmatter_fields": [
+        "description",
+        "name"
+      ],
+      "has_description": true,
+      "has_frontmatter": true,
+      "has_name": true,
+      "line_count": 598,
+      "name": "economist-data-skill",
+      "path": "skills/37-IlanStrauss-ai-skills/Skills/economist-data-skill/SKILL.md",
+      "qualified_name": "37-IlanStrauss-ai-skills::economist-data-skill"
     },
     {
       "collection": "38-peternka-academic-proofreader",
@@ -19834,12 +20195,12 @@
     }
   ],
   "summary": {
-    "duplicate_bare_names": 92,
+    "duplicate_bare_names": 94,
     "missing_description": 0,
     "missing_frontmatter": 0,
     "missing_name": 0,
-    "oversized_skill_files_over_500_lines": 91,
-    "skill_files": 1151,
-    "top_level_collections": 70
+    "oversized_skill_files_over_500_lines": 95,
+    "skill_files": 1168,
+    "top_level_collections": 74
   }
 }

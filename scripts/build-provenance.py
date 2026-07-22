@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR = ROOT / "skills"
 DEFAULT_JSON = ROOT / "catalog" / "provenance.json"
 DEFAULT_MARKDOWN = ROOT / "docs" / "LICENSE_AUDIT.md"
-SCAN_DATE = "2026-05-31"
+SCAN_DATE = "2026-07-22"
 
 
 OVERRIDES: dict[str, dict[str, object]] = {
@@ -37,6 +37,34 @@ OVERRIDES: dict[str, dict[str, object]] = {
     "20-wenddymacro-python-econ-skill": {
         "source_url": "https://github.com/wenddymacro/python-econ-skill",
         "source_confidence": "low",
+    },
+    # --- 2026-07-22 layout normalization ------------------------------------
+    # These four vendored collections originally shipped skills as bare .md /
+    # "<name>.SKILL.md" files, so no SKILL.md glob ever discovered them and
+    # they were absent from catalog/provenance/license outputs. Their skill
+    # files were relocated to the standard "<name>/SKILL.md" layout (content
+    # unchanged apart from adding missing name:/description: frontmatter).
+    # URLs below verified reachable on 2026-07-22; confidence stays "low"
+    # because folder-name match is not an independently verified content match.
+    "19-CuellarC05-vera-economic-intelligence": {
+        "source_url": "https://github.com/CuellarC05/vera-economic-intelligence",
+        "source_confidence": "low",
+        "origin": "vendored upstream snapshot; layout normalized to <name>/SKILL.md 2026-07-22",
+    },
+    "21-claesbackman-AI-research-feedback": {
+        "source_url": "https://github.com/claesbackman/AI-research-feedback",
+        "source_confidence": "low",
+        "origin": "vendored upstream snapshot; layout normalized to <name>/SKILL.md 2026-07-22",
+    },
+    "30-zirui-song-claude-skills": {
+        "source_url": "https://github.com/zirui-song/claude-skills",
+        "source_confidence": "low",
+        "origin": "vendored upstream snapshot; layout normalized to <name>/SKILL.md 2026-07-22",
+    },
+    "37-IlanStrauss-ai-skills": {
+        "source_url": "https://github.com/IlanStrauss/ai-skills",
+        "source_confidence": "low",
+        "origin": "vendored upstream snapshot; layout normalized to <name>/SKILL.md 2026-07-22",
     },
     "22-christopherkenny-skills": {
         "source_url": "https://github.com/christopherkenny/skills",

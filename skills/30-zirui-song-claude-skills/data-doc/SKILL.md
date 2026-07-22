@@ -1,4 +1,5 @@
 ---
+name: data-doc
 description: Document datasets, variables, sources, and merge keys for replication
 ---
 
