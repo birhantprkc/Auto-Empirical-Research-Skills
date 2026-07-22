@@ -445,7 +445,7 @@ make check        # 仓库校验 + 单元测试 + eval lint + 数值基准
 | 层 | 它能拦住什么 | 在哪 |
 |---|---|---|
 | **数值基准** | 报告数字与真实数据重算真值不符 —— 朴素 DID 符号陷阱、缺第一阶段 F 的弱 IV、交错时点下的 TWFE 偏误、RDD 趋势混淆、后处理坏控制、被合并均值掩盖的异质效应（CATE）、只看均值漏掉尾部的分位数效应、本地冲击混淆的移位份额（Bartik）IV、把中介当控制变量导致直接效应翻号、依赖参照组的 Oaxaca 分解拆分、kink 处超额质量被朴素密度掩盖的 bunching | [`benchmark/`](../benchmark/) · 17 任务 |
-| **评测套件** | 散文级失误：弱 IV 假性安心、交错 DID 误用 TWFE、编造引用、不安全的 `curl \| bash` 安装、多重检验滥用、AER 合规缺口 | [`eval-harness/`](../eval-harness/) · 30 场景 / 159 rubric |
+| **评测套件** | 散文级失误：弱 IV 假性安心、交错 DID 误用 TWFE、编造引用、不安全的 `curl \| bash` 安装、多重检验滥用、AER 合规缺口 | [`eval-harness/`](../eval-harness/) · 37 场景 / 183 rubric |
 | **安全审计** | pipe-to-shell、反向 shell、凭据外泄、prompt 注入等 13 类风险 —— 六阶段，40+ hook 脚本人工核查 | [`SECURITY-SCAN-REPORT.md`](../SECURITY-SCAN-REPORT.md) |
 | **来源与许可** | 未声明来源、许可风险、1,093 个编目 skill 的卫生度漂移 | [`LICENSE_AUDIT.md`](LICENSE_AUDIT.md) · [`SKILL_HYGIENE.md`](SKILL_HYGIENE.md) |
 | **CI 与兼容性** | catalog 新鲜度、本地死链、GitHub Actions 策略、Python 3.9 **与** 3.12 语法基线 | [`.github/workflows/`](../.github/workflows/) · 7 条 workflow |

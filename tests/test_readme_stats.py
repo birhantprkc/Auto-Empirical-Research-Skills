@@ -72,3 +72,60 @@ class TestCheckReadme(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class TestCollectionCoverage(unittest.TestCase):
+    def setUp(self):
+        self.catalog_ids, self.total = check_readme_stats.catalog_facts()
+
+    def test_catalog_facts_shape(self):
+        self.assertGreaterEqual(len(self.catalog_ids), 70)
+        self.assertGreater(self.total, 500)
+
+    def test_committed_collection_tables_are_complete(self):
+        for name in check_readme_stats.COLLECTION_TABLE_DOCS:
+            with self.subTest(doc=name):
+                problems = check_readme_stats.check_collections(
+                    ROOT / name, self.catalog_ids, self.total
+                )
+                self.assertEqual(problems, [])
+
+    def test_missing_collection_is_caught(self):
+        import tempfile
+        from pathlib import Path
+
+        some_id = sorted(self.catalog_ids)[0]
+        rows = "\n".join(
+            f"| [{cid}](skills/{cid}/) |" for cid in sorted(self.catalog_ids) if cid != some_id
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "README-test.md"
+            path.write_text(rows, encoding="utf-8")
+            problems = check_readme_stats.check_collections(path, self.catalog_ids, self.total)
+        self.assertTrue(any("missing 1 cataloged collection" in p for p in problems))
+
+    def test_unknown_collection_link_is_caught(self):
+        import tempfile
+        from pathlib import Path
+
+        rows = "\n".join(
+            f"| [{cid}](skills/{cid}/) |" for cid in sorted(self.catalog_ids)
+        ) + "\n| [gone](skills/99-deleted-collection/) |"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "README-test.md"
+            path.write_text(rows, encoding="utf-8")
+            problems = check_readme_stats.check_collections(path, self.catalog_ids, self.total)
+        self.assertTrue(any("not in catalog" in p for p in problems))
+
+    def test_stale_catalog_cited_total_is_caught(self):
+        import tempfile
+        from pathlib import Path
+
+        rows = "\n".join(
+            f"| [{cid}](skills/{cid}/) |" for cid in sorted(self.catalog_ids)
+        ) + "\n| skills | **1,151** | [`catalog/skills.json`](catalog/skills.json) |"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "README-test.md"
+            path.write_text(rows, encoding="utf-8")
+            problems = check_readme_stats.check_collections(path, self.catalog_ids, self.total)
+        self.assertTrue(any("stale" in p or "catalog total" in p for p in problems))
+
