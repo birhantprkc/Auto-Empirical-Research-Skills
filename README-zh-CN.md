@@ -62,7 +62,7 @@
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 [![Validate catalog](https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills/actions/workflows/validate-catalog.yml/badge.svg)](https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills/actions/workflows/validate-catalog.yml)
-[![Security audit: 52/52 CLEAN](https://img.shields.io/badge/security%20audit-52%2F52%20CLEAN-brightgreen)](SECURITY-SCAN-REPORT.md)
+[![Security audit: baseline 52/52 CLEAN](https://img.shields.io/badge/security%20audit-baseline%2052%2F52%20CLEAN-brightgreen)](SECURITY-SCAN-REPORT.md)
 [![Rigor coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbrycewang-stanford%2FAuto-Empirical-Research-Skills%2Fmain%2Fdocs%2Fbadges%2Frigor-coverage.json)](docs/RIGOR_COVERAGE.md)
 
 ---
