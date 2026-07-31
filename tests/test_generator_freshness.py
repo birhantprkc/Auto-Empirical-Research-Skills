@@ -16,21 +16,32 @@ import subprocess
 import sys
 import unittest
 
-from _helpers import ROOT
+from _helpers import ROOT, load_module
+
+build_release_notes = load_module(
+    "scripts/build-release-notes.py",
+    "aers_build_release_notes",
+)
 
 CHECKABLE = [
-    ["python3", "scripts/build-coverage-map.py", "--check"],
-    ["python3", "scripts/build-release-notes.py", "--check"],
-    ["python3", "scripts/build-benchmark-scoreboard.py", "--check"],
-    ["python3", "scripts/build-evals.py", "--check"],
-    ["python3", "scripts/check-mirror-sync.py"],
-    ["python3", "scripts/check-catalog-coverage.py"],
-    ["python3", "scripts/check-ecosystem.py"],
-    ["python3", "scripts/check-plugin-source-location.py"],
+    [sys.executable, "scripts/build-coverage-map.py", "--check"],
+    [sys.executable, "scripts/build-release-notes.py", "--check"],
+    [sys.executable, "scripts/build-benchmark-scoreboard.py", "--check"],
+    [sys.executable, "scripts/build-evals.py", "--check"],
+    [sys.executable, "scripts/check-mirror-sync.py"],
+    [sys.executable, "scripts/check-catalog-coverage.py"],
+    [sys.executable, "scripts/check-ecosystem.py"],
+    [sys.executable, "scripts/check-plugin-source-location.py"],
 ]
 
 
 class TestGeneratorFreshness(unittest.TestCase):
+    def test_release_page_uses_canonical_upstream_not_contributor_fork(self):
+        self.assertEqual(
+            build_release_notes._repo_slug(),
+            "brycewang-stanford/Auto-Empirical-Research-Skills",
+        )
+
     def test_generators_pass_check_mode_against_committed_tree(self):
         for cmd in CHECKABLE:
             with self.subTest(cmd=" ".join(cmd[1:])):

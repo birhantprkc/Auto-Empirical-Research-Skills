@@ -6,10 +6,12 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from _helpers import ROOT, load_module
 
 build_catalog = load_module("scripts/build-catalog.py", "aers_build_catalog")
+build_skill_audit = load_module("scripts/build-skill-audit.py", "aers_build_skill_audit")
 validate_repo = load_module("scripts/validate-repo.py", "aers_validate_repo")
 build_provenance = load_module("scripts/build-provenance.py", "aers_build_provenance")
 
@@ -52,6 +54,33 @@ class TestFrontmatterParser(unittest.TestCase):
         fm = build_catalog.parse_frontmatter(text)
         self.assertEqual(fm.get("name"), "x")
         self.assertIn("line one", fm.get("description", ""))
+
+
+class TestCrossPlatformSkillOrdering(unittest.TestCase):
+    def test_parent_skill_sorts_before_nested_skill_on_every_platform(self):
+        root = build_catalog.SKILLS_DIR / "99-example" / "topic"
+        walk_rows = [
+            (str(root), ["nested", "nested-code"], ["SKILL.md"]),
+            (str(root / "nested"), [], ["SKILL.md"]),
+            (str(root / "nested-code"), [], ["SKILL.md"]),
+        ]
+        expected = [
+            (root / "SKILL.md").as_posix(),
+            (root / "nested" / "SKILL.md").as_posix(),
+            (root / "nested-code" / "SKILL.md").as_posix(),
+        ]
+
+        with patch.object(build_catalog.os, "walk", return_value=walk_rows):
+            catalog_paths = [
+                path.as_posix() for path in build_catalog.iter_skill_files()
+            ]
+        with patch.object(build_skill_audit.os, "walk", return_value=walk_rows):
+            audit_paths = [
+                path.as_posix() for path in build_skill_audit.iter_skill_like_files()
+            ]
+
+        self.assertEqual(catalog_paths, expected)
+        self.assertEqual(audit_paths, expected)
 
 
 class TestGeneratedArtifactsAreCurrent(unittest.TestCase):
@@ -290,12 +319,33 @@ class TestLocalAndCiGates(unittest.TestCase):
         self.assertIn("make python-compat", text)
         self.assertIn("aers-tracked-file-hygiene", text)
         self.assertIn("python3 scripts/check-repo-hygiene.py", text)
+        self.assertIn("skills/72-kaggle-research/", text)
 
     def test_make_check_includes_python_compatibility_compile(self):
         text = (ROOT / "Makefile").read_text(encoding="utf-8")
         self.assertIn("python-compat:", text)
         self.assertIn("python3 -m py_compile scripts/*.py", text)
+        self.assertIn(
+            "skills/72-kaggle-research/kaggle-research/scripts/*.py",
+            text,
+        )
+        self.assertIn(
+            "skills/72-kaggle-research/kaggle-research/tests",
+            text,
+        )
         self.assertRegex(text, r"check:\s+validate\s+python-compat\s+test")
+
+    def test_kaggle_collection_has_first_party_provenance_override(self):
+        record = build_provenance.OVERRIDES["72-kaggle-research"]
+        self.assertEqual(
+            record["source_url"],
+            "https://github.com/brycewang-stanford/"
+            "Auto-Empirical-Research-Skills",
+        )
+        self.assertEqual(record["license"], "CC-BY-SA-4.0 (repository default)")
+        self.assertEqual(record["origin"], "first-party AERS skill")
+        self.assertEqual(record["sync"], "manual")
+        self.assertEqual(record["source_confidence"], "high")
 
     def test_maintainer_docs_point_to_full_local_gate(self):
         docs = [
