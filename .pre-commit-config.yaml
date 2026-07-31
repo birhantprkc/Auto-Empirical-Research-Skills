@@ -15,7 +15,11 @@ repos:
         files: ^eval-harness/
       - id: aers-unit-tests
         name: AERS unit tests
-        entry: python3 -m unittest discover -s tests -p "test_*.py"
+        # `make test` (not a bare `unittest discover -s tests`) so the hook
+        # covers every suite the Makefile knows about — including the
+        # skills/72-kaggle-research runtime tests that this hook's `files:`
+        # pattern already triggers on.
+        entry: make test
         language: system
         pass_filenames: false
         files: ^(tests/|eval-harness/|benchmark/|scripts/|skills/72-kaggle-research/)

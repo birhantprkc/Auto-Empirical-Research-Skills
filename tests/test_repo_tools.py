@@ -309,6 +309,10 @@ class TestLocalAndCiGates(unittest.TestCase):
         self.assertIn("python3 benchmark/reference_pipeline.py --check", text)
         self.assertNotIn("python3 benchmark/reference_pipeline.py\n", text)
         self.assertIn("--no-write", text)
+        # CI must invoke the Makefile target, not a bare `discover -s tests`:
+        # the latter silently skips every suite outside tests/.
+        self.assertIn("run: make test", text)
+        self.assertNotIn("run: python3 -m unittest discover -s tests", text)
 
     def test_pre_commit_uses_non_writing_benchmark_gate(self):
         text = (ROOT / ".pre-commit-config.yaml").read_text(encoding="utf-8")
@@ -320,6 +324,10 @@ class TestLocalAndCiGates(unittest.TestCase):
         self.assertIn("aers-tracked-file-hygiene", text)
         self.assertIn("python3 scripts/check-repo-hygiene.py", text)
         self.assertIn("skills/72-kaggle-research/", text)
+        # Same reason as the CI workflow: the unit-test hook runs `make test`
+        # so it covers every suite its `files:` pattern can trigger on.
+        self.assertIn("entry: make test", text)
+        self.assertNotIn("entry: python3 -m unittest discover -s tests", text)
 
     def test_make_check_includes_python_compatibility_compile(self):
         text = (ROOT / "Makefile").read_text(encoding="utf-8")

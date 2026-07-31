@@ -42,7 +42,10 @@ jobs:
           --expect-categories causal-identification,reproducibility,citation-hygiene,runtime-safety,research-integrity,writing-compliance,writing-style
 
       - name: Unit tests (stdlib unittest)
-        run: python3 -m unittest discover -s tests -p "test_*.py"
+        # `make test` rather than a bare `unittest discover -s tests`: the
+        # Makefile target also runs the skills/72-kaggle-research runtime
+        # suite, which would otherwise never execute in CI. Still stdlib-only.
+        run: make test
 
       - name: Benchmark (reference pipeline + strict grading)
         run: |
