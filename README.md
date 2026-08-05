@@ -226,6 +226,33 @@
 
 > **想看更详细的描述（主题分类、字段、统计）？** 见 [`docs/CONTENT_ZH.md`](docs/CONTENT_ZH.md) 中标注 `#skill-NN` 锚点的同一张表 —— 它是每个合集的完整描述所在的扩展正文。
 
+## 📈 项目历程
+
+自 2026-04 首次发布以来的主干里程碑（完整提交记录见 [Commits](https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills/commits/main) 与 [`CHANGELOG.md`](CHANGELOG.md)）：
+
+```mermaid
+---
+config:
+  gitGraph:
+    rotateCommitLabel: false
+---
+gitGraph TB:
+   commit id: "2026-04 首次发布"
+   branch community
+   commit id: "2026-05 首个社区 PR"
+   checkout main
+   merge community
+   commit id: "2026-05 更名 AERS"
+   commit id: "2026-06 插件市场"
+   commit id: "2026-06 全库路由器"
+   commit id: "2026-07 首个 tag" tag: "v2026.07"
+   branch kaggle
+   commit id: "2026-07 Kaggle 集成"
+   checkout main
+   merge kaggle
+   commit id: "2026-08 de-AIGC 双语"
+```
+
 ---
 
 <div align="center">
