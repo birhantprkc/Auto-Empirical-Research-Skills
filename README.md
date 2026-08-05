@@ -253,6 +253,22 @@ gitGraph TB:
    commit id: "2026-08 de-AIGC 双语"
 ```
 
+<div align="center">
+
+<a href="https://www.star-history.com/#brycewang-stanford/Auto-Empirical-Research-Skills&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=brycewang-stanford%2FAuto-Empirical-Research-Skills&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=brycewang-stanford%2FAuto-Empirical-Research-Skills&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=brycewang-stanford%2FAuto-Empirical-Research-Skills&type=Date" width="600" />
+ </picture>
+</a>
+
+<sub>Star 增长曲线（非提交数），由 <a href="https://www.star-history.com">star-history.com</a> 实时生成</sub>
+
+</div>
+
+如果 AERS 对你的工作有帮助，请**引用它**（[CITATION.cff](CITATION.cff)）并**点个 Star**，让更多研究者看到。
+
 ---
 
 <div align="center">
