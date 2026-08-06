@@ -116,6 +116,18 @@ class TestCollectionCoverage(unittest.TestCase):
             problems = check_readme_stats.check_collections(path, self.catalog_ids, self.total)
         self.assertTrue(any("not in catalog" in p for p in problems))
 
+    def test_widest_table_is_the_all_collections_table(self):
+        # Every entry document carries the all-collections table plus smaller
+        # by-theme groupings; the source column only exists on the widest one.
+        for name in check_readme_stats.COLLECTION_TABLE_DOCS:
+            with self.subTest(doc=name):
+                text = (ROOT / name).read_text(encoding="utf-8")
+                rows = check_readme_stats.widest_collection_table(text)
+                ids = {
+                    m for row in rows for m in check_readme_stats.COLLECTION_LINK_RE.findall(row)
+                }
+                self.assertEqual(ids, self.catalog_ids)
+
     def test_stale_catalog_cited_total_is_caught(self):
         import tempfile
         from pathlib import Path
@@ -128,4 +140,63 @@ class TestCollectionCoverage(unittest.TestCase):
             path.write_text(rows, encoding="utf-8")
             problems = check_readme_stats.check_collections(path, self.catalog_ids, self.total)
         self.assertTrue(any("stale" in p or "catalog total" in p for p in problems))
+
+
+class TestSourceLinks(unittest.TestCase):
+    """The 来源/Source column must stay pinned to catalog/provenance.json."""
+
+    def setUp(self):
+        self.sources = check_readme_stats.provenance_sources()
+
+    def test_every_cataloged_collection_has_a_source_url(self):
+        catalog_ids, _ = check_readme_stats.catalog_facts()
+        self.assertEqual(catalog_ids - set(self.sources), set())
+
+    def test_committed_tables_link_their_upstream(self):
+        for name in check_readme_stats.COLLECTION_TABLE_DOCS:
+            with self.subTest(doc=name):
+                problems = check_readme_stats.check_source_links(ROOT / name, self.sources)
+                self.assertEqual(problems, [])
+
+    def test_wrong_source_url_is_caught(self):
+        import tempfile
+        from pathlib import Path
+
+        cid = sorted(self.sources)[0]
+        rows = "\n".join(
+            f"| [{c}](skills/{c}/) | [x]({self.sources[c]}) |" if c != cid
+            else f"| [{c}](skills/{c}/) | [x](https://github.com/wrong/repo) |"
+            for c in sorted(self.sources)
+        )
+        table = "| a | b |\n|---|---|\n" + rows + "\n"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "README-test.md"
+            path.write_text(table, encoding="utf-8")
+            problems = check_readme_stats.check_source_links(path, self.sources)
+        self.assertEqual(len(problems), 1)
+        self.assertIn(cid, problems[0])
+        self.assertIn("does not link its upstream source", problems[0])
+
+    def test_missing_source_column_is_caught(self):
+        import tempfile
+        from pathlib import Path
+
+        rows = "\n".join(f"| [{c}](skills/{c}/) |" for c in sorted(self.sources))
+        table = "| a |\n|---|\n" + rows + "\n"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "README-test.md"
+            path.write_text(table, encoding="utf-8")
+            problems = check_readme_stats.check_source_links(path, self.sources)
+        self.assertEqual(len(problems), len(self.sources))
+
+    def test_no_collection_table_is_caught(self):
+        import tempfile
+        from pathlib import Path
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "README-test.md"
+            path.write_text("# nothing here\n", encoding="utf-8")
+            problems = check_readme_stats.check_source_links(path, self.sources)
+        self.assertEqual(len(problems), 1)
+        self.assertIn("no collection table found", problems[0])
 

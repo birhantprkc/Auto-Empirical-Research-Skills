@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check that the stats in every locale README match the repo's reality.
 
-Two families of drift are linted, across every stat-bearing entry document
+Three families of drift are linted, across every stat-bearing entry document
 (`README.md`, the five locale READMEs, and `docs/CONTENT_ZH.md`):
 
 1. **Rigor stats** — the trust-surface rows for numeric benchmark tasks and
@@ -20,6 +20,14 @@ Two families of drift are linted, across every stat-bearing entry document
    The formatted total-skills number (e.g. ``1,093``) is also linted: on any
    line that cites ``catalog/skills.json`` as its source, a comma-formatted
    number that differs from the current catalog total is a stale copy.
+
+3. **Upstream source links** — every row of the all-collections table carries
+   a localized "source" column linking back to the original author's
+   repository. Those URLs are copies of ``catalog/provenance.json``, so they
+   are linted against it: a collection whose upstream moves (or whose upstream
+   URL is corrected) must be updated in all six tables, not just one. The
+   check is locale-agnostic — it finds the widest collection table in the
+   document rather than matching a translated column header.
 
 History: until 2026-07-22 only ``README-en.md`` was linted (the P2.2 plan
 made the other files "entry-banner only", an assumption the 2026-07-19
@@ -43,6 +51,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SCENARIO_DIR = ROOT / "eval-harness" / "scenarios"
 TASK_DIR = ROOT / "benchmark" / "tasks"
 CATALOG = ROOT / "catalog" / "skills.json"
+PROVENANCE = ROOT / "catalog" / "provenance.json"
 
 # Every document that carries the trust-surface rigor rows.
 READMES = (
@@ -75,6 +84,8 @@ COLLECTION_LINK_RE = re.compile(r"\]\((?:\.\./)?skills/([^/)#\s]+)/")
 # 1,548 or 1,790, so the check is scoped to catalog-sourced lines.)
 SKILLTOTAL_RE = re.compile(r"\b(\d),(\d{3})\b")
 CATALOG_LINE_MARKER = "catalog/skills.json"
+# A markdown table delimiter row, e.g. `|:--|:--|--:|` or `|---|---|`.
+TABLE_SEP_RE = re.compile(r"^\|[\s:|-]+\|$")
 
 
 def expected_counts() -> tuple[int, int, int]:
@@ -93,6 +104,69 @@ def catalog_facts() -> tuple[set[str], int]:
     data = json.loads(CATALOG.read_text(encoding="utf-8"))
     ids = {c["id"] for c in data["collections"]}
     return ids, int(data["summary"]["skill_files"])
+
+
+def provenance_sources() -> dict[str, str]:
+    """Map collection id -> upstream source URL (the one source of truth)."""
+    data = json.loads(PROVENANCE.read_text(encoding="utf-8"))
+    return {
+        c["id"]: c["source_url"] for c in data["collections"] if c.get("source_url")
+    }
+
+
+def widest_collection_table(text: str) -> list[str]:
+    """Return the rows of the table that links the most distinct collections.
+
+    Entry documents carry several tables that link ``skills/<id>/`` — the
+    all-collections table plus the smaller by-theme groupings. Only the widest
+    one carries the source column, and picking it structurally (rather than by
+    a translated header) keeps this check locale-agnostic.
+    """
+    lines = text.splitlines()
+    best: list[str] = []
+    best_ids = 0
+    for i, line in enumerate(lines):
+        if not TABLE_SEP_RE.match(line) or i == 0 or not lines[i - 1].startswith("|"):
+            continue
+        rows: list[str] = []
+        j = i + 1
+        while j < len(lines) and lines[j].startswith("|"):
+            rows.append(lines[j])
+            j += 1
+        n_ids = len({m for row in rows for m in COLLECTION_LINK_RE.findall(row)})
+        if n_ids > best_ids:
+            best, best_ids = rows, n_ids
+    return best
+
+
+def check_source_links(path: Path, sources: dict[str, str]) -> list[str]:
+    """Every row of the all-collections table must link its upstream repo."""
+    problems: list[str] = []
+    text = path.read_text(encoding="utf-8")
+    try:
+        rel = path.relative_to(ROOT).as_posix()
+    except ValueError:
+        rel = path.name
+
+    rows = widest_collection_table(text)
+    if not rows:
+        return [f"{rel}: no collection table found"]
+
+    for row in rows:
+        ids = COLLECTION_LINK_RE.findall(row)
+        if not ids:
+            continue
+        cid = ids[0]
+        expected = sources.get(cid)
+        if expected is None:
+            problems.append(f"{rel}: {cid} has no source_url in catalog/provenance.json")
+            continue
+        if f"]({expected})" not in row:
+            problems.append(
+                f"{rel}: {cid} row does not link its upstream source {expected} "
+                f"(catalog/provenance.json is the source of truth)"
+            )
+    return problems
 
 
 def check_readme(path: Path, n_tasks: int, n_scenarios: int, n_rubric: int) -> list[str]:
@@ -177,6 +251,7 @@ def check_collections(path: Path, catalog_ids: set[str], total_skills: int) -> l
 def main() -> int:
     n_tasks, n_scenarios, n_rubric = expected_counts()
     catalog_ids, total_skills = catalog_facts()
+    sources = provenance_sources()
     problems: list[str] = []
     for name in READMES:
         path = ROOT / name
@@ -188,6 +263,7 @@ def main() -> int:
         path = ROOT / name
         if path.exists():
             problems.extend(check_collections(path, catalog_ids, total_skills))
+            problems.extend(check_source_links(path, sources))
     if problems:
         print("README stats are stale:", file=sys.stderr)
         for p in problems:
@@ -203,7 +279,8 @@ def main() -> int:
         f"README stats OK across {len(READMES)} documents: "
         f"{n_tasks} benchmark tasks, {n_scenarios} / {n_rubric} eval scenarios/rubric items, "
         f"{len(catalog_ids)} collections / {total_skills:,} skills linked in "
-        f"{len(COLLECTION_TABLE_DOCS)} collection tables."
+        f"{len(COLLECTION_TABLE_DOCS)} collection tables, "
+        f"{len(sources)} upstream source links matching catalog/provenance.json."
     )
     return 0
 
