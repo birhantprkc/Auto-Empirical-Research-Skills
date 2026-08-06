@@ -184,10 +184,15 @@ def render(stamps: list[datetime], theme: dict) -> str:
     for i in range(5):
         v = round(top * i / 4)
         y = y_of(v)
+        # Row 0 is the baseline, drawn transparent so it does not double up
+        # with the x axis. Hoisted out of the f-string because an escaped
+        # quote inside an f-string expression is a SyntaxError before 3.12,
+        # and `make python-compat` runs on the 3.9/3.12 matrix in CI.
+        opacity = "" if i else "stroke-opacity='0'"
         rows.append(
             f'<line x1="{PAD_L}" y1="{y:.1f}" x2="{W - PAD_R}" y2="{y:.1f}" '
             f'stroke="{theme["grid"]}" stroke-width="1" '
-            f'{"" if i else f"stroke-opacity=\'0\'"} />'
+            f"{opacity} />"
         )
         rows.append(
             f'<text x="{PAD_L - 12}" y="{y + 4:.1f}" text-anchor="end" '
