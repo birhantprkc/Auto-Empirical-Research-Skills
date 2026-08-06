@@ -49,6 +49,11 @@ This is the project's narrative changelog. `README.md` keeps only a short
   for that collection. The check locates the table structurally rather than by
   header text, so it works across all five locales, and it fails
   `make validate` if an upstream moves and only one table is updated.
+- Fixed the Python 3.9 leg of `make python-compat`, which had been failing on
+  `main` since the star-history chart landed: `scripts/build-star-history.py`
+  used a nested f-string with escaped quotes, which is only legal from 3.12
+  (PEP 701), so the 3.12 leg passed and the 3.9 leg did not. Rendered SVG
+  output is unchanged.
 - Fixed a rendering bug in [`docs/CONTENT_ZH.md`](docs/CONTENT_ZH.md): the
   76-row collection table was present **twice** — once with a header and once
   (the copy carrying the `#skill-NN` anchors that `README.md` links into)
