@@ -63,6 +63,60 @@
 
 ---
 
+## ⚡ 安装与使用（30 秒上手）
+
+### 最省事的一招：把 URL 丢给 Agent
+
+**把项目 URL 地址 `https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills` 丢给 Claude Code / Codex，并指定是目录 / 项目 / 全局安装** —— 剩下的让它自己做。例如：
+
+```text
+帮我安装 https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills
+装到「全局」（~/.claude/skills/），我想在所有项目里都能用
+```
+
+把最后一行换成你要的作用域即可：
+
+| 作用域 | 说给 Agent 的话 | 落到哪里 |
+|:--|:--|:--|
+| **目录**（当前会话临时用） | "只在当前目录用，不要全局安装" | 当前工作目录下的 `.claude/skills/` |
+| **项目**（团队共享，可提交进 git） | "装到本项目" | 项目根目录 `.claude/skills/` |
+| **全局**（所有项目可用） | "装到全局" | `~/.claude/skills/`（Codex 为 `~/.codex/skills/`） |
+
+### 手动安装（两种，任选其一）
+
+**A. 插件市场（Claude Code v2.1+，推荐，可升级）**
+
+```bash
+claude plugin marketplace add brycewang-stanford/Auto-Empirical-Research-Skills
+claude plugin install aer-skills@auto-empirical-research-skills                 # 顶刊投稿全流程（9 skills）
+claude plugin install empirical-analysis-python@auto-empirical-research-skills  # Python 计量流水线
+claude plugin install empirical-analysis-stata@auto-empirical-research-skills   # Stata 计量流水线
+claude plugin install empirical-analysis-r@auto-empirical-research-skills       # R + Quarto 流水线
+```
+
+**B. 只要某一个 skill —— 直接拷文件夹**
+
+```bash
+git clone --recurse-submodules https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills.git
+cd Auto-Empirical-Research-Skills
+
+cp -R skills/00.1-Full-empirical-analysis-skill_Python  .claude/skills/   # 项目级
+cp -R skills/00.1-Full-empirical-analysis-skill_Python  ~/.claude/skills/ # 全局
+```
+
+拷进去的文件夹必须自带 `SKILL.md`（部分合集的 `SKILL.md` 在下一层，拷那一层）。
+
+### 怎么用
+
+新开一个会话，**直接用自然语言说要做什么**，Agent 会按 `description` 自动挑 skill；说不动就点名方法或 skill：
+
+```text
+用面板数据跑一个 Callaway–Sant'Anna 事件研究，并出 HonestDiD 稳健性和期刊级表格
+```
+
+> 完整安装说明（Codex / CodeBuddy 整库导入、`--plugin-dir` 单次加载、常见故障排查）见 [`INSTALL.md`](INSTALL.md)。
+
+
 ## 中文文档结构
 
 中文内容分两级维护，各司其职：
