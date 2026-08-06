@@ -321,12 +321,12 @@
       "last_aers_review": "2026-07-22",
       "license": "UNKNOWN - check upstream",
       "license_file": null,
-      "origin": "vendored snapshot; upstream URL unresolved as of 2026-05-31",
+      "origin": "vendored upstream snapshot; upstream URL resolved by content match 2026-08-07",
       "path": "skills/18-jusi-aalto-stata-accounting-research",
       "security_review": "SECURITY-SCAN-REPORT.md",
       "skill_count": 1,
-      "source_confidence": "unresolved",
-      "source_url": null,
+      "source_confidence": "high",
+      "source_url": "https://github.com/jusi-aalto/stata-accounting-research",
       "sync": "manual vendor snapshot",
       "vendored_commit": null
     },
@@ -441,12 +441,12 @@
       "last_aers_review": "2026-07-22",
       "license": "MIT",
       "license_file": null,
-      "origin": "vendored upstream",
+      "origin": "vendored upstream snapshot of Data-Wise/scholar (now 404); upstream content relocated to Data-Wise/claude-plugins -> statistical-research/, re-pointed 2026-08-07",
       "path": "skills/26-Data-Wise-scholar",
       "security_review": "SECURITY-SCAN-REPORT.md",
       "skill_count": 17,
       "source_confidence": "medium",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "vendored_commit": null
     },
@@ -486,12 +486,12 @@
       "last_aers_review": "2026-07-22",
       "license": "UNKNOWN - check upstream",
       "license_file": null,
-      "origin": "vendored snapshot; upstream URL unresolved as of 2026-05-31",
+      "origin": "vendored upstream snapshot; upstream URL resolved by content match 2026-08-07",
       "path": "skills/29-quarcs-lab-project20XXy",
       "security_review": "SECURITY-SCAN-REPORT.md",
       "skill_count": 24,
-      "source_confidence": "unresolved",
-      "source_url": null,
+      "source_confidence": "medium",
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "vendored_commit": null
     },
@@ -621,12 +621,12 @@
       "last_aers_review": "2026-07-22",
       "license": "UNKNOWN - check upstream",
       "license_file": null,
-      "origin": "vendored snapshot; upstream URL unresolved as of 2026-05-31",
+      "origin": "vendored upstream snapshot (README byte-identical; SKILL.md packaged locally from upstream academic_proofreader_prompt_v2.md); upstream URL resolved 2026-08-07",
       "path": "skills/38-peternka-academic-proofreader",
       "security_review": "SECURITY-SCAN-REPORT.md",
       "skill_count": 1,
-      "source_confidence": "unresolved",
-      "source_url": null,
+      "source_confidence": "high",
+      "source_url": "https://github.com/peternka/academic_proofreader",
       "sync": "manual vendor snapshot",
       "vendored_commit": null
     },
@@ -786,12 +786,12 @@
       "last_aers_review": "2026-07-22",
       "license": "MIT Non-Commercial",
       "license_file": "skills/49-voidborne-d-humanize-chinese/LICENSE",
-      "origin": "vendored snapshot; upstream URL unresolved as of 2026-05-31",
+      "origin": "vendored upstream snapshot; upstream account renamed voidborne-d -> swaylq, URL resolved by content match 2026-08-07",
       "path": "skills/49-voidborne-d-humanize-chinese",
       "security_review": "SECURITY-SCAN-REPORT.md",
       "skill_count": 1,
-      "source_confidence": "unresolved",
-      "source_url": null,
+      "source_confidence": "high",
+      "source_url": "https://github.com/swaylq/humanize-chinese",
       "sync": "manual vendor snapshot",
       "vendored_commit": null
     },
@@ -1166,10 +1166,9 @@
       "UNKNOWN - check upstream": 25
     },
     "source_confidence": {
-      "high": 41,
+      "high": 44,
       "low": 10,
-      "medium": 21,
-      "unresolved": 4
+      "medium": 22
     }
   }
 }

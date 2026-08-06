@@ -4063,7 +4063,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/jusi-aalto/stata-accounting-research",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5438,7 +5438,7 @@
       "quality_flags": [],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5457,7 +5457,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5474,7 +5474,7 @@
       "quality_flags": [],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5491,7 +5491,7 @@
       "quality_flags": [],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5510,7 +5510,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5536,7 +5536,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5562,7 +5562,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5581,7 +5581,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5598,7 +5598,7 @@
       "quality_flags": [],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5621,7 +5621,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5644,7 +5644,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5667,7 +5667,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5686,7 +5686,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5709,7 +5709,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5728,7 +5728,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5754,7 +5754,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -5773,7 +5773,7 @@
       ],
       "license": "MIT",
       "commercial_use": "allowed",
-      "source_url": "https://github.com/Data-Wise/scholar",
+      "source_url": "https://github.com/Data-Wise/claude-plugins",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6223,7 +6223,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6244,7 +6244,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6266,7 +6266,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6287,7 +6287,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6304,7 +6304,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6321,7 +6321,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6345,7 +6345,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6369,7 +6369,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6386,7 +6386,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6403,7 +6403,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6420,7 +6420,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6437,7 +6437,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6454,7 +6454,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6479,7 +6479,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6500,7 +6500,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6528,7 +6528,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6545,7 +6545,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6566,7 +6566,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6587,7 +6587,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6609,7 +6609,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6633,7 +6633,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6654,7 +6654,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6675,7 +6675,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -6696,7 +6696,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/quarcs-lab/project20XXy",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -8277,7 +8277,7 @@
       "quality_flags": [],
       "license": "UNKNOWN - check upstream",
       "commercial_use": "unknown",
-      "source_url": null,
+      "source_url": "https://github.com/peternka/academic_proofreader",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },
@@ -18811,7 +18811,7 @@
       "quality_flags": [],
       "license": "MIT Non-Commercial",
       "commercial_use": "restricted",
-      "source_url": null,
+      "source_url": "https://github.com/swaylq/humanize-chinese",
       "sync": "manual vendor snapshot",
       "eval_coverage": []
     },

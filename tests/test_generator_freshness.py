@@ -25,6 +25,7 @@ build_release_notes = load_module(
 )
 
 CHECKABLE = [
+    [sys.executable, "scripts/build-provenance.py", "--check"],
     [sys.executable, "scripts/build-coverage-map.py", "--check"],
     [sys.executable, "scripts/build-release-notes.py", "--check"],
     [sys.executable, "scripts/build-benchmark-scoreboard.py", "--check"],
@@ -85,6 +86,37 @@ class TestGeneratorFreshness(unittest.TestCase):
             "build-benchmark-scoreboard.py --check",
         ):
             self.assertIn(script, makefile, msg=f"{script} not wired into Makefile")
+
+
+class TestSkillsIndexCreditsUpstream(unittest.TestCase):
+    """`skills/README.md` is what GitHub renders under the skills/ listing.
+
+    It exists so a reader browsing the vendored collections has a one-click
+    path back to each original author, so every cataloged collection must
+    appear there with its upstream URL.
+    """
+
+    def setUp(self):
+        import json
+
+        self.index = (ROOT / "skills" / "README.md").read_text(encoding="utf-8")
+        self.records = json.loads(
+            (ROOT / "catalog" / "provenance.json").read_text(encoding="utf-8")
+        )["collections"]
+
+    def test_every_collection_is_listed_with_its_source(self):
+        for record in self.records:
+            with self.subTest(collection=record["id"]):
+                self.assertIn(f"[`{record['id']}`]({record['id']}/)", self.index)
+                self.assertIsNotNone(
+                    record["source_url"],
+                    "every collection needs an upstream URL to credit",
+                )
+                self.assertIn(f"]({record['source_url']})", self.index)
+
+    def test_index_is_marked_generated(self):
+        self.assertIn("scripts/build-provenance.py", self.index)
+        self.assertIn("Do not edit it by hand", self.index)
 
 
 class TestSkillDiscoveryExclusions(unittest.TestCase):
