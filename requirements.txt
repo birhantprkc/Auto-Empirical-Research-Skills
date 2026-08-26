@@ -12,4 +12,11 @@ numpy>=1.26,<3
 pandas>=3.0.5,<4
 matplotlib>=3.11.1,<4
 statsmodels>=0.14,<1
-linearmodels>=4.27,<6
+# Floor raised 4.27 -> 7.0 (2026-08): the 5.x wheels are compiled against the
+# NumPy 1.x ABI, so pairing them with the numpy>=2 this file already allows
+# makes every import print "A module that was compiled using NumPy 1.x cannot
+# be run in NumPy 2.x as it may crash". 7.0 imports clean. It needs Python
+# >= 3.10; that is fine here because this file is only installed by the
+# validate-catalog and sync-* workflows, which all pin 3.12 — the 3.9 leg of
+# the quality matrix installs nothing (every gate it runs is stdlib-only).
+linearmodels>=7.0,<8
