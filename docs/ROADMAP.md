@@ -6,7 +6,8 @@ This roadmap is scoped to making AERS a high-quality, high-trust GitHub project 
 >
 > - [`PLAN-2026-07.md`](PLAN-2026-07.md) — **closed**, 14/15 done (the external AERS-vs-Econometrics-Agent comparison remains open, tracked in [`SCOREBOARD.md`](SCOREBOARD.md) / [`INTEROP.md`](INTEROP.md) Recipe C).
 > - [`PLAN-2026-08.md`](PLAN-2026-08.md) — headline deliverables **shipped** (Card–Krueger end-to-end replication, public benchmark scoreboard, bunching family, link-triage automation); see its status note.
-> - [`PLAN-2026-09.md`](PLAN-2026-09.md) — **weeks 1–3 delivered (2026-08-27)**: the external scoreboard, the `structural-demand-recovery` method family, and the `aers-score` CLI. Week 4 (NSW / Card 1995 end-to-end replications, the v2026.09 tag) is open. See its status note for where the implementation deliberately diverged from the plan.
+> - [`PLAN-2026-09.md`](PLAN-2026-09.md) — **delivered (2026-08-27)** apart from the release tag: the external scoreboard, the `structural-demand-recovery` method family, the `aers-score` CLI, and both end-to-end replications (Card 1995, NSW). See its status note for where the implementation deliberately diverged from the plan.
+> - [`PLAN-2026-10.md`](PLAN-2026-10.md) — **draft / not started**: pushing what is now provable at the core out to the edges — fixture coverage from `critical` to `high`, per-skill evals, provenance recorded to a commit rather than a URL, and the first genuinely third-party scoreboard entry.
 
 ## Now
 
@@ -24,8 +25,8 @@ This roadmap is scoped to making AERS a high-quality, high-trust GitHub project 
 ## Next
 
 - Land the first genuinely third-party entry on [`EXTERNAL_SCOREBOARD.md`](EXTERNAL_SCOREBOARD.md). The machinery, the rules ([`SCOREBOARD_RULES.md`](SCOREBOARD_RULES.md)) and the tooling ([`aers-score`](../aers_score/README.md)) are live; what is missing is a submission from someone else, which is not something this repo can deliver on its own.
-- Finish [`PLAN-2026-09.md`](PLAN-2026-09.md) week 4: NSW and Card 1995 end-to-end replications alongside the existing Card–Krueger one, then the v2026.09 tag.
-- Grow per-skill eval coverage the way the [2026-07 assessment](QUALITY_ASSESSMENT_2026-07.md) recommends — one trap scenario at a time for high-traffic vendored skills. The first-party flagships (`00.1`/`00.2`/`00.3`) are now covered; 22 of the cataloged skills have a behavioral scenario.
+- Cut the v2026.09 tag. Everything the plan called for is on `main`; only the tag and the GitHub release remain, and both are maintainer actions.
+- Push discrimination fixtures from `critical` out to `high` severity, and grow per-skill eval coverage the way the [2026-07 assessment](QUALITY_ASSESSMENT_2026-07.md) recommends. 19 method families are fully covered but only 22 of 1,096 skills have a behavioral scenario — family-level coverage is the sharp number, skill-level coverage is the flat one.
 - Enrich provenance metadata with exact vendored commits where upstream snapshots are known.
 - Add scheduled external-link triage notes to releases when weekly checks fail.
 - Convert the flagship eval prompts into executable scorecards where artifacts can be generated in CI without paid APIs.
