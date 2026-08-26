@@ -310,6 +310,14 @@ gitGraph TB:
    checkout main
    merge kaggle
    commit id: "2026-08 de-AIGC 双语"
+   commit id: "2026-08 来源链接全覆盖"
+   branch evidence
+   commit id: "2026-08 aers-score CLI"
+   commit id: "2026-08 外部成绩单"
+   checkout main
+   merge evidence
+   commit id: "2026-08 结构估计 = 方法族 18"
+   commit id: "2026-08 NSW 基准从引用变推导"
 ```
 
 <div align="center">

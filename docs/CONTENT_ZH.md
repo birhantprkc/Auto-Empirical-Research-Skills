@@ -554,6 +554,7 @@ make check       # 完整 gate：validate + Python 编译 + 单元测试 + eval 
 
 叙事版更新日志已迁至 [**CHANGELOG.md**](../CHANGELOG.md)。近期要点：
 
+- **2026-08** —— 把数值基准对外开放：[`aers-score`](../aers_score/README.md) CLI 与 [`EXTERNAL_SCOREBOARD.md`](EXTERNAL_SCOREBOARD.md)——后者**用同一套评分器重算每份提交的原始 candidate**，而不是刊登提交者自报的数字。新增**结构需求估计**为方法族 18（价格内生性、弹性不是系数、边际成本由 FOC 反演）；为自有的 Python/Stata/R 旗舰技能补上首批行为级 eval；把 vendored 合集的安全扫描改成「有合集从未扫过就让门禁挂掉」的门。另加两个端到端复现——含标准误的 Card (1995)，以及 NSW 实验（LaLonde 题所对照的 +$1,794 从此是**推导**出来的，不再只是引用）。
 - **2026-07** —— 发布首个 tagged release **v2026.07**；方法严谨性覆盖图扩到 **16 个方法族全闭环**（新增 CATE、分位数效应、Bartik 移位份额、因果中介、Oaxaca 分解，每族 eval 场景 + 数值基准双覆盖），基准扩到 **16 任务**、评测套件扩到 **29 场景 / 159 rubric**；上线机器生成的发布快照、rigor 覆盖徽章与六语 README 数字一致性门。
 - **2026-05** —— 收录 **AER-skills**（Top-5 经济学投稿套件，9 个 skill）并设周更上游同步；数值基准扩到 **5 个因果复原任务**、评测套件扩到 **17 场景 / 95 rubric**。
 - **2026-04** —— 完成 **52/52 安全基线**；交付四个全流程旗舰（**StatsPAI** + 显式 **Python / Stata / R**）；上线原创 **chinese-de-aigc** skill。
