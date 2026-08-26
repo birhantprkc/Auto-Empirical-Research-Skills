@@ -234,7 +234,9 @@ def build_report() -> dict:
         "license_breakdown": licenses,
         "entry_points": [
             "SKILL.md (catalog router)",
-            "README.md / README-zh-CN.md (overview)",
+            # README-zh-CN.md is a deprecated redirect stub as of 2026-07-19;
+            # the Chinese entry point is README.md itself.
+            "README.md (Chinese entry) / README-en.md (English)",
             "docs/search.html (faceted skill search)",
             "docs/SKILL_CATALOG.md (human-readable index)",
             "docs/CHOOSING_A_SKILL.md (goal→skill routing)",

@@ -165,6 +165,17 @@ This is the project's narrative changelog. `README.md` keeps only a short
 
 ### Developer experience
 
+- **`make quickstart` reported a markdown separator row as a method family.**
+  The five-minute tour is the first thing a newcomer runs, and it printed
+  "19 method families with closed rigor coverage" with `---` in the sample list.
+  The separator guard tested for dashes and spaces only, so the alignment colons
+  in `|---|---:|---|` made every separator look like data. The label was wrong
+  too: 18 families are tracked, 17 have closed coverage, and reporting the total
+  as the closed count overstates precisely what the coverage map exists to be
+  honest about. It also pointed readers at `README-zh-CN.md`, a deprecated
+  redirect stub since 2026-07-19, and carried "1,150 vendored skills across 69
+  collections" in its docstring — both wrong by the time anyone read them.
+
 - **`make setup` and `make doctor`.** `make validate` runs the Paper-WorkFlow
   demo gate, which really executes `did_demo.ipynb` and therefore needs the
   pinned scientific stack. On an interpreter without numpy the gate reported

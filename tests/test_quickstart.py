@@ -80,3 +80,23 @@ class TestReportedNumbers(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestWhereToStart(unittest.TestCase):
+    """The on-ramp must not point newcomers at a deprecated file."""
+
+    def setUp(self):
+        self.entry_points = quickstart.build_report()["entry_points"]
+
+    def test_every_named_entry_point_exists(self):
+        named = re.findall(r"[\w./-]+\.(?:md|html)", " ".join(self.entry_points))
+        self.assertTrue(named, "no entry points parsed")
+        for candidate in named:
+            with self.subTest(entry=candidate):
+                self.assertTrue((ROOT / candidate).exists(), f"{candidate} does not exist")
+
+    def test_does_not_point_at_the_deprecated_chinese_stub(self):
+        joined = " ".join(self.entry_points)
+        self.assertNotIn("README-zh-CN.md", joined)
+        stub = (ROOT / "README-zh-CN.md").read_text(encoding="utf-8")
+        self.assertIn("DEPRECATED", stub, "the stub stopped being deprecated?")
