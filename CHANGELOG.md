@@ -102,6 +102,37 @@ This is the project's narrative changelog. `README.md` keeps only a short
   unclassified, instead of letting it appear quietly at the bottom of a generated
   page. (It immediately caught the three new flagship scenarios.)
 
+### Security
+
+- **The pattern scan's coverage stopped being a memory.** `SECURITY-SCAN-REPORT.md`
+  recorded a 52-collection baseline and a hand-run 49–70 addendum, both written
+  up in prose. The result was that coverage silently expired: collections 71 and
+  72 were vendored afterwards and *nothing recorded that they had never been
+  scanned*. `scripts/scan-collections.py` implements the same thirteen risk
+  dimensions as an executable scanner, records what was scanned per collection
+  in `catalog/security-scan.json`, and `make validate` now fails when a
+  cataloged collection has no scan record — so that particular gap cannot
+  reopen. Full sweep: 76 collections, 3,821 text files, 16 findings, all
+  benign, each with its reason recorded rather than silently suppressed (the
+  tests reject a thin reason, and reject a suppression whose finding no longer
+  exists).
+- **Three of the thirteen patterns were crying wolf.** The first full run
+  produced 27 findings, of which 11 were noise: `rm -rf ~/.cache/matplotlib`,
+  the `rm -rf /var/lib/apt/lists/*` Dockerfile idiom, `b64decode(...)` writing a
+  decoded image to disk, `compile(src, name, "exec")` used for *syntax checking*,
+  and a Stata line of `+`-joined variable names that is entirely inside base64's
+  alphabet but does not decode. A scanner that fires on every Dockerfile is not
+  safer — it teaches people to skip the report, and then the one real hit
+  scrolls past with the noise. The three rules now require the dangerous form
+  specifically: a **bare** delete target, a decode whose result is actually
+  `eval`/`exec`ed, and a blob that genuinely decodes. Both edges of each are
+  pinned by tests, including flag-order variants (`rm -fr /`, `rm -r -f /`,
+  `rm --recursive --force /`) that the first version missed.
+- The scope caveat is unchanged and deliberately repeated in the script, the
+  record and the report: this is a pattern scan, strictly weaker than the
+  baseline's multi-agent content read. A green gate means no known-bad pattern
+  matched, **not** "reviewed and safe".
+
 ### Developer experience
 
 - **`make setup` and `make doctor`.** `make validate` runs the Paper-WorkFlow

@@ -37,6 +37,22 @@ make check-full    # adds eval-harness + benchmark lanes (~5 min on warm cache)
 make quickstart    # 5-minute tour of what's in this repo and where to start
 ```
 
+## Adding a vendored collection
+
+`make validate` fails when a collection in the catalog has no entry in
+[`catalog/security-scan.json`](catalog/security-scan.json), so a new collection
+needs one scan before it can land:
+
+```bash
+make security-scan          # rescans everything, updates the record
+```
+
+Any finding it surfaces has to be looked at in context and recorded under
+`triaged` with a reason — the tests reject an empty or thin one. This is a
+pattern scan, the weakest tier of evidence in
+[`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md); a clean result means "no
+known-bad pattern matched", not "reviewed and safe".
+
 ## Skill hygiene vs. correctness
 
 The repo reports **two columns** in [`SKILL_HYGIENE.md`](docs/SKILL_HYGIENE.md): a structural hygiene score and an eval-coverage count. The mean hygiene score is a **structural** signal (frontmatter, description, length), not a claim about whether the skill produces correct econometrics. For correctness see [`benchmark/`](benchmark/) and [`eval-harness/`](eval-harness/). When adding or modifying a skill:

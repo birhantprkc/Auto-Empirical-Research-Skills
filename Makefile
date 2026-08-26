@@ -1,4 +1,4 @@
-.PHONY: catalog validate paper-workflow-check check check-fast check-full quickstart audit hygiene clean external-links external-links-dry tools-links tools-links-dry evals eval-harness eval-smoke benchmark-lint benchmark benchmark-refresh test python-compat setup doctor
+.PHONY: catalog validate paper-workflow-check check check-fast check-full quickstart audit hygiene clean external-links external-links-dry tools-links tools-links-dry evals eval-harness eval-smoke benchmark-lint benchmark benchmark-refresh test python-compat setup doctor security-scan
 
 # One-command local bootstrap. Almost every gate in this repo is stdlib-only,
 # but `make validate` runs the Paper-WorkFlow demo gate, which really executes
@@ -60,6 +60,7 @@ validate:
 	python3 scripts/check-catalog-coverage.py
 	python3 scripts/check-plugin-source-location.py
 	python3 scripts/check-mirror-sync.py
+	python3 scripts/scan-collections.py --check
 	$(MAKE) paper-workflow-check
 	python3 scripts/build-provenance.py --check
 	python3 scripts/build-skill-audit.py --check
@@ -135,6 +136,12 @@ python-compat:
 
 # Full local gate: everything a PR should pass.
 check: validate python-compat test eval-harness eval-smoke benchmark-lint benchmark
+
+# Re-run the vendored-collection pattern scan and refresh catalog/security-scan.json.
+# `make validate` only asserts the record is current; this is what updates it after
+# a new collection lands or a pattern changes. New findings must be triaged by hand.
+security-scan:
+	python3 scripts/scan-collections.py
 
 audit:
 	python3 scripts/validate-repo.py --audit
