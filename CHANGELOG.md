@@ -103,7 +103,7 @@ This is the project's narrative changelog. `README.md` keeps only a short
 
 ### Rigor and trust
 
-- **Eval scenarios now have to prove they discriminate.** "41 scenarios" is a
+- **Eval scenarios now have to prove they discriminate.** "42 scenarios" is a
   number anyone can inflate: write rubrics whose regexes match ordinary prose
   and every scenario passes everything while testing nothing. The opposite
   failure — a rubric so tight no correct answer satisfies it — is just as
@@ -217,6 +217,8 @@ This is the project's narrative changelog. `README.md` keeps only a short
   which is safe only while every workflow that installs this file runs 3.10+ and
   the 3.9 matrix leg installs nothing — `tests/test_requirements.py` pins both
   halves so a workflow edit cannot quietly make the constraint unsatisfiable.
+
+### Upstream attribution
 
 - **Upstream attribution is now on the front page.** Every row of the
   all-collections table in all six locale entry documents (`README.md`, the
