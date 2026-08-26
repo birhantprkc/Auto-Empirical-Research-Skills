@@ -21,7 +21,16 @@ Three families of drift are linted, across every stat-bearing entry document
    line that cites ``catalog/skills.json`` as its source, a comma-formatted
    number that differs from the current catalog total is a stale copy.
 
-3. **Upstream source links** — every row of the all-collections table carries
+3. **Landing-page numbers** — [`index.html`](../index.html) is served on GitHub
+   Pages and is the first thing many readers see. It fills its stat tiles from
+   `catalog/skills.json` at runtime, but its ``<meta name="description">`` and
+   its JS fallbacks are static text — exactly the place a copied number rots
+   unseen. Any comma-formatted integer in the meta description is linted
+   against the catalog total, and the rigor-badge fallback is required not to
+   carry a number at all (a stale fallback is worse than a dash: it only shows
+   when the fetch fails, so nobody watches it go wrong).
+
+4. **Upstream source links** — every row of the all-collections table carries
    a localized "source" column linking back to the original author's
    repository. Those URLs are copies of ``catalog/provenance.json``, so they
    are linted against it: a collection whose upstream moves (or whose upstream
@@ -248,6 +257,46 @@ def check_collections(path: Path, catalog_ids: set[str], total_skills: int) -> l
     return problems
 
 
+LANDING = ROOT / "index.html"
+META_DESCRIPTION_RE = re.compile(
+    r'<meta\s+name="description"\s+content="([^"]*)"', re.IGNORECASE
+)
+# The rigor fallback must not hardcode a count; see the module docstring.
+RIGOR_FALLBACK_RE = re.compile(
+    r'getElementById\("n-rigor"\)\.textContent\s*=\s*"([^"]*)"'
+)
+
+
+def check_landing_page(path: Path, total_skills: int) -> list[str]:
+    """Lint the static numbers on the GitHub Pages landing page."""
+    if not path.exists():
+        return [f"{path.name}: file missing"]
+    text = path.read_text(encoding="utf-8")
+    problems: list[str] = []
+
+    match = META_DESCRIPTION_RE.search(text)
+    if not match:
+        problems.append(f"{path.name}: no <meta name=\"description\"> to lint")
+    else:
+        for group in SKILLTOTAL_RE.finditer(match.group(1)):
+            claimed = int(group.group(1) + group.group(2))
+            if claimed != total_skills:
+                problems.append(
+                    f"{path.name}: meta description says {claimed:,} skills but "
+                    f"catalog/skills.json has {total_skills:,}"
+                )
+
+    for fallback in RIGOR_FALLBACK_RE.finditer(text):
+        value = fallback.group(1)
+        if any(ch.isdigit() for ch in value):
+            problems.append(
+                f"{path.name}: the n-rigor fallback hardcodes {value!r}. It renders "
+                "only when the badge fetch fails, so a number there goes stale "
+                "unwatched — point at RIGOR_COVERAGE instead."
+            )
+    return problems
+
+
 def main() -> int:
     n_tasks, n_scenarios, n_rubric = expected_counts()
     catalog_ids, total_skills = catalog_facts()
@@ -264,6 +313,7 @@ def main() -> int:
         if path.exists():
             problems.extend(check_collections(path, catalog_ids, total_skills))
             problems.extend(check_source_links(path, sources))
+    problems.extend(check_landing_page(LANDING, total_skills))
     if problems:
         print("README stats are stale:", file=sys.stderr)
         for p in problems:
@@ -280,7 +330,8 @@ def main() -> int:
         f"{n_tasks} benchmark tasks, {n_scenarios} / {n_rubric} eval scenarios/rubric items, "
         f"{len(catalog_ids)} collections / {total_skills:,} skills linked in "
         f"{len(COLLECTION_TABLE_DOCS)} collection tables, "
-        f"{len(sources)} upstream source links matching catalog/provenance.json."
+        f"{len(sources)} upstream source links matching catalog/provenance.json, "
+        f"and index.html carrying no stale numbers."
     )
     return 0
 

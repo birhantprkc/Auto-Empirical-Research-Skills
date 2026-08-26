@@ -200,3 +200,63 @@ class TestSourceLinks(unittest.TestCase):
         self.assertEqual(len(problems), 1)
         self.assertIn("no collection table found", problems[0])
 
+
+
+class TestLandingPage(unittest.TestCase):
+    """`index.html` is served on GitHub Pages and carries two static numbers.
+
+    Its stat tiles fetch `catalog/skills.json` at runtime and cannot go stale.
+    The meta description and the JS fallbacks are plain text and can — and both
+    had, by 1,093-vs-1,096 skills and a "16 families" fallback that was two
+    families out of date.
+    """
+
+    def setUp(self):
+        self.total = check_readme_stats.catalog_facts()[1]
+
+    def _check(self, body: str):
+        import tempfile
+        from pathlib import Path
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "index.html"
+            path.write_text(body, encoding="utf-8")
+            return check_readme_stats.check_landing_page(path, self.total)
+
+    def test_committed_landing_page_is_clean(self):
+        problems = check_readme_stats.check_landing_page(
+            check_readme_stats.LANDING, self.total
+        )
+        self.assertEqual(problems, [])
+
+    def test_a_stale_meta_description_is_caught(self):
+        problems = self._check(
+            f'<meta name="description" content="{self.total - 3:,} vendored skills">'
+        )
+        self.assertEqual(len(problems), 1)
+        self.assertIn("meta description says", problems[0])
+
+    def test_a_correct_meta_description_passes(self):
+        self.assertEqual(
+            self._check(
+                f'<meta name="description" content="{self.total:,} vendored skills">'
+            ),
+            [],
+        )
+
+    def test_a_numeric_rigor_fallback_is_caught(self):
+        problems = self._check(
+            '<meta name="description" content="no numbers here">\n'
+            'catch { document.getElementById("n-rigor").textContent = "16 families"; }'
+        )
+        self.assertEqual(len(problems), 1)
+        self.assertIn("hardcodes", problems[0])
+
+    def test_a_non_numeric_fallback_passes(self):
+        self.assertEqual(
+            self._check(
+                '<meta name="description" content="no numbers here">\n'
+                'catch { document.getElementById("n-rigor").textContent = "see RIGOR_COVERAGE"; }'
+            ),
+            [],
+        )
