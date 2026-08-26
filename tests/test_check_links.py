@@ -119,5 +119,75 @@ class TestCheckLinksCli(unittest.TestCase):
                 check_links.check_url = old_check_url
 
 
+class TestSignInGatedGithubPages(unittest.TestCase):
+    """GitHub answers signed-out clients with 404 on /stargazers and /watchers.
+
+    Left unhandled that is a permanent, unfixable failure in the weekly
+    link-check job: the page works in a browser, so no edit to the repo can
+    make the checker happy. The rule is deliberately narrow, and these tests
+    exist mostly to keep it that way — a general 404 amnesty would silently
+    stop catching real dead links.
+    """
+
+    def test_the_two_gated_paths_are_recognized(self):
+        for url in (
+            "https://github.com/owner/repo/stargazers",
+            "https://github.com/owner/repo/watchers",
+            "https://github.com/owner/repo/stargazers/",
+        ):
+            with self.subTest(url=url):
+                self.assertTrue(check_links.is_login_gated(url))
+
+    def test_public_github_paths_are_not_exempt(self):
+        for url in (
+            "https://github.com/owner/repo",
+            "https://github.com/owner/repo/forks",
+            "https://github.com/owner/repo/network/members",
+            "https://github.com/owner/repo/issues",
+            "https://github.com/owner/repo/pulls",
+            "https://github.com/owner/repo/blob/main/README.md",
+        ):
+            with self.subTest(url=url):
+                self.assertFalse(check_links.is_login_gated(url))
+
+    def test_the_pattern_is_anchored_to_github_com(self):
+        # A path that merely contains the string must not inherit the exemption.
+        for url in (
+            "https://evil.example/github.com/owner/repo/stargazers",
+            "https://github.com.evil.example/owner/repo/stargazers",
+            "https://github.com/owner/repo/stargazers/extra",
+        ):
+            with self.subTest(url=url):
+                self.assertFalse(check_links.is_login_gated(url))
+
+    def test_a_gated_404_is_reported_as_reachable_with_a_warning(self):
+        result = check_links.login_gated_result(
+            "https://github.com/owner/repo/stargazers", 404
+        )
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["status"], 404)
+        self.assertIn("Sign-in-gated", result["warning"])
+
+    def test_a_404_elsewhere_is_still_a_failure(self):
+        import urllib.error
+
+        def raise_404(request, timeout=None):
+            raise urllib.error.HTTPError(
+                request.full_url, 404, "Not Found", hdrs=None, fp=None
+            )
+
+        old_urlopen = check_links.urllib.request.urlopen
+        try:
+            check_links.urllib.request.urlopen = raise_404
+            gated = check_links.check_url(
+                "https://github.com/owner/repo/stargazers", timeout=1
+            )
+            real = check_links.check_url("https://github.com/owner/repo/gone", timeout=1)
+        finally:
+            check_links.urllib.request.urlopen = old_urlopen
+        self.assertTrue(gated["ok"])
+        self.assertFalse(real["ok"], "the exemption must not generalize to any 404")
+
+
 if __name__ == "__main__":
     unittest.main()
