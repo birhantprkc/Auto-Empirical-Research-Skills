@@ -132,6 +132,9 @@ test:
 # are not imported by the unit suite.
 python-compat:
 	python3 -m py_compile scripts/*.py benchmark/*.py benchmark/lib/*.py eval-harness/*.py tests/*.py aers_score/*.py
+	# The end-to-end replication demos are repo-owned Python and self-gating
+	# scripts; they belong on the compat matrix like everything else.
+	python3 -m py_compile demo-notebooks/*.py demo-notebooks/*/*.py
 	python3 -m py_compile skills/72-kaggle-research/kaggle-research/scripts/*.py skills/72-kaggle-research/kaggle-research/scripts/kaggle_runtime/*.py skills/72-kaggle-research/kaggle-research/tests/*.py
 
 # Full local gate: everything a PR should pass.
