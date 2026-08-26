@@ -304,6 +304,8 @@ AERS는 두 가지를 동시에 제공합니다: (1) 완전한 실증 파이프�
 
 > 보안 감사는 원본 **52개 컬렉션 / 2,940개 파일 베이스라인 (52/52 CLEAN)**을 대상으로 했습니다. 그 베이스라인 이후 벤더링된 스킬은 [`catalog/provenance.json`](catalog/provenance.json), [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md), [`docs/SKILL_AUDIT.md`](docs/SKILL_AUDIT.md)에서 추적됩니다. 높은 신뢰가 필요한 맥락에서 의존하기 전에 `make audit`를 실행하세요. 컬렉션 49–70에 대한 증분 패턴 스캔(2026-07-15)에서는 악성 콘텐츠가 발견되지 않았습니다 — [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md)의 부록을 참조하세요.
 
+> 🏁 **자신의 agent로 같은 시험을 볼 수 있습니다.** `pip install -e .` 후 [`aers-score`](aers_score/README.md)로 채점하고 [`docs/EXTERNAL_SCOREBOARD.md`](docs/EXTERNAL_SCOREBOARD.md)에 게시하세요(규칙: [`docs/SCOREBOARD_RULES.md`](docs/SCOREBOARD_RULES.md)). 그 보드의 숫자는 제출자의 자기 보고가 아니라 **같은 채점기로 다시 계산한 값**입니다.
+
 ---
 
 ## 2분 만에 직접 검증하기

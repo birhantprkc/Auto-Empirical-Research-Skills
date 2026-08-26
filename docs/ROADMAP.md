@@ -2,11 +2,11 @@
 
 This roadmap is scoped to making AERS a high-quality, high-trust GitHub project rather than just a large link collection.
 
-> **Execution plans (status as of 2026-07-22):** the `PLAN-2026-MM` files are sprint plans whose calendar labels drifted — all three were authored 2026-07-01…04 and largely executed immediately.
+> **Execution plans (status as of 2026-08-27):** the `PLAN-2026-MM` files are sprint plans whose calendar labels drifted — all three were authored 2026-07-01…04 and largely executed immediately.
 >
 > - [`PLAN-2026-07.md`](PLAN-2026-07.md) — **closed**, 14/15 done (the external AERS-vs-Econometrics-Agent comparison remains open, tracked in [`SCOREBOARD.md`](SCOREBOARD.md) / [`INTEROP.md`](INTEROP.md) Recipe C).
 > - [`PLAN-2026-08.md`](PLAN-2026-08.md) — headline deliverables **shipped** (Card–Krueger end-to-end replication, public benchmark scoreboard, bunching family, link-triage automation); see its status note.
-> - [`PLAN-2026-09.md`](PLAN-2026-09.md) — **current / not started**: opening the evidence chain to external agents.
+> - [`PLAN-2026-09.md`](PLAN-2026-09.md) — **weeks 1–3 delivered (2026-08-27)**: the external scoreboard, the `structural-demand-recovery` method family, and the `aers-score` CLI. Week 4 (NSW / Card 1995 end-to-end replications, the v2026.09 tag) is open. See its status note for where the implementation deliberately diverged from the plan.
 
 ## Now
 
@@ -14,12 +14,18 @@ This roadmap is scoped to making AERS a high-quality, high-trust GitHub project 
 - Require `make check` for all pull requests.
 - Keep README links and docs category links green.
 - Preserve the no-paid/proprietary-core scope rule for new listings.
+- Keep [`EXTERNAL_SCOREBOARD.md`](EXTERNAL_SCOREBOARD.md) regradable: every submission
+  under `benchmark/external/` is rescored from its raw candidates on each build, so a
+  task whose golds change fails loudly rather than misreporting an old entry.
 - Keep `catalog/provenance.json`, `docs/LICENSE_AUDIT.md`, and `docs/SKILL_AUDIT.md` current.
 - Use [`docs/search.html`](search.html) as the lightweight searchable catalog (now served on [GitHub Pages](https://brycewang-stanford.github.io/Auto-Empirical-Research-Skills/)).
 - Keep GitHub Actions passing `scripts/validate-workflows.py` and review OpenSSF Scorecard findings.
 
 ## Next
 
+- Land the first genuinely third-party entry on [`EXTERNAL_SCOREBOARD.md`](EXTERNAL_SCOREBOARD.md). The machinery, the rules ([`SCOREBOARD_RULES.md`](SCOREBOARD_RULES.md)) and the tooling ([`aers-score`](../aers_score/README.md)) are live; what is missing is a submission from someone else, which is not something this repo can deliver on its own.
+- Finish [`PLAN-2026-09.md`](PLAN-2026-09.md) week 4: NSW and Card 1995 end-to-end replications alongside the existing Card–Krueger one, then the v2026.09 tag.
+- Grow per-skill eval coverage the way the [2026-07 assessment](QUALITY_ASSESSMENT_2026-07.md) recommends — one trap scenario at a time for high-traffic vendored skills. The first-party flagships (`00.1`/`00.2`/`00.3`) are now covered; 22 of the cataloged skills have a behavioral scenario.
 - Enrich provenance metadata with exact vendored commits where upstream snapshots are known.
 - Add scheduled external-link triage notes to releases when weekly checks fail.
 - Convert the flagship eval prompts into executable scorecards where artifacts can be generated in CI without paid APIs.
@@ -27,10 +33,10 @@ This roadmap is scoped to making AERS a high-quality, high-trust GitHub project 
 
 ## Later
 
+- Publish `aers-score` as a release asset (or to PyPI) so scoring does not require an editable install from a checkout. The exam itself stays in the repo by design — see `aers_score/exam.py`.
 - Package first-party AERS skills as installable bundles for agent runtimes that support plugins/marketplaces.
-- Add per-skill eval prompts for flagship first-party skills.
 - Maintain a public benchmark of empirical-research agent workflows: correctness, reproducibility, citation hygiene, and runtime safety.
-- Close the rigor gaps surfaced by [`RIGOR_COVERAGE.md`](RIGOR_COVERAGE.md): method families with tagged skills but no eval scenario or benchmark task yet (synthetic control, panel FE, double/debiased ML, Bayesian, survival), plus the partials (an event-study benchmark task; a matching/PSM eval scenario).
+- Keep closing whatever [`RIGOR_COVERAGE.md`](RIGOR_COVERAGE.md) lists as open. The families named here in 2026-07 (synthetic control, panel FE, double/debiased ML, Bayesian, survival, the event-study benchmark task, the matching/PSM eval scenario) are all closed; the map is generated, so read it rather than this line.
 
 ## Completed Hardening Pass
 
@@ -38,4 +44,6 @@ This roadmap is scoped to making AERS a high-quality, high-trust GitHub project 
 - Added license audit, skill hygiene audit, static search page, install guide, submission guide, flagship demos, release process, external-link workflow, and clean CI validation.
 - Added machine-readable flagship eval prompts and generated reviewer docs.
 - Added a generated methodological rigor coverage map ([`RIGOR_COVERAGE.md`](RIGOR_COVERAGE.md), built by `scripts/build-coverage-map.py` and freshness-checked in `make validate`) that joins the method taxonomy with eval scenarios and benchmark tasks and surfaces open gaps.
+- Added per-skill behavioral evals for the first-party flagships (`00.1` Python / `00.2` Stata / `00.3` R), each on an ecosystem-level inference trap, with discrimination tests that require the rubric to separate a correct answer from a plausible wrong one.
+- Opened the numeric benchmark to third parties: the [`aers-score`](../aers_score/README.md) CLI, [`EXTERNAL_SCOREBOARD.md`](EXTERNAL_SCOREBOARD.md) (regraded from raw candidates, never from submitted numbers), and [`SCOREBOARD_RULES.md`](SCOREBOARD_RULES.md).
 - Added an ecosystem positioning map ([`ECOSYSTEM.md`](ECOSYSTEM.md)), interoperability recipes ([`INTEROP.md`](INTEROP.md)), a machine-readable registry ([`../ecosystem/ecosystem.json`](../ecosystem/ecosystem.json)), and a sync-enforcing validator (`scripts/check-ecosystem.py`, wired into `make validate`).

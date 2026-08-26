@@ -60,6 +60,8 @@
 | Behavioral **eval scenarios / rubric items** | **41 / 210** | [`eval-harness/`](eval-harness/) |
 
 > Full trust overview: [`docs/TRUST.md`](docs/TRUST.md) · [`docs/RIGOR_COVERAGE.md`](docs/RIGOR_COVERAGE.md)
+>
+> 🏁 **带上你自己的 agent 来考同一份卷子**：`pip install -e .` 后用 [`aers-score`](aers_score/README.md) 给自己打分，成绩发布在 [`docs/EXTERNAL_SCOREBOARD.md`](docs/EXTERNAL_SCOREBOARD.md)（规则见 [`docs/SCOREBOARD_RULES.md`](docs/SCOREBOARD_RULES.md)）。榜上的数字是**我们用同一套评分器重算**出来的，不是提交者自报的。
 
 ---
 

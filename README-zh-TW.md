@@ -306,6 +306,8 @@ AERS 同時是兩樣東西：(1) 一小撮**自研旗艦 skill**，能跑通完�
 
 > 安全稽核涵蓋的是**原始 52 合集 / 2,940 檔案的基線（52/52 CLEAN）**。在該基線之後新增的 vendor skill 由 [`catalog/provenance.json`](catalog/provenance.json)、[`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md)、[`docs/SKILL_AUDIT.md`](docs/SKILL_AUDIT.md) 追蹤；高信任場景使用前請先 `make audit` 複核。針對 49–70 號合集的增量模式掃描（2026-07-15）未發現惡意內容 —— 見 [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md) 增補章節。
 
+> 🏁 **帶上你自己的 agent 來考同一份卷子。** `pip install -e .` 後用 [`aers-score`](aers_score/README.md) 給自己打分，成績發布在 [`docs/EXTERNAL_SCOREBOARD.md`](docs/EXTERNAL_SCOREBOARD.md)（規則見 [`docs/SCOREBOARD_RULES.md`](docs/SCOREBOARD_RULES.md)）。榜上的數字是**我們用同一套評分器重算**出來的，不是提交者自報的。
+
 ---
 
 ## 2 分鐘自行驗證

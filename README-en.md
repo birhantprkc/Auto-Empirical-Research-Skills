@@ -311,6 +311,8 @@ Numbers in this README are kept honest and disambiguated. "Vendored" means the f
 
 > The security audit covered the original **52-collection / 2,940-file baseline (52/52 CLEAN)**. Skills vendored after that baseline are tracked in [`catalog/provenance.json`](catalog/provenance.json), [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md), and [`docs/SKILL_AUDIT.md`](docs/SKILL_AUDIT.md); run `make audit` before relying on them in high-trust contexts. An incremental pattern scan (2026-07-15) of collections 49–70 found no malicious content — see the addendum in [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md).
 
+> 🏁 **Bring your own agent and sit the same exam.** `pip install -e .`, score yourself with [`aers-score`](aers_score/README.md), and publish to [`docs/EXTERNAL_SCOREBOARD.md`](docs/EXTERNAL_SCOREBOARD.md) (rules: [`docs/SCOREBOARD_RULES.md`](docs/SCOREBOARD_RULES.md)). Every number on that board is **our recomputation** of the submitted raw results — never the submitter's report of them.
+
 ---
 
 ## Verify it yourself in 2 minutes

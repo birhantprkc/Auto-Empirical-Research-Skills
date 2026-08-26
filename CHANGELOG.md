@@ -5,6 +5,93 @@ This is the project's narrative changelog. `README.md` keeps only a short
 
 ## Unreleased
 
+### Opening the evidence chain (docs/PLAN-2026-09)
+
+- **`aers-score` — an outsider can now take the benchmark.** The numeric
+  benchmark has always been the repo's strongest trust signal, and the only way
+  in was to read `benchmark/README.md`, hand-write a `results.json` against an
+  undocumented field list, and run a checker written for this repo's CI. The new
+  [`aers-score`](aers_score/README.md) console script is the front door:
+  `tasks` / `describe` / `init` / `grade` / `submit`, machine-readable output on
+  every subcommand, installed with `pip install -e .` and zero dependencies on
+  Python 3.9+. It reimplements no grading — `aers_score/exam.py` loads
+  `benchmark/check_benchmark.py` and calls its own `validate_candidate` /
+  `compute_truth` / `grade`, so every gold, tolerance and anti-fabrication
+  cross-check stays defined in exactly one place, and a test asserts the
+  reference candidates still sweep the exam through the CLI. The exam is
+  resolved from a checkout rather than bundled into the wheel: a task spec is
+  meaningless without the dataset its golds are recomputed from, so a second
+  copy would be pure drift surface.
+- **[`docs/EXTERNAL_SCOREBOARD.md`](docs/EXTERNAL_SCOREBOARD.md) — third-party
+  agents on the same exam.** `BENCHMARK_SCOREBOARD.md` scores two pipelines this
+  repo wrote itself, which is a self-report. The new board is open to anyone, and
+  **submitted numbers are never displayed**: each entry ships its raw per-task
+  candidate files under `benchmark/external/<slug>/`, and
+  `scripts/build-external-scoreboard.py` regrades them from scratch, then
+  compares the submitter's summary against that regrade and fails the build on
+  any disagreement. Two independent walls, both attacked directly in
+  `tests/test_external_scoreboard.py`: you cannot publish a score you did not
+  earn (the cross-check), and you cannot earn one by fabricating numbers (the
+  `honest-*` golds). Rules, ranking and the reason cherry-picking cannot improve
+  a position are in [`docs/SCOREBOARD_RULES.md`](docs/SCOREBOARD_RULES.md).
+- **Method family 18: structural demand estimation.** Skills in the catalog
+  advertise BLP and demand estimation; nothing checked whether a pipeline could
+  do it. `benchmark/lib/structural.py` builds a logit demand system whose golds
+  are *exact* rather than asymptotic — Berry's inversion makes the model linear,
+  and the demand shock is residualized in-sample against the instruments when the
+  data is generated, so just-identified 2SLS returns the design parameter itself.
+  The task grades the three steps that separate a structural pipeline from a
+  regression, each with the folk answer the naive baseline takes: price
+  endogeneity (OLS gives 1.14 against a true 1.50, biased toward *less*
+  price-sensitive demand), elasticity-is-not-a-coefficient (−3.73 vs −1.14), and
+  marginal cost inverted from the Bertrand–Nash FOC (2.05 vs 1.81 when the biased
+  α is carried through). Coverage: 18 families, 17 fully covered, 0 gaps.
+
+### Rigor and trust
+
+- **The first-party flagships finally have behavioral coverage.** The 2026-07
+  quality assessment named per-skill eval coverage as the metric worth growing;
+  its sharpest instance was that the vendored StatsPAI skill carried sixteen
+  scenarios while `00.1`/`00.2`/`00.3` — the Python, Stata and R flagships this
+  repo writes itself and ships as marketplace plugins — carried none. Three new
+  scenarios, one per flagship, each on an *ecosystem* trap rather than a method
+  trap: `reghdfe` singleton drops plus wrong-level clustering with twelve
+  clusters (Stata), `fixest` clustering on the first fixed effect by default
+  (R), and `PanelOLS(...).fit()` returning unadjusted standard errors so a t of
+  6.2 against a coauthor's 1.8 is not a robustness range (Python).
+  `tests/test_flagship_scenarios.py` runs each rubric against a hand-written
+  correct answer and a hand-written plausible-wrong answer and requires the
+  automated items to separate them — a scenario whose regexes fire on anything
+  inflates the coverage count without testing behavior. Coverage moved 19 → 22
+  skills, 38 → 41 scenarios, 191 → 210 rubric items, with the harness minimums
+  ratcheted.
+- **The bunching family was rendering as "Unclassified".** It had a full rigor
+  pair — the `statspai-bunching` eval and the `bunching-recovery` benchmark — but
+  `bunching` was never added to the coverage map's `METHOD_ORDER`, so the whole
+  family fell into a tail section that reads like a to-do note, and the footer
+  under-counted the covered families. Registered as a first-class row, and
+  `tests/test_coverage_map.py` now fails the suite when any scenario or task is
+  unclassified, instead of letting it appear quietly at the bottom of a generated
+  page. (It immediately caught the three new flagship scenarios.)
+
+### Developer experience
+
+- **`make setup` and `make doctor`.** `make validate` runs the Paper-WorkFlow
+  demo gate, which really executes `did_demo.ipynb` and therefore needs the
+  pinned scientific stack. On an interpreter without numpy the gate reported
+  `RIGOR.md is STALE` and pointed at a regeneration command that cannot possibly
+  help. `make setup` builds the venv, installs `requirements.txt` and initializes
+  submodules; `make doctor` (`scripts/doctor.py`) answers "why did the gate
+  fail?" in one screen with a fix command on every failing row; and
+  `paper-workflow-check` now preflights the stack so it names its real cause.
+- **`linearmodels` floor raised past the NumPy 2 ABI break.** A fresh venv from
+  `requirements.txt` resolved to `linearmodels` 5.x, whose wheels are compiled
+  against the NumPy 1.x ABI, so every import printed a crash warning under the
+  `numpy>=2` this file already allows. 7.0 imports clean. It needs Python ≥ 3.10,
+  which is safe only while every workflow that installs this file runs 3.10+ and
+  the 3.9 matrix leg installs nothing — `tests/test_requirements.py` pins both
+  halves so a workflow edit cannot quietly make the constraint unsatisfiable.
+
 - **Upstream attribution is now on the front page.** Every row of the
   all-collections table in all six locale entry documents (`README.md`, the
   four locale READMEs, and [`docs/CONTENT_ZH.md`](docs/CONTENT_ZH.md)) gained a

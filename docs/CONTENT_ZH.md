@@ -283,6 +283,8 @@ AERS 同时是两样东西：(1) 一小撮**自研旗舰 skill**，能跑通完�
 
 > 安全审计覆盖的是**原始 52 合集 / 2,940 文件的基线（52/52 CLEAN）**。在该基线之后新增的 vendor skill 由 [`catalog/provenance.json`](../catalog/provenance.json)、[`LICENSE_AUDIT.md`](LICENSE_AUDIT.md)、[`SKILL_AUDIT.md`](SKILL_AUDIT.md) 跟踪；高信任场景使用前请先 `make audit` 复核。针对 49–70 号合集的增量模式扫描（2026-07-15）未发现恶意内容 —— 见 [`SECURITY-SCAN-REPORT.md`](../SECURITY-SCAN-REPORT.md) 增补章节。
 
+> 🏁 **带上你自己的 agent 来考同一份卷子。** `pip install -e .` 后用 [`aers-score`](../aers_score/README.md) 给自己打分，成绩发布在 [`EXTERNAL_SCOREBOARD.md`](EXTERNAL_SCOREBOARD.md)（规则见 [`SCOREBOARD_RULES.md`](SCOREBOARD_RULES.md)）。榜上的数字是**我们用同一套评分器重算**出来的，不是提交者自报的。
+
 ---
 
 ## 2 分钟自行验证
