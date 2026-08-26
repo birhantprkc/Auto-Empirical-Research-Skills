@@ -33,6 +33,15 @@ That gap is the point: the exam separates pipelines that guard against each meth
 
 ## Join the board
 
-Run *your* agent on the same tasks and grade it with the same harness — the step-by-step candidate protocol is in [`INTEROP.md`](INTEROP.md). Post the scorecard in [Show and tell](https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills/discussions); reproducible submissions (candidate JSON + how it was produced) may be added to this page.
+Run *your* agent on the same tasks and grade it with the same harness. Four commands with [`aers-score`](../aers_score/README.md):
 
-_The replication analog of this board — recovering **published** results from raw data — lives in [`demo-notebooks/card-krueger-1994/`](../demo-notebooks/card-krueger-1994/), scored PERFECT by the Paper-WorkFlow replication benchmark._
+```bash
+pip install -e .            # zero dependencies, Python 3.9+
+aers-score tasks            # what is on the exam
+aers-score init ./my-run    # scaffold candidates with the exact fields
+aers-score grade ./my-run   # score yourself
+```
+
+Published results go on [`EXTERNAL_SCOREBOARD.md`](EXTERNAL_SCOREBOARD.md), which regrades your raw candidates rather than trusting your numbers — rules in [`SCOREBOARD_RULES.md`](SCOREBOARD_RULES.md). The older manual protocol is still in [`INTEROP.md`](INTEROP.md).
+
+_The replication analog of this board — recovering **published** results from raw data rather than known-by-construction ones — lives in [`demo-notebooks/card-krueger-1994/`](../demo-notebooks/card-krueger-1994/) (minimum-wage DiD, scored PERFECT by the Paper-WorkFlow replication benchmark) and [`demo-notebooks/card-1995-iv/`](../demo-notebooks/card-1995-iv/) (returns to schooling, standard errors and first stage included). Both are zero-dependency scripts that exit non-zero when a published anchor is missed._

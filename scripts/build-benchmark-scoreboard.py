@@ -219,19 +219,29 @@ def render(rows: list[dict]) -> str:
     out.append("## Join the board")
     out.append("")
     out.append(
-        "Run *your* agent on the same tasks and grade it with the same harness — the "
-        "step-by-step candidate protocol is in [`INTEROP.md`](INTEROP.md). Post the "
-        "scorecard in "
-        "[Show and tell](https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills/discussions); "
-        "reproducible submissions (candidate JSON + how it was produced) may be added "
-        "to this page."
+        "Run *your* agent on the same tasks and grade it with the same harness. Four "
+        "commands with [`aers-score`](../aers_score/README.md):\n\n"
+        "```bash\n"
+        "pip install -e .            # zero dependencies, Python 3.9+\n"
+        "aers-score tasks            # what is on the exam\n"
+        "aers-score init ./my-run    # scaffold candidates with the exact fields\n"
+        "aers-score grade ./my-run   # score yourself\n"
+        "```\n\n"
+        "Published results go on [`EXTERNAL_SCOREBOARD.md`](EXTERNAL_SCOREBOARD.md), "
+        "which regrades your raw candidates rather than trusting your numbers — rules "
+        "in [`SCOREBOARD_RULES.md`](SCOREBOARD_RULES.md). The older manual protocol is "
+        "still in [`INTEROP.md`](INTEROP.md)."
     )
     out.append("")
     out.append(
         "_The replication analog of this board — recovering **published** results from "
-        "raw data — lives in "
-        "[`demo-notebooks/card-krueger-1994/`](../demo-notebooks/card-krueger-1994/), "
-        "scored PERFECT by the Paper-WorkFlow replication benchmark._"
+        "raw data rather than known-by-construction ones — lives in "
+        "[`demo-notebooks/card-krueger-1994/`](../demo-notebooks/card-krueger-1994/) "
+        "(minimum-wage DiD, scored PERFECT by the Paper-WorkFlow replication "
+        "benchmark) and "
+        "[`demo-notebooks/card-1995-iv/`](../demo-notebooks/card-1995-iv/) "
+        "(returns to schooling, standard errors and first stage included). Both are "
+        "zero-dependency scripts that exit non-zero when a published anchor is missed._"
     )
     out.append("")
     return "\n".join(out)

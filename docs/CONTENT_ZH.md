@@ -343,7 +343,7 @@ make check        # 仓库校验 + 单元测试 + eval lint + 数值基准
 |---|---|---|
 | ![主估计系数图](../demo-StatsPAI-skill/figures/fig3_coefplot_main.png) | ![规格曲线](../demo-StatsPAI-skill/figures/fig5_spec_curve.png) | ![敏感性仪表盘](../demo-StatsPAI-skill/figures/fig6_sensitivity_dashboard.png) |
 
-> 🧪 **端到端复现实证**：一条零依赖命令从 Card & Krueger (1994) 官方原始数据复现最低工资 DiD —— 波次均值逐位命中、Table 4 系数精确一致，复现评分器判定 **PERFECT**（三档命中率 100%）。见 [`demo-notebooks/card-krueger-1994/`](../demo-notebooks/card-krueger-1994/)。
+> 🧪 **端到端复现实证**：一条零依赖命令从 Card & Krueger (1994) 官方原始数据复现最低工资 DiD —— 波次均值逐位命中、Table 4 系数精确一致，复现评分器判定 **PERFECT**（三档命中率 100%）。见 [`demo-notebooks/card-krueger-1994/`](../demo-notebooks/card-krueger-1994/)。 同样形态的第二例 —— [`demo-notebooks/card-1995-iv/`](../demo-notebooks/card-1995-iv/) —— 复现 Card (1995) 的教育回报，**含标准误**：OLS 0.075 (0.003)、2SLS 0.132 (0.055)、第一阶段 F 13.3，并单独检查「IV > OLS」这个论点本身。
 >
 > 🔎 在线目录站（GitHub Pages，零构建）：**[技能搜索](https://brycewang-stanford.github.io/Auto-Empirical-Research-Skills/docs/search.html)** · [工具搜索](https://brycewang-stanford.github.io/Auto-Empirical-Research-Skills/docs/tools-search.html) · [站点首页](https://brycewang-stanford.github.io/Auto-Empirical-Research-Skills/)
 

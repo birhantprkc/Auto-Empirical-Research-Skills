@@ -364,7 +364,7 @@ make check        # repo validation + unit tests + eval lint + numeric benchmark
 |---|---|---|
 | ![主要係数プロット](demo-StatsPAI-skill/figures/fig3_coefplot_main.png) | ![スペシフィケーション・カーブ](demo-StatsPAI-skill/figures/fig5_spec_curve.png) | ![感度ダッシュボード](demo-StatsPAI-skill/figures/fig6_sensitivity_dashboard.png) |
 
-> 🧪 **エンドツーエンド再現の実証**: 依存ゼロのコマンド 1 つで Card & Krueger (1994) の最低賃金 DiD を公式生データから再現 —— 波次平均は桁単位で一致、Table 4 の係数は完全一致、再現スコアラーの判定は **PERFECT**（3 段階すべて 100%）。[`demo-notebooks/card-krueger-1994/`](demo-notebooks/card-krueger-1994/) を参照。
+> 🧪 **エンドツーエンド再現の実証**: 依存ゼロのコマンド 1 つで Card & Krueger (1994) の最低賃金 DiD を公式生データから再現 —— 波次平均は桁単位で一致、Table 4 の係数は完全一致、再現スコアラーの判定は **PERFECT**（3 段階すべて 100%）。[`demo-notebooks/card-krueger-1994/`](demo-notebooks/card-krueger-1994/) を参照。 同じ形の 2 本目 —— [`demo-notebooks/card-1995-iv/`](demo-notebooks/card-1995-iv/) —— は Card (1995) の教育収益率を**標準誤差込みで**再現: OLS 0.075 (0.003)、2SLS 0.132 (0.055)、第一段階 F 13.3、そして「IV > OLS」という主張自体も明示的に検査。
 >
 > 🔎 オンラインカタログ（GitHub Pages、ビルド不要）: **[スキル検索](https://brycewang-stanford.github.io/Auto-Empirical-Research-Skills/docs/search.html)** · [ツール検索](https://brycewang-stanford.github.io/Auto-Empirical-Research-Skills/docs/tools-search.html) · [サイトホーム](https://brycewang-stanford.github.io/Auto-Empirical-Research-Skills/)
 

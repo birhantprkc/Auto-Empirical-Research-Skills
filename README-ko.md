@@ -364,7 +364,7 @@ make check        # repo validation + unit tests + eval lint + numeric benchmark
 |---|---|---|
 | ![주요 계수 플롯](demo-StatsPAI-skill/figures/fig3_coefplot_main.png) | ![사양 곡선](demo-StatsPAI-skill/figures/fig5_spec_curve.png) | ![민감도 대시보드](demo-StatsPAI-skill/figures/fig6_sensitivity_dashboard.png) |
 
-> 🧪 **엔드투엔드 복제 실증**: 의존성 없는 명령 하나로 Card & Krueger (1994) 최저임금 DiD를 공식 원자료에서 복제 — 웨이브 평균 자릿수까지 일치, Table 4 계수 완전 일치, 복제 채점기 판정 **PERFECT**(3개 등급 모두 100%). [`demo-notebooks/card-krueger-1994/`](demo-notebooks/card-krueger-1994/) 참조.
+> 🧪 **엔드투엔드 복제 실증**: 의존성 없는 명령 하나로 Card & Krueger (1994) 최저임금 DiD를 공식 원자료에서 복제 — 웨이브 평균 자릿수까지 일치, Table 4 계수 완전 일치, 복제 채점기 판정 **PERFECT**(3개 등급 모두 100%). [`demo-notebooks/card-krueger-1994/`](demo-notebooks/card-krueger-1994/) 참조. 같은 형태의 두 번째 복제 — [`demo-notebooks/card-1995-iv/`](demo-notebooks/card-1995-iv/) — 는 Card (1995)의 교육 수익률을 **표준오차까지** 복제합니다: OLS 0.075 (0.003), 2SLS 0.132 (0.055), 1단계 F 13.3, 그리고 'IV > OLS'라는 주장 자체도 명시적으로 검사.
 >
 > 🔎 온라인 카탈로그(GitHub Pages, 빌드 불필요): **[스킬 검색](https://brycewang-stanford.github.io/Auto-Empirical-Research-Skills/docs/search.html)** · [도구 검색](https://brycewang-stanford.github.io/Auto-Empirical-Research-Skills/docs/tools-search.html) · [사이트 홈](https://brycewang-stanford.github.io/Auto-Empirical-Research-Skills/)
 

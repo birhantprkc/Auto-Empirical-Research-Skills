@@ -47,6 +47,20 @@ This is the project's narrative changelog. `README.md` keeps only a short
   marginal cost inverted from the Bertrand–Nash FOC (2.05 vs 1.81 when the biased
   α is carried through). Coverage: 18 families, 17 fully covered, 0 gaps.
 
+- **A second end-to-end replication: Card (1995).** The repo could already show
+  one automated pipeline reaching *published* numbers from raw data
+  (Card–Krueger 1994). [`demo-notebooks/card-1995-iv/`](demo-notebooks/card-1995-iv/)
+  adds the returns-to-schooling IV in the same shape — zero dependencies, exits
+  non-zero when an anchor is missed — and reproduces seven anchors including the
+  ones a point-estimate check skips: OLS 0.075 (s.e. 0.003), first-stage `nearc4`
+  0.32 (0.088), 2SLS 0.132 (s.e. 0.055), N = 3,010. Two details make it a
+  replication rather than a regression run. The 2SLS variance uses the
+  *structural* residuals, and the script also computes what you get by reading
+  the second stage's own OLS standard error instead (0.0565 against the correct
+  0.0550) — the classic manual-2SLS error, shown at its actual size rather than
+  warned about. And `iv_exceeds_ols` is checked on its own, because a pipeline
+  can hit both point estimates and still bury the finding the paper is about.
+
 ### Rigor and trust
 
 - **The first-party flagships finally have behavioral coverage.** The 2026-07
