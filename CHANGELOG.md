@@ -75,6 +75,32 @@ This is the project's narrative changelog. `README.md` keeps only a short
   outcome is consulted: pre-treatment earnings differ by $11 across the
   randomized arms and by $3,524 across the observational ones.
 
+- **Method family 19: interference / spillovers (SUTVA).** SUTVA is the
+  assumption almost every applied paper states in one sentence and never returns
+  to, and the comparison that violates it is the one a field experiment hands
+  you for free: treated households next to untreated ones, both in the same
+  village. `benchmark/lib/spillover.py` builds a partial-interference design
+  (Hudgens and Halloran 2008) where four quantities all get called "the
+  treatment effect" and all four are recovered exactly — direct 2.0, spillover
+  1.5, total on the treated 3.5, overall/policy 2.5. The within-cluster contrast
+  gives 2.0, which is a perfectly good *direct* effect and a bad answer to "what
+  did the program do": the comparison group is already receiving 1.5 of
+  spillover, so the number understates the benefit to a treated person by 43%
+  and the benefit of rolling the program out by 20%. Reporting the spillover as
+  zero is graded as a claim against a value recomputed from the data, because
+  that is what "we assume no interference between units" means when nothing
+  follows it. Baselines are balanced across both the within-cluster and the
+  between-cluster split, which is what makes every contrast exact; tests assert
+  that balance rather than trusting it. Paired with the
+  `statspai-spillovers-sutva` eval scenario. Coverage: 19 families, 18 fully
+  covered, 0 gaps.
+- **`docs/QUICKSTART_REPORT.md` was a committed generated artifact nothing
+  regenerated.** It was marked "manual" and had drifted. The snapshot is now
+  deterministic (its generation timestamp is gone — git already records when a
+  file changed, and a `--check` that compares the current clock to a stored one
+  can only ever fail), `make catalog` rebuilds it, and `make validate` gates its
+  freshness like every other generated file.
+
 ### Rigor and trust
 
 - **Eval scenarios now have to prove they discriminate.** "41 scenarios" is a

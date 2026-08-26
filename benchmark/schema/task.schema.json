@@ -32,6 +32,7 @@
         "panel-fe-recovery",
         "qte-recovery",
         "rdd-recovery",
+        "spillover-recovery",
         "structural-demand-recovery",
         "survival-recovery",
         "synthetic-control-recovery"

@@ -49,6 +49,7 @@ METHOD_ORDER = [
     "decomposition",
     "bunching",
     "structural",
+    "interference",
     "bayesian",
     "survival",
 ]
@@ -69,6 +70,7 @@ METHOD_LABEL = {
     "decomposition": "Decomposition (Oaxaca-Blinder)",
     "bunching": "Bunching",
     "structural": "Structural estimation (demand / IO)",
+    "interference": "Interference / spillovers (SUTVA)",
     "bayesian": "Bayesian methods",
     "survival": "Survival / duration",
 }
@@ -93,6 +95,7 @@ SCENARIO_METHOD = {
     "statspai-decomposition": "decomposition",
     "statspai-bunching": "bunching",
     "statspai-structural-demand": "structural",
+    "statspai-spillovers-sutva": "interference",
     "baygent-bayesian-diagnostics": "bayesian",
     "statspai-survival-assumptions": "survival",
     "causalpy-placebo-inference": "synthetic-control",
@@ -134,6 +137,7 @@ TASK_METHOD = {
     "decomposition-recovery": "decomposition",
     "bunching-recovery": "bunching",
     "structural-demand-recovery": "structural",
+    "spillover-recovery": "interference",
     "survival-recovery": "survival",
     "bayesian-recovery": "bayesian",
     "synthetic-control-recovery": "synthetic-control",
@@ -144,6 +148,7 @@ TASK_METHOD = {
 RELATED_NOTE = {
     "did": "2x2 base case; the parallel-trends/pre-trends check lives under Event study, and staggered identification under Staggered DiD.",
     "decomposition": "Estimators (oaxaca, kitagawa_decompose, dfl_decompose, gelbach) ship in the StatsPAI runtime, but almost no vendored skill *description* advertises the family, so the tagged-skill count understates it; the eval scenario and benchmark task still gate the method.",
+    "interference": "SUTVA is the assumption most often stated and least often tested, so the tagged-skill count reads 0: almost no vendored skill description advertises spillovers or interference by name. The eval scenario and benchmark task gate the method regardless — that gap between how often the assumption is invoked and how often it is checked is the point.",
     "bunching": "Bunching/notch estimators (bunching, general_bunching, notch, kink_unified) ship in the StatsPAI runtime, but no vendored skill *description* names the family, so the tagged-skill count reads 0; the eval scenario and benchmark task still gate the method.",
 }
 

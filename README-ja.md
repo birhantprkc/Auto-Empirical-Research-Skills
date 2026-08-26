@@ -296,8 +296,8 @@ AERS は同時に二つの性格を持ちます。(1) 完全な実証パイプ�
 | **本リポジトリに取り込み済み**でカタログ化されたスキル | **1,096** | [`catalog/skills.json`](catalog/skills.json) |
 | 取り込み済み **コレクション（collections）** | **76** | [`catalog/skills.json`](catalog/skills.json) · [全 76 を一覧 ↑](#全-76-スキルコレクション一覧) |
 | **ファーストパーティ旗艦**の全パイプラインスキル（StatsPAI DSL + 明示的な Python/Stata/R） | **4** | [`skills/00*`](skills/) |
-| 毎回データから gold 値を再計算する数値**ベンチマークタスク** | **18** | [`benchmark/`](benchmark/) |
-| 挙動レベルの**評価シナリオ / ルーブリック項目** | **41 / 210** | [`eval-harness/`](eval-harness/) |
+| 毎回データから gold 値を再計算する数値**ベンチマークタスク** | **19** | [`benchmark/`](benchmark/) |
+| 挙動レベルの**評価シナリオ / ルーブリック項目** | **42 / 217** | [`eval-harness/`](eval-harness/) |
 | うち**正誤を区別できると実証済み**のシナリオ（pass/fail フィクスチャ自己検査） | **9**（`critical` 全 6 件を含む） | [`eval-harness/fixtures/`](eval-harness/fixtures/) |
 | **元のベースライン**のセキュリティ監査（コレクション / ファイル） | **52 / 2,940+**、52/52 CLEAN | [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md) |
 | **広域エコシステム**の精選マップ | **23,000+ スキル / 119 リポジトリ** | 本 README · [`docs/SKILL_CATALOG.md`](docs/SKILL_CATALOG.md) |
@@ -398,8 +398,8 @@ make check        # repo validation + unit tests + eval lint + numeric benchmark
 
 | 層 | 何を捕捉するか | 場所 |
 |---|---|---|
-| **数値ベンチマーク** | 実データから再計算された真値と一致しない報告数字 —— 素朴 DID の符号の罠、第一段階 F なしの弱 IV、staggered なタイミング下での TWFE バイアス、RDD のトレンド交絡、処置後のバッドコントロール、プールされた平均が隠す異質効果（CATE）、平均のみでは見逃す分位点効果、ローカルショックに交絡されたシフトシェア（Bartik）IV、媒介変数を統制して直接効果の符号が反転する罠、参照グループに依存する Oaxaca 分解、kink での超過質量を素朴密度が隠す bunching、内生的な価格を操作変数で扱わずに推定した需要システムと係数をそのまま弾力性として報告する誤り（構造推定） | [`benchmark/`](benchmark/) · 18 タスク |
-| **評価ハーネス** | 文章レベルの失敗: 弱 IV の根拠なき安心、staggered-DID での TWFE 誤用、捏造引用、安全でない `curl \| bash` セットアップ、多重検定の濫用、AER 準拠のギャップ | [`eval-harness/`](eval-harness/) · 41 シナリオ / 210 ルーブリック項目 |
+| **数値ベンチマーク** | 実データから再計算された真値と一致しない報告数字 —— 素朴 DID の符号の罠、第一段階 F なしの弱 IV、staggered なタイミング下での TWFE バイアス、RDD のトレンド交絡、処置後のバッドコントロール、プールされた平均が隠す異質効果（CATE）、平均のみでは見逃す分位点効果、ローカルショックに交絡されたシフトシェア（Bartik）IV、媒介変数を統制して直接効果の符号が反転する罠、参照グループに依存する Oaxaca 分解、kink での超過質量を素朴密度が隠す bunching、内生的な価格を操作変数で扱わずに推定した需要システムと係数をそのまま弾力性として報告する誤り（構造推定）、処置ユニットを部分的に波及を受けた隣人と比較する誤り（干渉/スピルオーバー） | [`benchmark/`](benchmark/) · 19 タスク |
+| **評価ハーネス** | 文章レベルの失敗: 弱 IV の根拠なき安心、staggered-DID での TWFE 誤用、捏造引用、安全でない `curl \| bash` セットアップ、多重検定の濫用、AER 準拠のギャップ | [`eval-harness/`](eval-harness/) · 42 シナリオ / 217 ルーブリック項目 |
 | **セキュリティ監査** | pipe-to-shell、リバースシェル、認証情報の流出、13 のリスクカテゴリにわたるプロンプトインジェクション —— 6 フェーズ、40+ フックスクリプトを手作業でレビュー | [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md) |
 | **来歴とライセンス** | 取り込まれていないソース、ライセンスリスク、1,096 個すべてのカタログ化スキルにわたる衛生のドリフト | [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md) · [`docs/SKILL_HYGIENE.md`](docs/SKILL_HYGIENE.md) |
 | **CI と互換性** | カタログの鮮度、ローカルリンク切れ、GitHub Actions ポリシー、Python 3.9 **および** 3.12 の構文フロア | [`.github/workflows/`](.github/workflows/) · 7 ワークフロー |

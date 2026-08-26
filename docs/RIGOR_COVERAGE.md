@@ -31,6 +31,7 @@ A family is **covered** when it has both an eval scenario and a benchmark task, 
 | Decomposition (Oaxaca-Blinder) | 1 | `statspai-decomposition` (high) | `decomposition-recovery` | covered |
 | Bunching | 0 | `statspai-bunching` (high) | `bunching-recovery` | covered |
 | Structural estimation (demand / IO) | 6 | `statspai-structural-demand` (high) | `structural-demand-recovery` | covered |
+| Interference / spillovers (SUTVA) | 0 | `statspai-spillovers-sutva` (high) | `spillover-recovery` | covered |
 | Bayesian methods | 13 | `baygent-bayesian-diagnostics` (high) | `bayesian-recovery` | covered |
 | Survival / duration | 3 | `statspai-survival-assumptions` (high) | `survival-recovery` | covered |
 
@@ -39,6 +40,7 @@ Notes:
 - **Difference-in-differences (2x2)** — 2x2 base case; the parallel-trends/pre-trends check lives under Event study, and staggered identification under Staggered DiD.
 - **Decomposition (Oaxaca-Blinder)** — Estimators (oaxaca, kitagawa_decompose, dfl_decompose, gelbach) ship in the StatsPAI runtime, but almost no vendored skill *description* advertises the family, so the tagged-skill count understates it; the eval scenario and benchmark task still gate the method.
 - **Bunching** — Bunching/notch estimators (bunching, general_bunching, notch, kink_unified) ship in the StatsPAI runtime, but no vendored skill *description* names the family, so the tagged-skill count reads 0; the eval scenario and benchmark task still gate the method.
+- **Interference / spillovers (SUTVA)** — SUTVA is the assumption most often stated and least often tested, so the tagged-skill count reads 0: almost no vendored skill description advertises spillovers or interference by name. The eval scenario and benchmark task gate the method regardless — that gap between how often the assumption is invoked and how often it is checked is the point.
 
 ## Open gaps (skills exist, rigor check missing)
 
@@ -78,4 +80,4 @@ Non-method checks that gate the rest of the workflow (writing, citations, reprod
 
 ---
 
-_41 eval scenarios and 18 benchmark tasks across 18 method families; 17 families fully covered, 0 open gaps. Regenerate with `make catalog`._
+_42 eval scenarios and 19 benchmark tasks across 19 method families; 18 families fully covered, 0 open gaps. Regenerate with `make catalog`._

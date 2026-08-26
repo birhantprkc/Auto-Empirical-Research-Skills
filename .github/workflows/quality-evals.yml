@@ -38,8 +38,8 @@ jobs:
         run: >-
           python3 eval-harness/run_evals.py
           --selftest
-          --min-scenarios 28
-          --min-auto-checks 130
+          --min-scenarios 30
+          --min-auto-checks 140
           --min-fixtures 9
           --expect-categories causal-identification,reproducibility,citation-hygiene,runtime-safety,research-integrity,writing-compliance,writing-style
 

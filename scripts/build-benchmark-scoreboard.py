@@ -117,6 +117,15 @@ NAIVE_BUILDERS = {
         "naive_elasticity": r["naive_elasticity"],
         "mean_marginal_cost": r["naive_marginal_cost"],
         "naive_marginal_cost": r["naive_marginal_cost"]},
+    # Assumes SUTVA: the untreated next door are treated as clean controls, so
+    # every estimand collapses onto the within-cluster contrast and the
+    # spillover is reported as zero.
+    "spillover-recovery": lambda r: {
+        "direct_effect": r["direct_effect"],
+        "spillover_effect": 0.0,
+        "naive_spillover": 0.0,
+        "total_effect_on_treated": r["direct_effect"],
+        "overall_effect": r["direct_effect"]},
 }
 
 NAIVE_MOVE = {
@@ -138,6 +147,7 @@ NAIVE_MOVE = {
     "decomposition-recovery": "reads the entire gap as the unexplained component",
     "bunching-recovery": "quotes the unmodified baseline at every support point - no kink recognized",
     "structural-demand-recovery": "regresses shares on price with no instrument; quotes the coefficient as the elasticity",
+    "spillover-recovery": "compares treated to their untreated neighbours and calls it the program effect; spillover assumed zero",
 }
 
 

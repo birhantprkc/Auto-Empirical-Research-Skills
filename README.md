@@ -56,8 +56,8 @@
 
 | Rigor lane | Count | Where |
 |---|---|---|
-| Numeric **benchmark tasks** — gold values recomputed from real data each run | **18** | [`benchmark/`](benchmark/) |
-| Behavioral **eval scenarios / rubric items** | **41 / 210** | [`eval-harness/`](eval-harness/) |
+| Numeric **benchmark tasks** — gold values recomputed from real data each run | **19** | [`benchmark/`](benchmark/) |
+| Behavioral **eval scenarios / rubric items** | **42 / 217** | [`eval-harness/`](eval-harness/) |
 | 其中**已证明能区分对错**的场景（pass/fail 双 fixture 自检） | **9**（全部 6 个 critical 场景在内） | [`eval-harness/fixtures/`](eval-harness/fixtures/) |
 
 > Full trust overview: [`docs/TRUST.md`](docs/TRUST.md) · [`docs/RIGOR_COVERAGE.md`](docs/RIGOR_COVERAGE.md)

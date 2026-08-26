@@ -27,6 +27,7 @@
         "panel-fe-recovery",
         "qte-recovery",
         "rdd-recovery",
+        "spillover-recovery",
         "structural-demand-recovery",
         "survival-recovery",
         "synthetic-control-recovery"
@@ -258,6 +259,21 @@
       "type": "number"
     },
     "ols_alpha": {
+      "type": "number"
+    },
+    "direct_effect": {
+      "type": "number"
+    },
+    "naive_spillover": {
+      "type": "number"
+    },
+    "overall_effect": {
+      "type": "number"
+    },
+    "spillover_effect": {
+      "type": "number"
+    },
+    "total_effect_on_treated": {
       "type": "number"
     }
   },

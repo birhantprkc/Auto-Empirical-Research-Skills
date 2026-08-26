@@ -48,6 +48,7 @@ import mediation  # noqa: E402
 import oaxaca  # noqa: E402
 import bunching  # noqa: E402
 import structural  # noqa: E402
+import spillover  # noqa: E402
 
 TASKS_DIR = Path(__file__).resolve().parent / "tasks"
 CANDIDATES_DIR = Path(__file__).resolve().parent / "candidates"
@@ -59,6 +60,7 @@ SUPPORTED_TASK_IDS = {
     "bunching-recovery",
     "decomposition-recovery",
     "structural-demand-recovery",
+    "spillover-recovery",
     "bayesian-recovery",
     "card-iv-recovery",
     "cate-recovery",
@@ -163,6 +165,10 @@ CANDIDATE_NUMERIC_FIELDS = {
         "iv_alpha", "ols_alpha", "first_stage_F",
         "mean_own_elasticity", "naive_elasticity",
         "mean_marginal_cost", "naive_marginal_cost",
+    ),
+    "spillover-recovery": (
+        "direct_effect", "spillover_effect", "naive_spillover",
+        "total_effect_on_treated", "overall_effect",
     ),
 }
 CANDIDATE_NUMERIC_MAP_FIELDS = {
@@ -573,6 +579,23 @@ def compute_truth(task: dict) -> dict:
             "naive_elasticity": structural.naive_elasticity(rows),
             "mean_marginal_cost": structural.mean_marginal_cost(rows, estimated_alpha),
             "naive_marginal_cost": structural.naive_marginal_cost(rows),
+        }
+    if task["id"] == "spillover-recovery":
+        data = ROOT / task["data"]
+        rows = spillover.load(data)
+        # Truth comes from the y0 column (each unit's outcome with no treatment
+        # anywhere in its cluster), which no estimator above reads.
+        return {
+            "n": len(rows),
+            "true_direct": spillover.true_direct_effect(rows),
+            "true_spillover": spillover.true_spillover_effect(rows),
+            "true_total_on_treated": spillover.true_total_effect_on_treated(rows),
+            "true_overall": spillover.true_overall_effect(rows),
+            "direct_effect": spillover.direct_effect(rows),
+            "spillover_effect": spillover.spillover_effect(rows),
+            "naive_spillover": spillover.naive_spillover(rows),
+            "total_effect_on_treated": spillover.total_effect_on_treated(rows),
+            "overall_effect": spillover.overall_effect(rows),
         }
     raise ValueError(f"unknown task {task['id']}")
 

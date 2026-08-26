@@ -49,6 +49,7 @@ catalog:
 	python3 scripts/build-release-notes.py --html
 	python3 scripts/build-benchmark-scoreboard.py
 	python3 scripts/build-external-scoreboard.py
+	python3 scripts/quickstart.py --markdown >/dev/null
 
 # Catalog/provenance/audit/eval freshness + repo link & frontmatter validation.
 validate:
@@ -73,6 +74,7 @@ validate:
 	python3 scripts/build-release-notes.py --check --html
 	python3 scripts/build-benchmark-scoreboard.py --check
 	python3 scripts/build-external-scoreboard.py --check
+	python3 scripts/quickstart.py --check >/dev/null && echo 'docs/QUICKSTART_REPORT.md is current.'
 
 paper-workflow-check:
 	@if [ ! -f skills/69-Paper-WorkFlow/validate_skill.py ]; then \
@@ -104,7 +106,7 @@ evals:
 # Distinct from `make evals` (the declarative flagship-evals prompt matrix).
 eval-harness:
 	python3 eval-harness/run_evals.py \
-		--min-scenarios 28 --min-auto-checks 130 --min-fixtures 9 --selftest \
+		--min-scenarios 30 --min-auto-checks 140 --min-fixtures 9 --selftest \
 		--expect-categories causal-identification,reproducibility,citation-hygiene,runtime-safety,research-integrity,writing-compliance,writing-style
 
 # Grade fixture candidates as a smoke test. The fixture set intentionally

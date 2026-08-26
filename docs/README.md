@@ -18,7 +18,7 @@ and `make validate` will flag the staleness either way.
 | `BENCHMARK_SCOREBOARD.md` | `scripts/build-benchmark-scoreboard.py` | `make catalog` |
 | `EXTERNAL_SCOREBOARD.md` | `scripts/build-external-scoreboard.py` | `make catalog` |
 | `LINK_TRIAGE.md` | `scripts/build-link-triage.py` | on link-check failure |
-| `QUICKSTART_REPORT.md` | `scripts/quickstart.py --markdown` | manual |
+| `QUICKSTART_REPORT.md` | `scripts/quickstart.py --markdown` | `make catalog` |
 
 ## Hand-maintained entry points
 
