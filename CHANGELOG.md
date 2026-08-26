@@ -148,6 +148,16 @@ This is the project's narrative changelog. `README.md` keeps only a short
   `eval`/`exec`ed, and a blob that genuinely decodes. Both edges of each are
   pinned by tests, including flag-order variants (`rm -fr /`, `rm -r -f /`,
   `rm --recursive --force /`) that the first version missed.
+- **The scan reads the tracked tree, not the working tree.** The first version
+  walked the directory, which made the record a function of whoever ran it: a
+  stray `.DS_Store`, a gitignored helper inside the submodule and a log left by
+  an earlier run were enough to shift the file counts, so it passed locally and
+  failed in CI with "catalog/security-scan.json is stale" — pointing at a
+  regeneration command that would only have moved the staleness to the other
+  machine. It now lists files with `git ls-files --recurse-submodules`, which is
+  what a freshness check needs: the record is a function of the commit. A
+  collection that contributes no tracked files (an un-initialized submodule)
+  fails loudly instead of quietly reporting coverage it does not have.
 - The scope caveat is unchanged and deliberately repeated in the script, the
   record and the report: this is a pattern scan, strictly weaker than the
   baseline's multi-agent content read. A green gate means no known-bad pattern

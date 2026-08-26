@@ -202,3 +202,56 @@ class TestMakefileWiring(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestReproducibility(unittest.TestCase):
+    """The record must be a function of the commit, not of the working tree.
+
+    The first version walked the directory tree, so a stray `.DS_Store`, a
+    gitignored helper inside the submodule, or a log left by a previous run all
+    changed the file counts. It passed locally and failed in CI with
+    "catalog/security-scan.json is stale" — a message that pointed at a
+    regeneration command which would only move the staleness to the other
+    machine.
+    """
+
+    def test_the_scan_reads_git_tracked_files(self):
+        source = (ROOT / "scripts" / "scan-collections.py").read_text(encoding="utf-8")
+        self.assertIn("git", source)
+        self.assertIn("ls-files", source)
+        self.assertIn("--recurse-submodules", source)
+        self.assertNotIn(
+            'rglob("*")',
+            source,
+            "walking the tree makes the record machine-dependent",
+        )
+
+    def test_tracked_listing_excludes_untracked_and_ignored_paths(self):
+        tracked = scan.tracked_files()
+        self.assertTrue(tracked)
+        self.assertTrue(all(path.startswith("skills/") for path in tracked))
+        # .DS_Store and __pycache__ are gitignored; neither may appear.
+        self.assertFalse([p for p in tracked if p.endswith(".DS_Store")])
+        self.assertFalse([p for p in tracked if "__pycache__" in p])
+
+    def test_the_submodule_contributes_files(self):
+        # If it does not, the record claims coverage it does not have.
+        tracked = scan.tracked_files()
+        submodule = [p for p in tracked if p.startswith("skills/69-Paper-WorkFlow/")]
+        self.assertGreater(
+            len(submodule),
+            50,
+            "the Paper-WorkFlow submodule looks un-initialized",
+        )
+
+    def test_two_consecutive_scans_agree(self):
+        first, _ = scan.run_scan()
+        second, _ = scan.run_scan()
+        self.assertEqual(first["collections"], second["collections"])
+
+    def test_no_collection_is_silently_empty(self):
+        record = json.loads(RECORD.read_text(encoding="utf-8"))
+        empty = [
+            name for name, stats in record["collections"].items() if stats["files_seen"] == 0
+        ]
+        self.assertEqual(empty, [], "these collections were never actually scanned")

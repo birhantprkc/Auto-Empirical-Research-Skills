@@ -39,6 +39,7 @@ import base64
 import binascii
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -215,6 +216,38 @@ POST_FILTERS = {
 }
 
 
+class ScanError(RuntimeError):
+    """The scan cannot be made reproducible in this checkout."""
+
+
+def tracked_files() -> set[str]:
+    """Every git-tracked path under skills/, submodules included.
+
+    The scan reads the *tracked* tree, not the working tree, and the reason is
+    the freshness check: `--check` compares a fresh scan against the committed
+    record, so the scan has to be a function of the commit. Walking the
+    directory made it a function of whoever happened to run it — a stray
+    .DS_Store, a gitignored helper inside the submodule, or a log written by a
+    previous run all changed the file counts, which is exactly how this first
+    passed locally and failed in CI.
+    """
+    try:
+        proc = subprocess.run(
+            ["git", "ls-files", "--recurse-submodules", "-z", "--", "skills"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+    except OSError as exc:  # pragma: no cover - git missing
+        raise ScanError(f"git is required for a reproducible scan: {exc}") from exc
+    if proc.returncode != 0:
+        raise ScanError(
+            "git ls-files failed, so the scan cannot be made reproducible:\n"
+            + proc.stderr.strip()
+        )
+    return {path for path in proc.stdout.split("\0") if path}
+
+
 def is_scannable(path: Path) -> bool:
     if path.suffix.lower() in SKIP_SUFFIXES:
         return False
@@ -268,22 +301,24 @@ def collection_dirs() -> list[Path]:
     )
 
 
-def scan_collection(directory: Path) -> dict:
+def scan_collection(directory: Path, tracked: set[str] | None = None) -> dict:
+    if tracked is None:
+        tracked = tracked_files()
+    prefix = directory.relative_to(ROOT).as_posix() + "/"
     files_seen = 0
     files_scanned = 0
     findings: list[Finding] = []
-    for path in sorted(directory.rglob("*")):
+    for rel in sorted(path for path in tracked if path.startswith(prefix)):
+        path = ROOT / rel
         if not path.is_file():
-            continue
-        if any(part in SKIP_DIRS for part in path.relative_to(directory).parts):
+            # Tracked but absent: an un-initialized submodule. Reported by the
+            # per-collection counts rather than silently treated as scanned.
             continue
         files_seen += 1
         if not is_scannable(path):
             continue
-        rel = path.relative_to(ROOT).as_posix()
-        found = scan_file(path, rel)
+        findings.extend(scan_file(path, rel))
         files_scanned += 1
-        findings.extend(found)
     return {
         "collection": directory.name,
         "files_seen": files_seen,
@@ -329,9 +364,10 @@ def run_scan() -> tuple[dict, list[Finding]]:
     triaged = record.get("triaged", {})
     collections: dict[str, dict] = {}
     untriaged: list[Finding] = []
+    tracked = tracked_files()
 
     for directory in collection_dirs():
-        result = scan_collection(directory)
+        result = scan_collection(directory, tracked)
         new_findings = [f for f in result["findings"] if finding_key(f) not in triaged]
         untriaged.extend(new_findings)
         collections[result["collection"]] = {
@@ -375,7 +411,11 @@ def main(argv: list[str] | None = None) -> int:
         if not directory.is_dir():
             print(f"no such collection: {args.collection}", file=sys.stderr)
             return 1
-        result = scan_collection(directory)
+        try:
+            result = scan_collection(directory)
+        except ScanError as exc:
+            print(str(exc), file=sys.stderr)
+            return 1
         print(
             f"{result['collection']}: {result['files_scanned']} of "
             f"{result['files_seen']} files scanned, {len(result['findings'])} finding(s)"
@@ -384,13 +424,30 @@ def main(argv: list[str] | None = None) -> int:
             print(render_untriaged(result["findings"]))
         return 0
 
-    record, untriaged = run_scan()
+    try:
+        record, untriaged = run_scan()
+    except ScanError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
     scanned = set(record["collections"])
     cataloged = set(catalog_collections())
     unscanned = sorted(cataloged - scanned)
 
+    empty = sorted(
+        name for name, stats in record["collections"].items() if stats["files_seen"] == 0
+    )
+
     if args.check:
         problems = []
+        if empty:
+            # Almost always an un-initialized submodule: the directory exists so
+            # it looks scanned, but git lists none of its files, so the record
+            # would silently claim coverage it does not have.
+            problems.append(
+                "these collections contributed no tracked files, so nothing was "
+                "actually scanned: " + ", ".join(empty)
+                + "\n  If one is a submodule, run: git submodule update --init --recursive"
+            )
         if unscanned:
             problems.append(
                 "collections in the catalog with no scan record: " + ", ".join(unscanned)
