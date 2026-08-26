@@ -352,6 +352,7 @@ def cmd_submit(args: argparse.Namespace) -> int:
     submission = {
         "schema": SUBMISSION_SCHEMA,
         "agent": args.agent,
+        "origin": args.origin,
         "agent_url": args.url or "",
         "agent_version": args.agent_version or "",
         "notes": args.notes or "",
@@ -438,6 +439,12 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("submit", help="package a scorecard for the public scoreboard")
     p.add_argument("directory")
     p.add_argument("--agent", required=True, help="name of the agent or pipeline being scored")
+    p.add_argument(
+        "--origin",
+        default="external",
+        choices=("external", "first-party", "example"),
+        help="how the board should present the entry (default: external — only these are ranked)",
+    )
     p.add_argument("--url", help="link to the agent's repo or docs")
     p.add_argument("--agent-version", help="version of the agent that produced these results")
     p.add_argument("--notes", help="one line on how the run was produced")

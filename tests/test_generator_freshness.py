@@ -29,6 +29,7 @@ CHECKABLE = [
     [sys.executable, "scripts/build-coverage-map.py", "--check"],
     [sys.executable, "scripts/build-release-notes.py", "--check"],
     [sys.executable, "scripts/build-benchmark-scoreboard.py", "--check"],
+    [sys.executable, "scripts/build-external-scoreboard.py", "--check"],
     [sys.executable, "scripts/build-evals.py", "--check"],
     [sys.executable, "scripts/check-mirror-sync.py"],
     [sys.executable, "scripts/check-catalog-coverage.py"],
@@ -84,6 +85,7 @@ class TestGeneratorFreshness(unittest.TestCase):
             "build-coverage-map.py --check",
             "build-release-notes.py --check",
             "build-benchmark-scoreboard.py --check",
+            "build-external-scoreboard.py --check",
         ):
             self.assertIn(script, makefile, msg=f"{script} not wired into Makefile")
 

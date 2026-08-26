@@ -48,6 +48,7 @@ catalog:
 	python3 scripts/build-release-notes.py
 	python3 scripts/build-release-notes.py --html
 	python3 scripts/build-benchmark-scoreboard.py
+	python3 scripts/build-external-scoreboard.py
 
 # Catalog/provenance/audit/eval freshness + repo link & frontmatter validation.
 validate:
@@ -70,6 +71,7 @@ validate:
 	python3 scripts/build-release-notes.py --check
 	python3 scripts/build-release-notes.py --check --html
 	python3 scripts/build-benchmark-scoreboard.py --check
+	python3 scripts/build-external-scoreboard.py --check
 
 paper-workflow-check:
 	@if [ ! -f skills/69-Paper-WorkFlow/validate_skill.py ]; then \
