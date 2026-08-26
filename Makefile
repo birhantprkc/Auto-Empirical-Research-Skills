@@ -1,4 +1,23 @@
-.PHONY: catalog validate paper-workflow-check check check-fast check-full quickstart audit hygiene clean external-links external-links-dry tools-links tools-links-dry evals eval-harness eval-smoke benchmark-lint benchmark benchmark-refresh test python-compat
+.PHONY: catalog validate paper-workflow-check check check-fast check-full quickstart audit hygiene clean external-links external-links-dry tools-links tools-links-dry evals eval-harness eval-smoke benchmark-lint benchmark benchmark-refresh test python-compat setup doctor
+
+# One-command local bootstrap. Almost every gate in this repo is stdlib-only,
+# but `make validate` runs the Paper-WorkFlow demo gate, which really executes
+# did_demo.ipynb and therefore needs the pinned scientific stack. Without it the
+# gate reports "RIGOR.md is STALE" — a message that points at a regeneration
+# command which cannot help. Build the venv once and the whole gate goes green.
+#
+#   make setup && source .venv/bin/activate && make check
+setup:
+	python3 -m venv .venv
+	.venv/bin/python -m pip install --upgrade pip
+	.venv/bin/python -m pip install -r requirements.txt
+	git submodule update --init --recursive
+	@echo
+	@echo "Bootstrap done. Next:  source .venv/bin/activate && make check"
+
+# Answer "why did the gate fail?" in one screen, with the fix for each row.
+doctor:
+	python3 scripts/doctor.py
 
 # Newcomers: five-minute tour of what the repo is, what the catalog router
 # routes to, and which entry point to open. Stdlib only; does not mutate the
@@ -57,6 +76,17 @@ paper-workflow-check:
 		echo "skills/69-Paper-WorkFlow is not checked out; run git submodule update --init --recursive" >&2; \
 		exit 1; \
 	fi
+	@python3 -c "import numpy, pandas, matplotlib, statsmodels" 2>/dev/null || { \
+		echo "" >&2; \
+		echo "This gate executes skills/69-Paper-WorkFlow/did_demo.ipynb for real, so it" >&2; \
+		echo "needs the pinned scientific stack. Without it the checker reports RIGOR.md" >&2; \
+		echo "as STALE, which is misleading. Bootstrap it with:" >&2; \
+		echo "" >&2; \
+		echo "    make setup && source .venv/bin/activate" >&2; \
+		echo "" >&2; \
+		echo "Run 'make doctor' for a full environment report." >&2; \
+		exit 1; \
+	}
 	cd skills/69-Paper-WorkFlow && python3 validate_skill.py
 
 # Declarative flagship eval prompt matrix (docs/EVALS.md).

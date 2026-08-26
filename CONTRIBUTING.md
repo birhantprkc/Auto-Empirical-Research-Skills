@@ -4,7 +4,23 @@ We welcome contributions! Here's how you can help.
 
 ## Development prerequisites
 
-Before opening a PR, run:
+One command bootstraps a clean checkout:
+
+```bash
+make setup                      # venv + pinned scientific stack + submodules
+source .venv/bin/activate
+make doctor                     # confirms the environment can run the gates
+```
+
+Most of the repo is deliberately stdlib-only, so `make test`, the eval harness
+and the numeric benchmark all run on a bare interpreter. The one exception is
+`make validate`, which runs the Paper-WorkFlow demo gate — that gate really
+executes `did_demo.ipynb`, so it needs the pinned scientific stack in
+[`requirements.txt`](requirements.txt). Skip the bootstrap and the gate reports
+`RIGOR.md is STALE`, which points at a regeneration command that cannot help;
+`make doctor` names the real cause instead.
+
+Also install the hooks:
 
 ```bash
 pip install pre-commit

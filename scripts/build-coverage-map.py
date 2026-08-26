@@ -47,6 +47,7 @@ METHOD_ORDER = [
     "shift-share",
     "mediation",
     "decomposition",
+    "bunching",
     "bayesian",
     "survival",
 ]
@@ -88,6 +89,7 @@ SCENARIO_METHOD = {
     "aer-shiftshare-identification": "shift-share",
     "statspai-mediation-assumptions": "mediation",
     "statspai-decomposition": "decomposition",
+    "statspai-bunching": "bunching",
     "baygent-bayesian-diagnostics": "bayesian",
     "statspai-survival-assumptions": "survival",
     "causalpy-placebo-inference": "synthetic-control",
@@ -131,7 +133,8 @@ TASK_METHOD = {
 # Short notes where a family is defended indirectly by a sibling family.
 RELATED_NOTE = {
     "did": "2x2 base case; the parallel-trends/pre-trends check lives under Event study, and staggered identification under Staggered DiD.",
-    "decomposition": "Estimators (oaxaca, kitagawa_decompose, dfl_decompose, gelbach) ship in the StatsPAI runtime, but no vendored skill *description* advertises the family yet, so the tagged-skill count reads 0; the eval scenario and benchmark task still gate the method.",
+    "decomposition": "Estimators (oaxaca, kitagawa_decompose, dfl_decompose, gelbach) ship in the StatsPAI runtime, but almost no vendored skill *description* advertises the family, so the tagged-skill count understates it; the eval scenario and benchmark task still gate the method.",
+    "bunching": "Bunching/notch estimators (bunching, general_bunching, notch, kink_unified) ship in the StatsPAI runtime, but no vendored skill *description* names the family, so the tagged-skill count reads 0; the eval scenario and benchmark task still gate the method.",
 }
 
 

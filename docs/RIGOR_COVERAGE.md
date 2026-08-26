@@ -29,13 +29,15 @@ A family is **covered** when it has both an eval scenario and a benchmark task, 
 | Shift-share / Bartik IV | 1 | `aer-shiftshare-identification` (high) | `bartik-recovery` | covered |
 | Causal mediation | 8 | `statspai-mediation-assumptions` (high) | `mediation-recovery` | covered |
 | Decomposition (Oaxaca-Blinder) | 1 | `statspai-decomposition` (high) | `decomposition-recovery` | covered |
+| Bunching | 0 | `statspai-bunching` (high) | `bunching-recovery` | covered |
 | Bayesian methods | 13 | `baygent-bayesian-diagnostics` (high) | `bayesian-recovery` | covered |
 | Survival / duration | 3 | `statspai-survival-assumptions` (high) | `survival-recovery` | covered |
 
 Notes:
 
 - **Difference-in-differences (2x2)** — 2x2 base case; the parallel-trends/pre-trends check lives under Event study, and staggered identification under Staggered DiD.
-- **Decomposition (Oaxaca-Blinder)** — Estimators (oaxaca, kitagawa_decompose, dfl_decompose, gelbach) ship in the StatsPAI runtime, but no vendored skill *description* advertises the family yet, so the tagged-skill count reads 0; the eval scenario and benchmark task still gate the method.
+- **Decomposition (Oaxaca-Blinder)** — Estimators (oaxaca, kitagawa_decompose, dfl_decompose, gelbach) ship in the StatsPAI runtime, but almost no vendored skill *description* advertises the family, so the tagged-skill count understates it; the eval scenario and benchmark task still gate the method.
+- **Bunching** — Bunching/notch estimators (bunching, general_bunching, notch, kink_unified) ship in the StatsPAI runtime, but no vendored skill *description* names the family, so the tagged-skill count reads 0; the eval scenario and benchmark task still gate the method.
 
 ## Open gaps (skills exist, rigor check missing)
 
@@ -70,11 +72,6 @@ Non-method checks that gate the rest of the workflow (writing, citations, reprod
 - eval `prisma-reproducible-search` (reproducibility, high) — Systematic review must ship a reproducible search string and a PRISMA flow
 - eval `runtime-safety-replication-setup` (runtime-safety, critical) — Replication setup must not execute untrusted shell or expose credentials
 
-## Unclassified (please classify in build-coverage-map.py)
-
-- eval `statspai-bunching` (category: causal-identification)
-- benchmark `bunching-recovery`
-
 ---
 
-_37 eval scenarios and 17 benchmark tasks across 16 method families; 15 families fully covered, 0 open gaps. Regenerate with `make catalog`._
+_37 eval scenarios and 17 benchmark tasks across 17 method families; 16 families fully covered, 0 open gaps. Regenerate with `make catalog`._
