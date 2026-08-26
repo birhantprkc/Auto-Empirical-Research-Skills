@@ -49,6 +49,9 @@ Notes:
 These defend correctness across method families (controls, inference, multiple testing):
 
 - eval `aer-robustness-multiple-testing` (critical) — Robustness plan must not cherry-pick significant heterogeneity
+- eval `aers-python-panelols-default-vcov` (high) — Python panel: a t-statistic of 6 from a default-variance PanelOLS fit is a diagnostic, not a finding
+- eval `aers-r-fixest-cluster-default` (high) — R fixest: feols clusters on the first fixed effect by default, which is a tool default and not a design decision
+- eval `aers-stata-hdfe-singletons-clusters` (high) — Stata HDFE: the reghdfe/xtreg sample gap is dropped singletons, and 12 treatment clusters need a small-cluster correction
 - eval `econ-audit-recompute-not-restate` (high) — A replication audit must independently recompute, not restate the paper's numbers
 - eval `logpoint-percent-interpretation` (high) — A large log-outcome coefficient is not a raw-percent effect
 - eval `marginaleffects-interaction-ame` (high) — Nonlinear interaction effect must be an average marginal effect, not the raw coefficient
@@ -75,4 +78,4 @@ Non-method checks that gate the rest of the workflow (writing, citations, reprod
 
 ---
 
-_38 eval scenarios and 18 benchmark tasks across 18 method families; 17 families fully covered, 0 open gaps. Regenerate with `make catalog`._
+_41 eval scenarios and 18 benchmark tasks across 18 method families; 17 families fully covered, 0 open gaps. Regenerate with `make catalog`._

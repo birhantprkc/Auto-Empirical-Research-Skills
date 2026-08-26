@@ -99,6 +99,12 @@ SCENARIO_METHOD = {
     "statspai-bad-controls": "*",
     "statspai-clustered-inference": "*",
     "aer-robustness-multiple-testing": "*",
+    # Ecosystem-level inference traps: which variance estimator a tool reaches
+    # for by default. Method-agnostic — the same wrong default corrupts a DiD,
+    # an event study or a plain panel regression identically.
+    "aers-stata-hdfe-singletons-clusters": "*",
+    "aers-r-fixest-cluster-default": "*",
+    "aers-python-panelols-default-vcov": "*",
     "econ-audit-recompute-not-restate": "*",
     "logpoint-percent-interpretation": "*",
     "marginaleffects-interaction-ame": "*",

@@ -72,7 +72,7 @@
 | 严谨性通道 Rigor lane | 数量 Count | 位置 Where |
 |---|---|---|
 | 数值 **benchmark 任务** —— 每次运行从真实数据重算金标准 | **18** | [`benchmark/`](benchmark/) |
-| 行为 **eval 场景 / 评分项** | **38 / 191** | [`eval-harness/`](eval-harness/) |
+| 行为 **eval 场景 / 评分项** | **41 / 210** | [`eval-harness/`](eval-harness/) |
 
 > 完整信任面：[`docs/TRUST.md`](docs/TRUST.md) · [`docs/RIGOR_COVERAGE.md`](docs/RIGOR_COVERAGE.md)
 

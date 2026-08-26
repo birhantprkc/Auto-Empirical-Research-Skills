@@ -299,7 +299,7 @@ AERS 同時是兩樣東西：(1) 一小撮**自研旗艦 skill**，能跑通完�
 | 自有 **合集（collections）** | **76** | [`catalog/skills.json`](catalog/skills.json) · [全部 76 個一覽 ↑](#全部-76-個-skill-合集一覽) |
 | **自研旗艦**全流程 skill（StatsPAI DSL + 顯式 Python/Stata/R） | **4** | [`skills/00*`](skills/) |
 | 每次執行從資料**重算 gold 值**的數值基準任務 | **18** | [`benchmark/`](benchmark/) |
-| 行為級**評測場景 / rubric 條目** | **38 / 191** | [`eval-harness/`](eval-harness/) |
+| 行為級**評測場景 / rubric 條目** | **41 / 210** | [`eval-harness/`](eval-harness/) |
 | **原始基線**安全稽核（合集 / 檔案） | **52 / 2,940+**，52/52 CLEAN | [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md) |
 | 涵蓋**更廣生態**的精選地圖 | **23,000+ skill / 119 倉庫** | 本 README · [`docs/SKILL_CATALOG.md`](docs/SKILL_CATALOG.md) |
 | **工具目錄**（`tools/`）：因果/計量庫、自動化研究 Agent、MCP 服務、因果發現、基準資料集 | **334 工具 / 6 類** | [`tools/tools.json`](tools/tools.json) · [`tools/CATALOG.md`](tools/CATALOG.md) |
@@ -398,7 +398,7 @@ make check        # 仓库校验 + 单元测试 + eval lint + 数值基准
 | 層 | 它能擋住什麼 | 在哪 |
 |---|---|---|
 | **數值基準** | 報告數字與真實資料重算真值不符 —— 樸素 DID 符號陷阱、缺第一階段 F 的弱 IV、交錯時點下的 TWFE 偏誤、RDD 趨勢混淆、後處理壞控制、被合併均值掩蓋的異質效應（CATE）、只看均值漏掉尾部的分位數效應、本地衝擊混淆的移位份額（Bartik）IV、把中介當控制變數導致直接效應翻號、依賴參照組的 Oaxaca 分解拆分、kink 處超額質量被樸素密度掩蓋的 bunching、未對內生價格做工具變數就估計需求並把係數當彈性報告（結構估計） | [`benchmark/`](benchmark/) · 18 任務 |
-| **評測套件** | 散文級失誤：弱 IV 假性安心、交錯 DID 誤用 TWFE、編造引用、不安全的 `curl \| bash` 安裝、多重檢驗濫用、AER 合規缺口 | [`eval-harness/`](eval-harness/) · 38 場景 / 191 rubric |
+| **評測套件** | 散文級失誤：弱 IV 假性安心、交錯 DID 誤用 TWFE、編造引用、不安全的 `curl \| bash` 安裝、多重檢驗濫用、AER 合規缺口 | [`eval-harness/`](eval-harness/) · 41 場景 / 210 rubric |
 | **安全稽核** | pipe-to-shell、反向 shell、憑據外洩、prompt 注入等 13 類風險 —— 六階段，40+ hook 腳本人工核查 | [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md) |
 | **來源與授權** | 未聲明來源、授權風險、1,096 個編目 skill 的衛生度漂移 | [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md) · [`docs/SKILL_HYGIENE.md`](docs/SKILL_HYGIENE.md) |
 | **CI 與相容性** | catalog 新鮮度、本機死連、GitHub Actions 政策、Python 3.9 **與** 3.12 語法基線 | [`.github/workflows/`](.github/workflows/) · 7 條 workflow |

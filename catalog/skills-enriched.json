@@ -8,9 +8,9 @@
     "body_derived_description": 0,
     "no_description": 0,
     "tagged": 560,
-    "with_eval_coverage": 18,
-    "with_eval_coverage_pct": 1.6,
-    "total_eval_scenarios": 19
+    "with_eval_coverage": 21,
+    "with_eval_coverage_pct": 1.9,
+    "total_eval_scenarios": 22
   },
   "taxonomy": {
     "language": {
@@ -166,7 +166,9 @@
       "commercial_use": "share-alike",
       "source_url": "https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills",
       "sync": "manual",
-      "eval_coverage": []
+      "eval_coverage": [
+        "aers-python-panelols-default-vcov"
+      ]
     },
     {
       "name": "Full-empirical-analysis-skill-Stata",
@@ -210,7 +212,9 @@
       "commercial_use": "share-alike",
       "source_url": "https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills",
       "sync": "manual",
-      "eval_coverage": []
+      "eval_coverage": [
+        "aers-stata-hdfe-singletons-clusters"
+      ]
     },
     {
       "name": "Full-empirical-analysis-skill-R",
@@ -253,7 +257,9 @@
       "commercial_use": "share-alike",
       "source_url": "https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills",
       "sync": "manual",
-      "eval_coverage": []
+      "eval_coverage": [
+        "aers-r-fixest-cluster-default"
+      ]
     },
     {
       "name": "academic-paper-composer",
