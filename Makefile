@@ -8,12 +8,38 @@
 #
 #   make setup && source .venv/bin/activate && make check
 setup:
+	@# Layering `python3 -m venv` over a venv built by a *different* interpreter
+	@# (uv, virtualenv, another Python) leaves a mixed tree that later dies with
+	@# "No module named encodings" — a message that names nothing useful and
+	@# appears well after the command that caused it. Refuse up front instead.
+	@if [ -d .venv ]; then \
+		have=$$(.venv/bin/python -c 'import sys; print("%d.%d" % sys.version_info[:2])' 2>/dev/null); \
+		want=$$(python3 -c 'import sys; print("%d.%d" % sys.version_info[:2])'); \
+		if [ -z "$$have" ]; then \
+			echo "" >&2; \
+			echo ".venv exists but its interpreter does not run." >&2; \
+			echo "Remove it and re-run:    rm -rf .venv && make setup" >&2; \
+			echo "" >&2; \
+			exit 1; \
+		elif [ "$$have" != "$$want" ]; then \
+			echo "" >&2; \
+			echo ".venv is Python $$have but 'python3' here is $$want." >&2; \
+			echo "Building one over the other produces a venv that fails later with" >&2; \
+			echo "'No module named encodings'. Pick one:" >&2; \
+			echo "" >&2; \
+			echo "    rm -rf .venv && make setup      # rebuild on $$want" >&2; \
+			echo "    source .venv/bin/activate       # keep $$have as-is" >&2; \
+			echo "" >&2; \
+			exit 1; \
+		fi; \
+	fi
 	python3 -m venv .venv
 	.venv/bin/python -m pip install --upgrade pip
 	.venv/bin/python -m pip install -r requirements.txt
 	git submodule update --init --recursive
 	@echo
 	@echo "Bootstrap done. Next:  source .venv/bin/activate && make check"
+	@echo "To score an agent against the benchmark:  .venv/bin/pip install -e ."
 
 # Answer "why did the gate fail?" in one screen, with the fix for each row.
 doctor:

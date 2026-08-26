@@ -121,6 +121,22 @@ class TestMakefileWiring(unittest.TestCase):
         self.assertIn("setup", phony.split())
         self.assertIn("doctor", phony.split())
 
+    def test_setup_refuses_to_layer_venvs_from_different_interpreters(self):
+        """`python3 -m venv` over a venv built by another interpreter breaks it.
+
+        The result fails with "No module named encodings" — a message that
+        names nothing useful and surfaces well after the command that caused
+        it. The target has to refuse up front rather than produce it.
+        """
+        makefile = (ROOT / "Makefile").read_text(encoding="utf-8")
+        setup = makefile.split("\nsetup:", 1)[1].split("\n\n", 1)[0]
+        self.assertIn("sys.version_info", setup, "no interpreter check")
+        self.assertIn("rm -rf .venv", setup, "no remediation offered")
+        self.assertIn("encodings", setup, "does not name the symptom it prevents")
+        # And it must not silently destroy an existing environment.
+        self.assertNotIn("--clear", setup)
+        self.assertNotIn("rm -rf .venv &&\n", setup)
+
     def test_paper_workflow_gate_preflights_the_scientific_stack(self):
         # The misleading "RIGOR.md is STALE" failure is the exact thing this
         # preflight replaces; keep the guard wired in.
