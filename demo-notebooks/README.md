@@ -25,6 +25,11 @@ files are the run evidence for the `.do` demos.
 - `card-1995-iv/` — Card (1995) returns to schooling, replicated from the
   vendored NLSYM extract with standard errors and the first stage
   (`tests/test_card1995_replication.py`).
+- `nsw-lalonde-1986/` — the NSW experimental benchmark (+$1,794) derived from
+  the randomized arms, next to the −$635 the same 185 treated men produce
+  against the PSID comparison group in `_lalonde_data.csv`. This is where the
+  literature constant in `benchmark/tasks/lalonde-recovery.toml` comes from
+  (`tests/test_nsw_replication.py` pins the two together).
 
 Both are zero-dependency scripts that **exit non-zero when a published anchor
 is missed**, so they are gates rather than illustrations. They answer a

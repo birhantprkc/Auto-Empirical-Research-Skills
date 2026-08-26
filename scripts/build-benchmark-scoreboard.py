@@ -240,8 +240,11 @@ def render(rows: list[dict]) -> str:
         "(minimum-wage DiD, scored PERFECT by the Paper-WorkFlow replication "
         "benchmark) and "
         "[`demo-notebooks/card-1995-iv/`](../demo-notebooks/card-1995-iv/) "
-        "(returns to schooling, standard errors and first stage included). Both are "
-        "zero-dependency scripts that exit non-zero when a published anchor is missed._"
+        "(returns to schooling, standard errors and first stage included). A third, "
+        "[`demo-notebooks/nsw-lalonde-1986/`](../demo-notebooks/nsw-lalonde-1986/), "
+        "derives the +$1,794 experimental benchmark that `lalonde-recovery` grades "
+        "against, so that gold is reproduced rather than transcribed. All three are "
+        "zero-dependency scripts that exit non-zero when an anchor is missed._"
     )
     out.append("")
     return "\n".join(out)

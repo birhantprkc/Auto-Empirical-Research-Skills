@@ -61,6 +61,20 @@ This is the project's narrative changelog. `README.md` keeps only a short
   warned about. And `iv_exceeds_ols` is checked on its own, because a pipeline
   can hit both point estimates and still bury the finding the paper is about.
 
+- **The NSW experimental benchmark is now derived, not cited.** The +$1,794
+  effect that `benchmark/tasks/lalonde-recovery.toml` grades every candidate
+  against was a hand-transcribed literature constant — a claim.
+  [`demo-notebooks/nsw-lalonde-1986/`](demo-notebooks/nsw-lalonde-1986/) vendors
+  the randomized NSW arms (185 treated / 260 controls, with URL, download date
+  and SHA-256 in `data/PROVENANCE.md`) and computes +$1,794.34 from them
+  directly: no model, no covariates, 185 minus 260. `tests/test_nsw_replication.py`
+  pins the task constant to that derivation, so editing one without the other
+  fails the suite. The demo also puts LaLonde's problem on one screen — the same
+  185 men give **−$635** against the PSID comparison group, sign flipped — and
+  runs the randomization check that makes the failure visible *before* the
+  outcome is consulted: pre-treatment earnings differ by $11 across the
+  randomized arms and by $3,524 across the observational ones.
+
 ### Rigor and trust
 
 - **The first-party flagships finally have behavioral coverage.** The 2026-07
