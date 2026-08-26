@@ -305,6 +305,7 @@ Numbers in this README are kept honest and disambiguated. "Vendored" means the f
 | **First-party flagship** full-pipeline skills (StatsPAI DSL + explicit Python/Stata/R) | **4** | [`skills/00*`](skills/) |
 | Numeric **benchmark tasks** with gold values recomputed from data each run | **18** | [`benchmark/`](benchmark/) |
 | Behavioral **eval scenarios / rubric items** | **41 / 210** | [`eval-harness/`](eval-harness/) |
+| …of which **proven to discriminate** (pass/fail fixture self-test) | **9** (every `critical` scenario) | [`eval-harness/fixtures/`](eval-harness/fixtures/) |
 | Security audit of the **original baseline** (collections / files) | **52 / 2,940+**, 52/52 CLEAN | [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md) |
 | Curated **map of the wider ecosystem** | **23,000+ skills / 119 repos** | this README · [`docs/SKILL_CATALOG.md`](docs/SKILL_CATALOG.md) |
 | **Tools catalog** (`tools/`): causal/econometrics libraries, autonomous research agents, MCP servers, causal discovery, benchmark datasets | **334 tools / 6 categories** | [`tools/tools.json`](tools/tools.json) · [`tools/CATALOG.md`](tools/CATALOG.md) |

@@ -298,6 +298,7 @@ AERS は同時に二つの性格を持ちます。(1) 完全な実証パイプ�
 | **ファーストパーティ旗艦**の全パイプラインスキル（StatsPAI DSL + 明示的な Python/Stata/R） | **4** | [`skills/00*`](skills/) |
 | 毎回データから gold 値を再計算する数値**ベンチマークタスク** | **18** | [`benchmark/`](benchmark/) |
 | 挙動レベルの**評価シナリオ / ルーブリック項目** | **41 / 210** | [`eval-harness/`](eval-harness/) |
+| うち**正誤を区別できると実証済み**のシナリオ（pass/fail フィクスチャ自己検査） | **9**（`critical` 全 6 件を含む） | [`eval-harness/fixtures/`](eval-harness/fixtures/) |
 | **元のベースライン**のセキュリティ監査（コレクション / ファイル） | **52 / 2,940+**、52/52 CLEAN | [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md) |
 | **広域エコシステム**の精選マップ | **23,000+ スキル / 119 リポジトリ** | 本 README · [`docs/SKILL_CATALOG.md`](docs/SKILL_CATALOG.md) |
 | **ツールカタログ**（`tools/`）: 因果/計量ライブラリ、自律研究エージェント、MCP サーバー、因果探索、ベンチマークデータセット | **334 ツール / 6 カテゴリ** | [`tools/tools.json`](tools/tools.json) · [`tools/CATALOG.md`](tools/CATALOG.md) |

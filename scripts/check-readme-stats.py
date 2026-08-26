@@ -86,6 +86,10 @@ COLLECTION_TABLE_DOCS = (
 
 BENCH_LINK_RE = re.compile(r"\]\((?:\.\./)?benchmark/\)")
 EVAL_LINK_RE = re.compile(r"\]\((?:\.\./)?eval-harness/\)")
+# The discrimination row: how many scenarios ship a pass/fail fixture pair. Keyed
+# on the fixtures link so the check stays locale-agnostic like the others.
+FIXTURE_LINK_RE = re.compile(r"\]\((?:\.\./)?eval-harness/fixtures/\)")
+FIXTURE_DIR = ROOT / "eval-harness" / "fixtures"
 COLLECTION_LINK_RE = re.compile(r"\]\((?:\.\./)?skills/([^/)#\s]+)/")
 # Comma-formatted integers on lines that cite catalog/skills.json as their
 # source are treated as claims about the catalog total. (An unrestricted
@@ -97,16 +101,20 @@ CATALOG_LINE_MARKER = "catalog/skills.json"
 TABLE_SEP_RE = re.compile(r"^\|[\s:|-]+\|$")
 
 
-def expected_counts() -> tuple[int, int, int]:
+def expected_counts() -> tuple[int, int, int, int]:
     n_tasks = len(list(TASK_DIR.glob("*.toml")))
     n_scenarios = 0
     n_rubric = 0
-    for path in SCENARIO_DIR.glob("*.toml"):
+    n_fixtures = 0
+    for path in sorted(SCENARIO_DIR.glob("*.toml")):
         with path.open("rb") as fh:
             s = toml_compat.load(fh)
         n_scenarios += 1
         n_rubric += len(s.get("rubric", []))
-    return n_tasks, n_scenarios, n_rubric
+        directory = FIXTURE_DIR / s.get("id", path.stem)
+        if (directory / "pass.md").exists() and (directory / "fail.md").exists():
+            n_fixtures += 1
+    return n_tasks, n_scenarios, n_rubric, n_fixtures
 
 
 def catalog_facts() -> tuple[set[str], int]:
@@ -178,7 +186,9 @@ def check_source_links(path: Path, sources: dict[str, str]) -> list[str]:
     return problems
 
 
-def check_readme(path: Path, n_tasks: int, n_scenarios: int, n_rubric: int) -> list[str]:
+def check_readme(
+    path: Path, n_tasks: int, n_scenarios: int, n_rubric: int, n_fixtures: int
+) -> list[str]:
     problems: list[str] = []
     text = path.read_text(encoding="utf-8")
     rel = path.name
@@ -201,6 +211,28 @@ def check_readme(path: Path, n_tasks: int, n_scenarios: int, n_rubric: int) -> l
         elif int(m.group(1)) != n_tasks:
             problems.append(
                 f"{rel}: benchmark row says {m.group(1)} but benchmark/tasks has {n_tasks} tasks"
+            )
+
+    fixture_rows = [
+        ln
+        for ln in text.splitlines()
+        if FIXTURE_LINK_RE.search(ln) and ln.lstrip().startswith("|")
+    ]
+    if not fixture_rows:
+        problems.append(
+            f"{rel}: no stats-table row links to eval-harness/fixtures/ "
+            "(the discrimination count)"
+        )
+    for row in fixture_rows:
+        m = re.search(r"\*\*(\d+)\*\*", row)
+        if not m:
+            problems.append(
+                f"{rel}: fixtures row has no recognizable count: {row.strip()}"
+            )
+        elif int(m.group(1)) != n_fixtures:
+            problems.append(
+                f"{rel}: fixtures row says {m.group(1)} but "
+                f"{n_fixtures} scenario(s) ship a pass/fail pair"
             )
 
     if not eval_rows:
@@ -298,7 +330,7 @@ def check_landing_page(path: Path, total_skills: int) -> list[str]:
 
 
 def main() -> int:
-    n_tasks, n_scenarios, n_rubric = expected_counts()
+    n_tasks, n_scenarios, n_rubric, n_fixtures = expected_counts()
     catalog_ids, total_skills = catalog_facts()
     sources = provenance_sources()
     problems: list[str] = []
@@ -307,7 +339,7 @@ def main() -> int:
         if not path.exists():
             problems.append(f"{name}: file missing")
             continue
-        problems.extend(check_readme(path, n_tasks, n_scenarios, n_rubric))
+        problems.extend(check_readme(path, n_tasks, n_scenarios, n_rubric, n_fixtures))
     for name in COLLECTION_TABLE_DOCS:
         path = ROOT / name
         if path.exists():
@@ -320,14 +352,16 @@ def main() -> int:
             print(f"  {p}", file=sys.stderr)
         print(
             f"Reality: {n_tasks} benchmark tasks, {n_scenarios} / {n_rubric} eval "
-            f"scenarios/rubric items, {len(catalog_ids)} collections, "
+            f"scenarios/rubric items ({n_fixtures} with discrimination fixtures), "
+            f"{len(catalog_ids)} collections, "
             f"{total_skills:,} skills (catalog/skills.json).",
             file=sys.stderr,
         )
         return 1
     print(
         f"README stats OK across {len(READMES)} documents: "
-        f"{n_tasks} benchmark tasks, {n_scenarios} / {n_rubric} eval scenarios/rubric items, "
+        f"{n_tasks} benchmark tasks, {n_scenarios} / {n_rubric} eval scenarios/rubric items "
+        f"({n_fixtures} proven to discriminate), "
         f"{len(catalog_ids)} collections / {total_skills:,} skills linked in "
         f"{len(COLLECTION_TABLE_DOCS)} collection tables, "
         f"{len(sources)} upstream source links matching catalog/provenance.json, "

@@ -277,6 +277,7 @@ AERS 同时是两样东西：(1) 一小撮**自研旗舰 skill**，能跑通完�
 | **自研旗舰**全流程 skill（StatsPAI DSL + 显式 Python/Stata/R） | **4** | [`skills/00*`](../skills/) |
 | 每次运行从数据**重算 gold 值**的数值基准任务 | **18** | [`benchmark/`](../benchmark/) |
 | 行为级**评测场景 / rubric 条目** | **41 / 210** | [`eval-harness/`](../eval-harness/) |
+| 其中**已证明能区分对错**的场景（pass/fail 双 fixture 自检） | **9**（含全部 6 个 critical 场景） | [`eval-harness/fixtures/`](../eval-harness/fixtures/) |
 | **原始基线**安全审计（合集 / 文件） | **52 / 2,940+**，52/52 CLEAN | [`SECURITY-SCAN-REPORT.md`](../SECURITY-SCAN-REPORT.md) |
 | 覆盖**更广生态**的精选地图 | **23,000+ skill / 119 仓库** | 本 README · [`SKILL_CATALOG.md`](SKILL_CATALOG.md) |
 | **工具目录**（`tools/`）：因果/计量库、自动化研究 Agent、MCP 服务、因果发现、基准数据集 | **334 工具 / 6 类** | [`tools/tools.json`](../tools/tools.json) · [`tools/CATALOG.md`](../tools/CATALOG.md) |

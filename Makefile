@@ -97,10 +97,14 @@ evals:
 	python3 scripts/build-evals.py
 
 # Lint executable eval-harness scenarios (CI gate; needs no candidate outputs).
+# --selftest additionally runs each scenario's rubric against a correct and a
+# plausibly-wrong fixture answer and requires the verdicts to differ, so the
+# scenario count measures scenarios that discriminate rather than scenarios
+# that exist. Every `critical` scenario must ship a fixture pair.
 # Distinct from `make evals` (the declarative flagship-evals prompt matrix).
 eval-harness:
 	python3 eval-harness/run_evals.py \
-		--min-scenarios 28 --min-auto-checks 130 \
+		--min-scenarios 28 --min-auto-checks 130 --min-fixtures 9 --selftest \
 		--expect-categories causal-identification,reproducibility,citation-hygiene,runtime-safety,research-integrity,writing-compliance,writing-style
 
 # Grade fixture candidates as a smoke test. The fixture set intentionally

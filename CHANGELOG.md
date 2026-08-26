@@ -77,6 +77,26 @@ This is the project's narrative changelog. `README.md` keeps only a short
 
 ### Rigor and trust
 
+- **Eval scenarios now have to prove they discriminate.** "41 scenarios" is a
+  number anyone can inflate: write rubrics whose regexes match ordinary prose
+  and every scenario passes everything while testing nothing. The opposite
+  failure — a rubric so tight no correct answer satisfies it — is just as
+  invisible from reading the scenario file, and gets the check ignored instead.
+  `run_evals.py --selftest` runs each scenario's rubric against a **pass/fail
+  fixture pair** (`eval-harness/fixtures/<id>/{pass.md,fail.md}`) and requires
+  the verdicts to differ: every auto-checkable item must pass on the correct
+  answer, and at least one *required* item must fail on the plausibly-wrong one.
+  Fixtures are **mandatory for every `critical` scenario**, since leaning
+  hardest on an unproven rubric is exactly what this prevents; `make
+  eval-harness` and CI enforce a `--min-fixtures` floor that only ratchets up.
+  Seeded with 9 pairs — all six criticals plus the three flagship scenarios —
+  and the trust tables in all seven stat-bearing documents now carry the
+  discrimination count as its own linted row, because "9 proven to discriminate"
+  is a stronger claim than "41 exist" and a stronger claim that drifts is worse
+  than a weaker one that does not. The mechanism itself is tested by
+  constructing rubrics broken in each direction and requiring the self-test to
+  name the failure.
+
 - **The first-party flagships finally have behavioral coverage.** The 2026-07
   quality assessment named per-skill eval coverage as the metric worth growing;
   its sharpest instance was that the vendored StatsPAI skill carried sixteen

@@ -300,6 +300,7 @@ AERS 同時是兩樣東西：(1) 一小撮**自研旗艦 skill**，能跑通完�
 | **自研旗艦**全流程 skill（StatsPAI DSL + 顯式 Python/Stata/R） | **4** | [`skills/00*`](skills/) |
 | 每次執行從資料**重算 gold 值**的數值基準任務 | **18** | [`benchmark/`](benchmark/) |
 | 行為級**評測場景 / rubric 條目** | **41 / 210** | [`eval-harness/`](eval-harness/) |
+| 其中**已證明能區分對錯**的場景（pass/fail 雙 fixture 自檢） | **9**（含全部 6 個 critical 場景） | [`eval-harness/fixtures/`](eval-harness/fixtures/) |
 | **原始基線**安全稽核（合集 / 檔案） | **52 / 2,940+**，52/52 CLEAN | [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md) |
 | 涵蓋**更廣生態**的精選地圖 | **23,000+ skill / 119 倉庫** | 本 README · [`docs/SKILL_CATALOG.md`](docs/SKILL_CATALOG.md) |
 | **工具目錄**（`tools/`）：因果/計量庫、自動化研究 Agent、MCP 服務、因果發現、基準資料集 | **334 工具 / 6 類** | [`tools/tools.json`](tools/tools.json) · [`tools/CATALOG.md`](tools/CATALOG.md) |

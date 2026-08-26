@@ -298,6 +298,7 @@ AERS는 두 가지를 동시에 제공합니다: (1) 완전한 실증 파이프�
 | **자체 제작 플래그십** 전체 파이프라인 스킬 (StatsPAI DSL + 명시적 Python/Stata/R) | **4** | [`skills/00*`](skills/) |
 | 매 실행마다 데이터에서 gold 값을 재계산하는 수치 **벤치마크 과제** | **18** | [`benchmark/`](benchmark/) |
 | 행동 수준 **eval 시나리오 / 루브릭 항목** | **41 / 210** | [`eval-harness/`](eval-harness/) |
+| 그중 **정답과 오답을 구분함이 입증된** 시나리오(pass/fail 픽스처 자체 검사) | **9**(`critical` 6개 전부 포함) | [`eval-harness/fixtures/`](eval-harness/fixtures/) |
 | **원본 베이스라인** 보안 감사 (컬렉션 / 파일) | **52 / 2,940+**, 52/52 CLEAN | [`SECURITY-SCAN-REPORT.md`](SECURITY-SCAN-REPORT.md) |
 | **더 넓은 생태계**의 큐레이션 지도 | **23,000+ 스킬 / 119개 저장소** | 본 README · [`docs/SKILL_CATALOG.md`](docs/SKILL_CATALOG.md) |
 | **도구 카탈로그** (`tools/`): 인과/계량 라이브러리, 자율 연구 에이전트, MCP 서버, 인과 발견, 벤치마크 데이터셋 | **334개 도구 / 6개 카테고리** | [`tools/tools.json`](tools/tools.json) · [`tools/CATALOG.md`](tools/CATALOG.md) |
