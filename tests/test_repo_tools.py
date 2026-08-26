@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import subprocess
 import sys
 import tempfile
@@ -360,6 +361,35 @@ class TestLocalAndCiGates(unittest.TestCase):
         # so it covers every suite its `files:` pattern can trigger on.
         self.assertIn("entry: make test", text)
         self.assertNotIn("entry: python3 -m unittest discover -s tests", text)
+
+    def test_pre_commit_compile_hook_covers_every_directory_the_target_compiles(self):
+        """A hook that cannot trigger on the file you broke is not a gate.
+
+        `make python-compat` grew to cover aers_score/ and demo-notebooks/, but
+        the hook's `files:` pattern kept the old list — so editing the CLI or a
+        replication script skipped the compile check on exactly the commit that
+        could have broken it. Derive the directories from the Makefile target
+        and require the hook to admit each one.
+        """
+        makefile = (ROOT / "Makefile").read_text(encoding="utf-8")
+        target = makefile.split("python-compat:", 1)[1].split("\n\n", 1)[0]
+        compiled_dirs = set()
+        for match in re.finditer(r"([A-Za-z0-9_./-]+)/\*(?:\*)?[A-Za-z0-9_.*]*\.py", target):
+            compiled_dirs.add(match.group(1).split("/")[0])
+
+        config = (ROOT / ".pre-commit-config.yaml").read_text(encoding="utf-8")
+        hook = config.split("id: aers-python-compat", 1)[1]
+        pattern_line = next(
+            line for line in hook.splitlines() if line.strip().startswith("files:")
+        )
+        self.assertTrue(compiled_dirs, "could not parse the python-compat target")
+        for directory in sorted(compiled_dirs):
+            with self.subTest(directory=directory):
+                self.assertIn(
+                    f"{directory}/",
+                    pattern_line,
+                    f"python-compat compiles {directory}/ but the hook never fires on it",
+                )
 
     def test_make_check_includes_python_compatibility_compile(self):
         text = (ROOT / "Makefile").read_text(encoding="utf-8")
