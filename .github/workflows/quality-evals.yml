@@ -37,8 +37,8 @@ jobs:
       - name: Lint eval-harness scenarios
         run: >-
           python3 eval-harness/run_evals.py
-          --min-scenarios 24
-          --min-auto-checks 116
+          --min-scenarios 25
+          --min-auto-checks 120
           --expect-categories causal-identification,reproducibility,citation-hygiene,runtime-safety,research-integrity,writing-compliance,writing-style
 
       - name: Unit tests (stdlib unittest)

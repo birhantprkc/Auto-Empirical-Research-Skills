@@ -48,6 +48,7 @@ METHOD_ORDER = [
     "mediation",
     "decomposition",
     "bunching",
+    "structural",
     "bayesian",
     "survival",
 ]
@@ -67,6 +68,7 @@ METHOD_LABEL = {
     "mediation": "Causal mediation",
     "decomposition": "Decomposition (Oaxaca-Blinder)",
     "bunching": "Bunching",
+    "structural": "Structural estimation (demand / IO)",
     "bayesian": "Bayesian methods",
     "survival": "Survival / duration",
 }
@@ -90,6 +92,7 @@ SCENARIO_METHOD = {
     "statspai-mediation-assumptions": "mediation",
     "statspai-decomposition": "decomposition",
     "statspai-bunching": "bunching",
+    "statspai-structural-demand": "structural",
     "baygent-bayesian-diagnostics": "bayesian",
     "statspai-survival-assumptions": "survival",
     "causalpy-placebo-inference": "synthetic-control",
@@ -124,6 +127,7 @@ TASK_METHOD = {
     "mediation-recovery": "mediation",
     "decomposition-recovery": "decomposition",
     "bunching-recovery": "bunching",
+    "structural-demand-recovery": "structural",
     "survival-recovery": "survival",
     "bayesian-recovery": "bayesian",
     "synthetic-control-recovery": "synthetic-control",

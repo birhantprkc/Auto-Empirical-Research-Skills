@@ -56,8 +56,8 @@
 
 | Rigor lane | Count | Where |
 |---|---|---|
-| Numeric **benchmark tasks** — gold values recomputed from real data each run | **17** | [`benchmark/`](benchmark/) |
-| Behavioral **eval scenarios / rubric items** | **37 / 183** | [`eval-harness/`](eval-harness/) |
+| Numeric **benchmark tasks** — gold values recomputed from real data each run | **18** | [`benchmark/`](benchmark/) |
+| Behavioral **eval scenarios / rubric items** | **38 / 191** | [`eval-harness/`](eval-harness/) |
 
 > Full trust overview: [`docs/TRUST.md`](docs/TRUST.md) · [`docs/RIGOR_COVERAGE.md`](docs/RIGOR_COVERAGE.md)
 

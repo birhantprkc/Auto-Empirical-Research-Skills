@@ -3,7 +3,7 @@
 
 # External Scoreboard — other people's agents, on our exam
 
-[`BENCHMARK_SCOREBOARD.md`](BENCHMARK_SCOREBOARD.md) scores two pipelines this repo wrote itself, which is a self-report. This board is for everyone else: any agent, from any author, on the same **17 deterministic tasks** in [`benchmark/tasks/`](../benchmark/tasks/).
+[`BENCHMARK_SCOREBOARD.md`](BENCHMARK_SCOREBOARD.md) scores two pipelines this repo wrote itself, which is a self-report. This board is for everyone else: any agent, from any author, on the same **18 deterministic tasks** in [`benchmark/tasks/`](../benchmark/tasks/).
 
 **Submitted numbers are never displayed.** Every entry ships its raw per-task candidate files, and this page is built by regrading them from scratch with [`benchmark/check_benchmark.py`](../benchmark/check_benchmark.py) — the same code path CI runs, recomputing each data-derived gold from the committed CSVs. The `summary` a submitter writes is treated as a claim and compared against that regrade; a disagreement fails the build. So the numbers below are ours, not theirs, and fabricated inputs fail the honest-* golds regardless.
 
@@ -28,4 +28,4 @@ A hand-written submission that exists to document the format and to keep the reg
 
 ---
 
-_0 third-party entries across 17 benchmark tasks. Every score on this page was recomputed by `scripts/build-external-scoreboard.py`, not copied from a submission. Regenerate with `make catalog`._
+_0 third-party entries across 18 benchmark tasks. Every score on this page was recomputed by `scripts/build-external-scoreboard.py`, not copied from a submission. Regenerate with `make catalog`._

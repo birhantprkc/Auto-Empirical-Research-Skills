@@ -32,6 +32,7 @@
       "cate": 8,
       "dml": 8,
       "mediation": 8,
+      "structural": 6,
       "survival": 3,
       "quantile": 2,
       "decomposition": 1,
@@ -120,6 +121,7 @@
         "statspai-quantile-effects",
         "statspai-rdd-diagnostics",
         "statspai-staggered-did",
+        "statspai-structural-demand",
         "statspai-survival-assumptions",
         "statspai-synthetic-control",
         "statspai-weak-iv"
@@ -1373,7 +1375,8 @@
       "has_references": true,
       "tags": {
         "method": [
-          "bayesian"
+          "bayesian",
+          "structural"
         ],
         "stage": [
           "analysis"
@@ -1480,6 +1483,9 @@
       "description_source": "frontmatter",
       "has_references": false,
       "tags": {
+        "method": [
+          "structural"
+        ],
         "stage": [
           "analysis"
         ]
@@ -1503,7 +1509,8 @@
       "tags": {
         "method": [
           "bayesian",
-          "matching"
+          "matching",
+          "structural"
         ],
         "stage": [
           "analysis"
@@ -1671,6 +1678,9 @@
       "description_source": "frontmatter",
       "has_references": true,
       "tags": {
+        "method": [
+          "structural"
+        ],
         "stage": [
           "analysis"
         ],
@@ -2531,6 +2541,9 @@
       "description_source": "frontmatter",
       "has_references": false,
       "tags": {
+        "method": [
+          "structural"
+        ],
         "stage": [
           "analysis"
         ],
@@ -21898,7 +21911,8 @@
       "tags": {
         "method": [
           "cate",
-          "dml"
+          "dml",
+          "structural"
         ],
         "stage": [
           "analysis"

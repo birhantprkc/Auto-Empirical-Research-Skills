@@ -108,6 +108,15 @@ NAIVE_BUILDERS = {
         "counterfactual_at_K": r["naive_at_K"], "naive_at_K": r["naive_at_K"],
         "observed_above_K": r["naive_above_K_total"],
         "implied_elasticity": 0.0},
+    # No instrument (so no first stage to report), the OLS coefficient doubles
+    # as the elasticity, and price is read as cost.
+    "structural-demand-recovery": lambda r: {
+        "iv_alpha": r["ols_alpha"], "ols_alpha": r["ols_alpha"],
+        "first_stage_F": 0.0,
+        "mean_own_elasticity": r["naive_elasticity"],
+        "naive_elasticity": r["naive_elasticity"],
+        "mean_marginal_cost": r["naive_marginal_cost"],
+        "naive_marginal_cost": r["naive_marginal_cost"]},
 }
 
 NAIVE_MOVE = {
@@ -128,6 +137,7 @@ NAIVE_MOVE = {
     "mediation-recovery": "controls the mediator and headlines the coefficient",
     "decomposition-recovery": "reads the entire gap as the unexplained component",
     "bunching-recovery": "quotes the unmodified baseline at every support point - no kink recognized",
+    "structural-demand-recovery": "regresses shares on price with no instrument; quotes the coefficient as the elasticity",
 }
 
 

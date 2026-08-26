@@ -275,8 +275,8 @@ AERS 同时是两样东西：(1) 一小撮**自研旗舰 skill**，能跑通完�
 | **本仓库自有**并已编目的 skill | **1,096** | [`catalog/skills.json`](../catalog/skills.json) |
 | 自有 **合集（collections）** | **76** | [`catalog/skills.json`](../catalog/skills.json) · [全部 76 个一览 ↑](#全部-76-个-skill-合集一览) |
 | **自研旗舰**全流程 skill（StatsPAI DSL + 显式 Python/Stata/R） | **4** | [`skills/00*`](../skills/) |
-| 每次运行从数据**重算 gold 值**的数值基准任务 | **17** | [`benchmark/`](../benchmark/) |
-| 行为级**评测场景 / rubric 条目** | **37 / 183** | [`eval-harness/`](../eval-harness/) |
+| 每次运行从数据**重算 gold 值**的数值基准任务 | **18** | [`benchmark/`](../benchmark/) |
+| 行为级**评测场景 / rubric 条目** | **38 / 191** | [`eval-harness/`](../eval-harness/) |
 | **原始基线**安全审计（合集 / 文件） | **52 / 2,940+**，52/52 CLEAN | [`SECURITY-SCAN-REPORT.md`](../SECURITY-SCAN-REPORT.md) |
 | 覆盖**更广生态**的精选地图 | **23,000+ skill / 119 仓库** | 本 README · [`SKILL_CATALOG.md`](SKILL_CATALOG.md) |
 | **工具目录**（`tools/`）：因果/计量库、自动化研究 Agent、MCP 服务、因果发现、基准数据集 | **334 工具 / 6 类** | [`tools/tools.json`](../tools/tools.json) · [`tools/CATALOG.md`](../tools/CATALOG.md) |
@@ -374,8 +374,8 @@ make check        # 仓库校验 + 单元测试 + eval lint + 数值基准
 
 | 层 | 它能拦住什么 | 在哪 |
 |---|---|---|
-| **数值基准** | 报告数字与真实数据重算真值不符 —— 朴素 DID 符号陷阱、缺第一阶段 F 的弱 IV、交错时点下的 TWFE 偏误、RDD 趋势混淆、后处理坏控制、被合并均值掩盖的异质效应（CATE）、只看均值漏掉尾部的分位数效应、本地冲击混淆的移位份额（Bartik）IV、把中介当控制变量导致直接效应翻号、依赖参照组的 Oaxaca 分解拆分、kink 处超额质量被朴素密度掩盖的 bunching | [`benchmark/`](../benchmark/) · 17 任务 |
-| **评测套件** | 散文级失误：弱 IV 假性安心、交错 DID 误用 TWFE、编造引用、不安全的 `curl \| bash` 安装、多重检验滥用、AER 合规缺口 | [`eval-harness/`](../eval-harness/) · 37 场景 / 183 rubric |
+| **数值基准** | 报告数字与真实数据重算真值不符 —— 朴素 DID 符号陷阱、缺第一阶段 F 的弱 IV、交错时点下的 TWFE 偏误、RDD 趋势混淆、后处理坏控制、被合并均值掩盖的异质效应（CATE）、只看均值漏掉尾部的分位数效应、本地冲击混淆的移位份额（Bartik）IV、把中介当控制变量导致直接效应翻号、依赖参照组的 Oaxaca 分解拆分、kink 处超额质量被朴素密度掩盖的 bunching、未对内生价格做工具变量就估计需求并把系数当弹性报告（结构估计） | [`benchmark/`](../benchmark/) · 18 任务 |
+| **评测套件** | 散文级失误：弱 IV 假性安心、交错 DID 误用 TWFE、编造引用、不安全的 `curl \| bash` 安装、多重检验滥用、AER 合规缺口 | [`eval-harness/`](../eval-harness/) · 38 场景 / 191 rubric |
 | **安全审计** | pipe-to-shell、反向 shell、凭据外泄、prompt 注入等 13 类风险 —— 六阶段，40+ hook 脚本人工核查 | [`SECURITY-SCAN-REPORT.md`](../SECURITY-SCAN-REPORT.md) |
 | **来源与许可** | 未声明来源、许可风险、1,096 个编目 skill 的卫生度漂移 | [`LICENSE_AUDIT.md`](LICENSE_AUDIT.md) · [`SKILL_HYGIENE.md`](SKILL_HYGIENE.md) |
 | **CI 与兼容性** | catalog 新鲜度、本地死链、GitHub Actions 策略、Python 3.9 **与** 3.12 语法基线 | [`.github/workflows/`](../.github/workflows/) · 7 条 workflow |

@@ -30,6 +30,7 @@ A family is **covered** when it has both an eval scenario and a benchmark task, 
 | Causal mediation | 8 | `statspai-mediation-assumptions` (high) | `mediation-recovery` | covered |
 | Decomposition (Oaxaca-Blinder) | 1 | `statspai-decomposition` (high) | `decomposition-recovery` | covered |
 | Bunching | 0 | `statspai-bunching` (high) | `bunching-recovery` | covered |
+| Structural estimation (demand / IO) | 6 | `statspai-structural-demand` (high) | `structural-demand-recovery` | covered |
 | Bayesian methods | 13 | `baygent-bayesian-diagnostics` (high) | `bayesian-recovery` | covered |
 | Survival / duration | 3 | `statspai-survival-assumptions` (high) | `survival-recovery` | covered |
 
@@ -74,4 +75,4 @@ Non-method checks that gate the rest of the workflow (writing, citations, reprod
 
 ---
 
-_37 eval scenarios and 17 benchmark tasks across 17 method families; 16 families fully covered, 0 open gaps. Regenerate with `make catalog`._
+_38 eval scenarios and 18 benchmark tasks across 18 method families; 17 families fully covered, 0 open gaps. Regenerate with `make catalog`._

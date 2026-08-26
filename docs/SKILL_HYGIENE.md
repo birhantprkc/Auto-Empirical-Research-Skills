@@ -24,7 +24,7 @@ A skill can be **well-formed** (high hygiene) yet **untested for the traps an ap
 
 | Collection | Skills | Mean hygiene | Min hygiene | Skills w/ ≥1 eval | Total eval scenarios |
 |---|---:|---:|---:|---:|---:|
-| `00-Full-empirical-analysis-skill_StatsPAI` | 1 | 85.0 | 85 | 1 | 15 |
+| `00-Full-empirical-analysis-skill_StatsPAI` | 1 | 85.0 | 85 | 1 | 16 |
 | `00.1-Full-empirical-analysis-skill_Python` | 1 | 100.0 | 100 | 0 | 0 |
 | `00.2-Full-empirical-analysis-skill_Stata` | 1 | 100.0 | 100 | 0 | 0 |
 | `00.3-Full-empirical-analysis-skill_R` | 1 | 100.0 | 100 | 0 | 0 |
@@ -105,7 +105,7 @@ A skill can be **well-formed** (high hygiene) yet **untested for the traps an ap
 
 | Score | Skill | Flags | Eval coverage |
 |---:|---|---|---:|
-| 85 | [`skills/00-Full-empirical-analysis-skill_StatsPAI/SKILL.md`](../skills/00-Full-empirical-analysis-skill_StatsPAI/SKILL.md) | very-long-no-references | statspai-bad-controls, statspai-bunching, statspai-clustered-inference, statspai-decomposition, statspai-dml-crossfit, statspai-heterogeneous-effects, statspai-matching-overlap, statspai-mediation-assumptions, statspai-pretrends-eventstudy, statspai-quantile-effects, statspai-rdd-diagnostics, statspai-staggered-did, statspai-survival-assumptions, statspai-synthetic-control, statspai-weak-iv |
+| 85 | [`skills/00-Full-empirical-analysis-skill_StatsPAI/SKILL.md`](../skills/00-Full-empirical-analysis-skill_StatsPAI/SKILL.md) | very-long-no-references | statspai-bad-controls, statspai-bunching, statspai-clustered-inference, statspai-decomposition, statspai-dml-crossfit, statspai-heterogeneous-effects, statspai-matching-overlap, statspai-mediation-assumptions, statspai-pretrends-eventstudy, statspai-quantile-effects, statspai-rdd-diagnostics, statspai-staggered-did, statspai-structural-demand, statspai-survival-assumptions, statspai-synthetic-control, statspai-weak-iv |
 | 85 | [`skills/04-K-Dense-AI-claude-scientific-writer/citation-management/SKILL.md`](../skills/04-K-Dense-AI-claude-scientific-writer/citation-management/SKILL.md) | very-long-no-references | — |
 | 85 | [`skills/04-K-Dense-AI-claude-scientific-writer/research-grants/SKILL.md`](../skills/04-K-Dense-AI-claude-scientific-writer/research-grants/SKILL.md) | very-long-no-references | — |
 | 85 | [`skills/20-wenddymacro-python-econ-skill/SKILL.md`](../skills/20-wenddymacro-python-econ-skill/SKILL.md) | very-long-no-references | — |
@@ -135,7 +135,7 @@ A skill can be **well-formed** (high hygiene) yet **untested for the traps an ap
 
 | # evals | Skill | Hygiene |
 |---:|---|---:|
-| 15 | [`skills/00-Full-empirical-analysis-skill_StatsPAI/SKILL.md`](../skills/00-Full-empirical-analysis-skill_StatsPAI/SKILL.md) | 85 |
+| 16 | [`skills/00-Full-empirical-analysis-skill_StatsPAI/SKILL.md`](../skills/00-Full-empirical-analysis-skill_StatsPAI/SKILL.md) | 85 |
 | 3 | [`skills/50-brycewang-aer-skills/skills/aer-replication/SKILL.md`](../skills/50-brycewang-aer-skills/skills/aer-replication/SKILL.md) | 100 |
 | 2 | [`skills/50-brycewang-aer-skills/skills/aer-identification/SKILL.md`](../skills/50-brycewang-aer-skills/skills/aer-identification/SKILL.md) | 100 |
 | 2 | [`skills/50-brycewang-aer-skills/skills/aer-introduction/SKILL.md`](../skills/50-brycewang-aer-skills/skills/aer-introduction/SKILL.md) | 100 |

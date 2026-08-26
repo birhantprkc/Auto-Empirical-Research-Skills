@@ -47,6 +47,7 @@ import bartik  # noqa: E402
 import mediation  # noqa: E402
 import oaxaca  # noqa: E402
 import bunching  # noqa: E402
+import structural  # noqa: E402
 
 TASKS_DIR = Path(__file__).resolve().parent / "tasks"
 CANDIDATES_DIR = Path(__file__).resolve().parent / "candidates"
@@ -57,6 +58,7 @@ SUPPORTED_TASK_IDS = {
     "bartik-recovery",
     "bunching-recovery",
     "decomposition-recovery",
+    "structural-demand-recovery",
     "bayesian-recovery",
     "card-iv-recovery",
     "cate-recovery",
@@ -156,6 +158,11 @@ CANDIDATE_NUMERIC_FIELDS = {
     "bunching-recovery": (
         "excess_mass", "observed_at_K", "counterfactual_at_K",
         "naive_at_K", "observed_above_K", "implied_elasticity",
+    ),
+    "structural-demand-recovery": (
+        "iv_alpha", "ols_alpha", "first_stage_F",
+        "mean_own_elasticity", "naive_elasticity",
+        "mean_marginal_cost", "naive_marginal_cost",
     ),
 }
 CANDIDATE_NUMERIC_MAP_FIELDS = {
@@ -546,6 +553,26 @@ def compute_truth(task: dict) -> dict:
             "naive_at_K": bunching.naive_density_at(rows, bunching.K),
             "observed_above_K": bunching.observed_density_above(rows),
             "implied_elasticity": bunching.implied_elasticity(rows),
+        }
+    if task["id"] == "structural-demand-recovery":
+        data = ROOT / task["data"]
+        rows = structural.load(data)
+        # The truth comes from the hidden xi column, which no estimator reads:
+        # closing the demand equation with it returns the design parameter.
+        true_alpha = structural.oracle_alpha(rows)
+        estimated_alpha = structural.iv_alpha(rows)
+        return {
+            "n": len(rows),
+            "true_alpha": true_alpha,
+            "true_mean_elasticity": structural.mean_own_elasticity(rows, true_alpha),
+            "true_mean_marginal_cost": structural.mean_marginal_cost(rows, true_alpha),
+            "iv_alpha": estimated_alpha,
+            "ols_alpha": structural.ols_alpha(rows),
+            "first_stage_F": structural.first_stage_f(rows),
+            "mean_own_elasticity": structural.mean_own_elasticity(rows, estimated_alpha),
+            "naive_elasticity": structural.naive_elasticity(rows),
+            "mean_marginal_cost": structural.mean_marginal_cost(rows, estimated_alpha),
+            "naive_marginal_cost": structural.naive_marginal_cost(rows),
         }
     raise ValueError(f"unknown task {task['id']}")
 
