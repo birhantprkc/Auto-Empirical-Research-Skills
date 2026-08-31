@@ -1,9 +1,10 @@
 """Tests for requirements.txt and the interpreter contract it depends on.
 
-`requirements.txt` is the pinned scientific stack for exactly one gate: the
-Paper-WorkFlow demo, which really executes `did_demo.ipynb`. Everything else in
-the repo is stdlib-only, and the CI matrix deliberately includes Python 3.9 for
-that reason.
+`requirements.txt` is the pinned scientific stack for the two Paper-WorkFlow
+checkers that do real work: `check_demo_execution.py`, which executes
+`did_demo.ipynb`, and `check_defense_deck.py`, which builds the Stage 9 defence
+deck via python-pptx. Everything else in the repo is stdlib-only, and the CI
+matrix deliberately includes Python 3.9 for that reason.
 
 Those two facts interact. The `linearmodels` floor was raised to 7.0 because
 the 5.x wheels are built against the NumPy 1.x ABI and print a crash warning
@@ -69,7 +70,14 @@ class TestRequirementsShape(unittest.TestCase):
         names = {re.split(r"[<>=]", line)[0] for line in _requirement_lines()}
         self.assertEqual(
             names,
-            {"numpy", "pandas", "matplotlib", "statsmodels", "linearmodels"},
+            {
+                "numpy",
+                "pandas",
+                "matplotlib",
+                "statsmodels",
+                "linearmodels",
+                "python-pptx",
+            },
             "requirements.txt is the demo gate's stack; changing its membership "
             "should be a deliberate, documented change",
         )
