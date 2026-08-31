@@ -383,7 +383,7 @@ OVERRIDES: dict[str, dict[str, object]] = {
         "source_confidence": "medium",
     },
     "42-wanshuiyin-ARIS": {
-        "origin": "vendored upstream snapshot. The upstream skills-codex / skills-codex-*-review runtime ports (OpenAI Codex CLI variants of the same skills) remain on disk but are excluded from skill discovery since 2026-07-22 (see scripts/skill_discovery.py).",
+        "origin": "vendored upstream snapshot. The upstream skills-codex / skills-codex-*-review runtime ports (OpenAI Codex CLI variants of the same skills) remain on disk but are excluded from skill discovery since 2026-07-22 (see scripts/skill_discovery.py). Diverges from upstream in one content detail: the four auto-review-loop SKILL.md files name MiniMax-M3 as the reviewer model, not the upstream MiniMax-M2.7 (PR #69, 2026-08-31). M2.7 was superseded by M3 on 2026-05-31, so the snapshot would otherwise document a model the API no longer serves. Drop this note once upstream carries the same rename.",
     },
 }
 
