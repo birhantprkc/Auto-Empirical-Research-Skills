@@ -235,7 +235,7 @@
       "has_description": true,
       "has_frontmatter": true,
       "has_name": true,
-      "line_count": 2263,
+      "line_count": 2308,
       "name": "StatsPAI_skill",
       "path": "skills/00-Full-empirical-analysis-skill_StatsPAI/SKILL.md"
     },
@@ -245,7 +245,7 @@
       "has_description": true,
       "has_frontmatter": true,
       "has_name": true,
-      "line_count": 2052,
+      "line_count": 2098,
       "name": "Full-empirical-analysis-skill",
       "path": "skills/00.1-Full-empirical-analysis-skill_Python/SKILL.md"
     },
@@ -255,7 +255,7 @@
       "has_description": true,
       "has_frontmatter": true,
       "has_name": true,
-      "line_count": 2368,
+      "line_count": 2414,
       "name": "Full-empirical-analysis-skill-Stata",
       "path": "skills/00.2-Full-empirical-analysis-skill_Stata/SKILL.md"
     },
@@ -265,7 +265,7 @@
       "has_description": true,
       "has_frontmatter": true,
       "has_name": true,
-      "line_count": 2466,
+      "line_count": 2512,
       "name": "Full-empirical-analysis-skill-R",
       "path": "skills/00.3-Full-empirical-analysis-skill_R/SKILL.md"
     },
@@ -11155,7 +11155,7 @@
       "has_description": true,
       "has_frontmatter": true,
       "has_name": true,
-      "line_count": 244,
+      "line_count": 249,
       "name": "paper-workflow",
       "path": "skills/69-Paper-WorkFlow/SKILL.md"
     },
